@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DTModelStorage" "$PODS_CONFIGURATION_BUILD_DIR/DTTableViewManager" "$PODS_CONFIGURATION_BUILD_DIR/Dip" "$PODS_CONFIGURATION_BUILD_DIR/Dip-UI" "$PODS_CONFIGURATION_BUILD_DIR/Globus" "$PODS_CONFIGURATION_BUILD_DIR/SnapKit" "$PODS_CONFIGURATION_BUILD_DIR/SwiftHEXColors" "$PODS_CONFIGURATION_BUILD_DIR/TTTAttributedLabel"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/DTModelStorage/DTModelStorage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DTTableViewManager/DTTableViewManager.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Dip-UI/Dip_UI.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Dip/Dip.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Globus/Globus.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SnapKit/SnapKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftHEXColors/SwiftHEXColors.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/TTTAttributedLabel/TTTAttributedLabel.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "DTModelStorage" -framework "DTTableViewManager" -framework "Dip" -framework "Dip_UI" -framework "Globus" -framework "SnapKit" -framework "SwiftHEXColors" -framework "TTTAttributedLabel"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods

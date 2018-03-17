@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Arial.ttf">
+            <string>ArialMT</string>
+        </array>
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="UaB-6A-l8S" customClass="LessonSectionHeaderView" customModule="Tajwid" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asC-85-mUm">
+                    <rect key="frame" x="101" y="33" width="107" height="22"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-RZ-8UR">
+                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ا" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-NU-2kH">
+                                    <rect key="frame" x="9" y="1" width="4" height="21"/>
+                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="1ZJ-TF-Y1S"/>
+                                <constraint firstItem="IP4-NU-2kH" firstAttribute="centerY" secondItem="YnD-RZ-8UR" secondAttribute="centerY" id="Mez-ae-3Rv"/>
+                                <constraint firstItem="IP4-NU-2kH" firstAttribute="centerX" secondItem="YnD-RZ-8UR" secondAttribute="centerX" id="h2N-IP-XHb"/>
+                                <constraint firstAttribute="height" constant="22" id="zzg-8G-rD0"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="11"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Буква «АЛИФ»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-u0-Jqg">
+                            <rect key="frame" x="32" y="4.5" width="75" height="14"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="YnD-RZ-8UR" firstAttribute="top" secondItem="asC-85-mUm" secondAttribute="top" id="2Fz-SG-Gh7"/>
+                        <constraint firstAttribute="bottom" secondItem="YnD-RZ-8UR" secondAttribute="bottom" id="Rwf-Df-b83"/>
+                        <constraint firstItem="aiv-u0-Jqg" firstAttribute="centerY" secondItem="YnD-RZ-8UR" secondAttribute="centerY" id="eAQ-Gl-MzK"/>
+                        <constraint firstItem="aiv-u0-Jqg" firstAttribute="leading" secondItem="YnD-RZ-8UR" secondAttribute="trailing" constant="10" id="eyG-JD-GLt"/>
+                        <constraint firstAttribute="trailing" secondItem="aiv-u0-Jqg" secondAttribute="trailing" id="fh1-Bc-fnA"/>
+                        <constraint firstItem="YnD-RZ-8UR" firstAttribute="leading" secondItem="asC-85-mUm" secondAttribute="leading" id="xzZ-di-951"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="gKj-ek-a2u"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="asC-85-mUm" firstAttribute="centerX" secondItem="1T6-wj-AAU" secondAttribute="centerX" id="2G9-jL-L6k"/>
+                <constraint firstAttribute="bottom" secondItem="asC-85-mUm" secondAttribute="bottom" constant="18" id="KLA-Lu-CNU"/>
+                <constraint firstItem="asC-85-mUm" firstAttribute="top" secondItem="1T6-wj-AAU" secondAttribute="top" constant="33" id="pm2-fh-Z4o"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="1T6-wj-AAU"/>
+            <connections>
+                <outlet property="arabicTitleLabel" destination="IP4-NU-2kH" id="f7E-gy-OMB"/>
+                <outlet property="titleLabel" destination="aiv-u0-Jqg" id="vlL-As-ap6"/>
+            </connections>
+            <point key="canvasLocation" x="-76" y="-217"/>
+        </view>
+    </objects>
+</document>

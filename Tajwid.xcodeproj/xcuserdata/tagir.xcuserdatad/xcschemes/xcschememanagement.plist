@@ -7,7 +7,25 @@
 		<key>Tajwid.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>9</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1E9E2F7A202728E7000892F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E9E2F8E202728E7000892F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E9E2F99202728E7000892F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

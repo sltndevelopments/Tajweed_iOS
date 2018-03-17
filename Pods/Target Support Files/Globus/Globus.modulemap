@@ -1,0 +1,6 @@
+framework module Globus {
+  umbrella header "Globus-umbrella.h"
+
+  export *
+  module * { export * }
+}
