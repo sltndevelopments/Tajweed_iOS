@@ -1,9 +1,5 @@
 //
-//  UIViewController+Additions.swift
-//  DSA
-//
 //  Created by Tagir Nafikov on 01/12/2017.
-//  Copyright © 2017 AK BARS DIGITAL TECHNOLOGIES OOO. All rights reserved.
 //
 
 import UIKit

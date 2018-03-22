@@ -41,6 +41,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Proxima Nova Bold.otf</string>
 		<string>ArialMT.ttf</string>
 		<string>Proxima Nova Semibold.otf</string>
 	</array>

@@ -25,7 +25,7 @@ class LessonCardView: UIView, ModelTransfer {
         static let arabicTextTop = CGFloat(19)
         static let arabicTextBottom = CGFloat(19)
         static let arabicTextTrailing = CGFloat(37)
-        static let arabicTextToCheckVerticalSpace = CGFloat(22)
+        static let arabicTextToCheckVerticalSpace = CGFloat(42)
         static let textToCheckVerticalSpace = CGFloat(32)
         static let checkHeight = CGFloat(41)
     }

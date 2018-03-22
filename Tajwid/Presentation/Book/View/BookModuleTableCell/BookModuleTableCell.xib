@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="165" id="KGk-i7-Jjw" customClass="BookModuleTableCell" customModule="Tajwid" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="164.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AuQ-76-C9b">
+                        <rect key="frame" x="147.5" y="20" width="25" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcc-nv-bvl">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="10"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fcc-nv-bvl" secondAttribute="bottom" id="Qhz-du-0c8"/>
+                            <constraint firstAttribute="width" constant="25" id="SGA-A9-lmX"/>
+                            <constraint firstAttribute="height" constant="25" id="Ydk-nu-CfZ"/>
+                            <constraint firstItem="fcc-nv-bvl" firstAttribute="top" secondItem="AuQ-76-C9b" secondAttribute="top" id="anH-su-1tr"/>
+                            <constraint firstAttribute="trailing" secondItem="fcc-nv-bvl" secondAttribute="trailing" id="pwM-mS-Wm9"/>
+                            <constraint firstItem="fcc-nv-bvl" firstAttribute="leading" secondItem="AuQ-76-C9b" secondAttribute="leading" id="yXe-mI-saw"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Алиф, ба, та, с̱а" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFH-Ty-7Hn">
+                        <rect key="frame" x="25" y="60" width="270" height="33"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="3 КАРТОЧКИ, 4 УПРАЖНЕНИЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-n0-A3l">
+                        <rect key="frame" x="25" y="111" width="270" height="29.5"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="10"/>
+                        <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AuQ-76-C9b" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="A7N-sc-vnX"/>
+                    <constraint firstItem="hgS-n0-A3l" firstAttribute="leading" secondItem="aFH-Ty-7Hn" secondAttribute="leading" id="BWa-cQ-Wa6"/>
+                    <constraint firstItem="aFH-Ty-7Hn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="FlZ-Mu-4yA"/>
+                    <constraint firstItem="aFH-Ty-7Hn" firstAttribute="top" secondItem="AuQ-76-C9b" secondAttribute="bottom" constant="15" id="Puw-ap-HdJ"/>
+                    <constraint firstItem="hgS-n0-A3l" firstAttribute="top" secondItem="aFH-Ty-7Hn" secondAttribute="bottom" constant="18" id="XfZ-yM-oji"/>
+                    <constraint firstItem="AuQ-76-C9b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="YpL-hr-EaD"/>
+                    <constraint firstAttribute="bottom" secondItem="hgS-n0-A3l" secondAttribute="bottom" constant="24" id="eCh-2E-ifR"/>
+                    <constraint firstItem="hgS-n0-A3l" firstAttribute="trailing" secondItem="aFH-Ty-7Hn" secondAttribute="trailing" id="pDk-r2-Asb"/>
+                    <constraint firstAttribute="trailing" secondItem="aFH-Ty-7Hn" secondAttribute="trailing" constant="25" id="vM2-3K-r1H"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="25" y="112.5"/>
+        </tableViewCell>
+    </objects>
+</document>

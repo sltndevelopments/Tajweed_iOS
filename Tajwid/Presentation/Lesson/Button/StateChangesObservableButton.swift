@@ -1,9 +1,5 @@
 //
-//  StateChangesObservableButton.swift
-//  Tajwid
-//
 //  Created by Tagir Nafikov on 10/03/2018.
-//  Copyright © 2018 teorius. All rights reserved.
 //
 
 import UIKit

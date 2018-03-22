@@ -1,9 +1,5 @@
 //
-//  Lesson.swift
-//  Tajwid
-//
 //  Created by Tagir Nafikov on 08/02/2018.
-//  Copyright © 2018 teorius. All rights reserved.
 //
 
 import Foundation

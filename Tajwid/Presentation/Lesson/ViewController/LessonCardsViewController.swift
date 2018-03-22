@@ -68,7 +68,7 @@ class LessonCardsViewController: UIViewController {
     // MARK: - Configuration
     
     private func setupModels() {
-        if let url = Bundle.main.url(forResource: "Lesson", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "lesson 3", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let lesson = try JSONDecoder().decode(Lesson.self, from: data)

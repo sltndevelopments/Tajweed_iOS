@@ -11,6 +11,10 @@ extension UIView {
         return String(describing: self)
     }
 
+    static var defaultNib: UINib {
+        return UINib(nibName: defaultIdentifier, bundle: nil)
+    }
+
     static func loadFromXib<T: UIView>(type: T.Type) -> T? {
         let xibName = String(describing: T.self)
         
