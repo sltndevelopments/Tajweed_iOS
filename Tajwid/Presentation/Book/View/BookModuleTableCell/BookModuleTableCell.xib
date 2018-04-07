@@ -73,20 +73,36 @@
                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W66-EO-tFa">
+                        <rect key="frame" x="25" y="163.5" width="270" height="1"/>
+                        <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="zDQ-3w-53g"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="aFH-Ty-7Hn" firstAttribute="leading" secondItem="W66-EO-tFa" secondAttribute="leading" id="5lU-vP-HYw"/>
                     <constraint firstItem="AuQ-76-C9b" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="A7N-sc-vnX"/>
                     <constraint firstItem="hgS-n0-A3l" firstAttribute="leading" secondItem="aFH-Ty-7Hn" secondAttribute="leading" id="BWa-cQ-Wa6"/>
                     <constraint firstItem="aFH-Ty-7Hn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="FlZ-Mu-4yA"/>
                     <constraint firstItem="aFH-Ty-7Hn" firstAttribute="top" secondItem="AuQ-76-C9b" secondAttribute="bottom" constant="15" id="Puw-ap-HdJ"/>
                     <constraint firstItem="hgS-n0-A3l" firstAttribute="top" secondItem="aFH-Ty-7Hn" secondAttribute="bottom" constant="18" id="XfZ-yM-oji"/>
                     <constraint firstItem="AuQ-76-C9b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="YpL-hr-EaD"/>
+                    <constraint firstAttribute="bottom" secondItem="W66-EO-tFa" secondAttribute="bottom" id="d4N-1o-RzT"/>
                     <constraint firstAttribute="bottom" secondItem="hgS-n0-A3l" secondAttribute="bottom" constant="24" id="eCh-2E-ifR"/>
                     <constraint firstItem="hgS-n0-A3l" firstAttribute="trailing" secondItem="aFH-Ty-7Hn" secondAttribute="trailing" id="pDk-r2-Asb"/>
+                    <constraint firstItem="aFH-Ty-7Hn" firstAttribute="trailing" secondItem="W66-EO-tFa" secondAttribute="trailing" id="rAA-xr-qj2"/>
                     <constraint firstAttribute="trailing" secondItem="aFH-Ty-7Hn" secondAttribute="trailing" constant="25" id="vM2-3K-r1H"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="numberLabel" destination="fcc-nv-bvl" id="Mwr-ZL-9Gy"/>
+                <outlet property="numberView" destination="AuQ-76-C9b" id="yed-ZC-6bc"/>
+                <outlet property="subtitleLabel" destination="hgS-n0-A3l" id="1bS-cD-ndh"/>
+                <outlet property="titleLabel" destination="aFH-Ty-7Hn" id="pnW-Vv-Klo"/>
+            </connections>
             <point key="canvasLocation" x="25" y="112.5"/>
         </tableViewCell>
     </objects>

@@ -23,7 +23,19 @@ extension UIView {
             return nil
         }
         
-        let objects = topLevelObjects.flatMap { $0 as? T }
+        let objects = topLevelObjects.compactMap { $0 as? T }
         return objects.first
     }
+    
+    func makeImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        if let context = UIGraphicsGetCurrentContext() {
+            layer.render(in: context)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            return image
+        }
+        return nil
+    }
+
 }

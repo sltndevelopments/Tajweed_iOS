@@ -9,8 +9,9 @@ enum FontNames {
     static let avNext = "AvenirNext-Regular"
     static let avNextMed = "AvenirNext-Medium"
     static let geezaPro = "GeezaPro"
-    static let arialMT = "ArialMT"
+    static let simpleArabic = "SimplifiedArabic"
     static let pnSemibold = "ProximaNova-Semibold"
+    static let pn = "ProximaNova-Regular"
 }
 
 

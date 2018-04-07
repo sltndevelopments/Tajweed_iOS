@@ -10,6 +10,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var arabicTitleLabelView: UIView!
     @IBOutlet weak var arabicTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -19,7 +20,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        arabicTitleLabel.font = UIFont(name: FontNames.arialMT, size: 18)
+        arabicTitleLabel.font = UIFont(name: FontNames.simpleArabic, size: 18)
     }
     
     
@@ -29,6 +30,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
 
     func update(with model: LessionSectionHeaderViewModel) {
         arabicTitleLabel.text = model.arabicText
+        arabicTitleLabelView.isHidden = arabicTitleLabel.text?.isEmpty ?? true
         titleLabel.text = model.text
     }
     

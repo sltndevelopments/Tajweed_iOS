@@ -1,4 +1,6 @@
 PODS:
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
   - Dip (6.0)
   - Dip-UI (2.0):
     - Dip (~> 6.0)
@@ -7,6 +9,7 @@ PODS:
   - DTModelStorage/Core (7.0.2)
   - DTTableViewManager (6.1.0):
     - DTModelStorage (~> 7.0.0)
+  - Fabric (1.7.6)
   - Globus/CoreFoundation/AttributedString (0.4.33):
     - Globus/CoreFoundation/Base
   - Globus/CoreFoundation/Base (0.4.33)
@@ -25,24 +28,28 @@ PODS:
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
+  - Crashlytics
   - Dip
   - Dip-UI
   - DTTableViewManager (~> 6.1)
+  - Fabric
   - Globus/TextStyle
   - SnapKit (~> 4.0.0)
   - SwiftHEXColors
   - TTTAttributedLabel
 
 SPEC CHECKSUMS:
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Dip: 316ad036509eaf3ef78e19699f32a9e01a5b3c3e
   Dip-UI: 80616044fdf76a86f6504d33d5f0b20c82df71e3
   DTModelStorage: f6fd657d02fd544deb1b62b4048e9031f05b83a3
   DTTableViewManager: 3529da2d96e61743f36c654e126428604718f3f1
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   Globus: 2d1ffd787918d523159b7999c1b0512126e0c43a
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftHEXColors: 9681e756dc78a99ae97f277165b3f5e33b087553
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 5ebbb2524bf0600ff35d23b5ad4f568bcac8a0e1
+PODFILE CHECKSUM: 3c9275694a687b5f069281bb6f39cf585e82acac
 
 COCOAPODS: 1.3.1

@@ -41,7 +41,7 @@ class TestButton: UIButton {
     // MARK: - Configuration
     
     private func configure() {
-        titleLabel?.font = UIFont(name: FontNames.arialMT, size: 40)
+        titleLabel?.font = UIFont(name: FontNames.simpleArabic, size: 40)
         borderWidth = 1
         cornerRadius = 3
         

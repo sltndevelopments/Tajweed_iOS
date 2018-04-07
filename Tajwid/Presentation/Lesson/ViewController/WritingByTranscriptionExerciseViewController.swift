@@ -6,7 +6,7 @@ import UIKit
 import Globus
 
 
-class WritingByTranscriptionExerciseViewController: UIViewController {
+class WritingByTranscriptionExerciseViewController: UIViewController, HasCompletion {
     
     // MARK: - Outlets
     
@@ -20,6 +20,8 @@ class WritingByTranscriptionExerciseViewController: UIViewController {
     
     var exercise: WritingByTranscriptionExercise!
     
+    var completion: VoidClosure?
+
     
     // MARK: - Private properties
     
@@ -33,7 +35,7 @@ class WritingByTranscriptionExerciseViewController: UIViewController {
     
     private var correctWritingTextStyle: GLBTextStyle = {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.arialMT, size: 100)
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 100)
         textStyle.color = .blueberry
         
         return textStyle
@@ -71,9 +73,13 @@ class WritingByTranscriptionExerciseViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func buttonPressed() {
-        correctWritingLabel.isHidden = false
-        actionButton.customImage = #imageLiteral(resourceName: "next")
-        actionButton.customTitle = "ДАЛЕЕ"
+        if correctWritingLabel.isHidden {
+            correctWritingLabel.isHidden = false
+            actionButton.customImage = #imageLiteral(resourceName: "next")
+            actionButton.customTitle = "ДАЛЕЕ"
+        } else {
+            completion?()
+        }
     }
 
 }

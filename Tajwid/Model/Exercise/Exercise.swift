@@ -11,6 +11,10 @@ class Exercise: Decodable {
     
     var title: String
     
+    var path: String?
+    
+    var index: Int?
+
     
     // MARK: - Decodable
     

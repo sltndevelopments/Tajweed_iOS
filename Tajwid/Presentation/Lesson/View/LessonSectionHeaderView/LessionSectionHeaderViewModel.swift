@@ -9,15 +9,15 @@ struct LessionSectionHeaderViewModel {
     
     // MARK: - Public properties
     
-    var arabicText: String
+    var arabicText: String?
     var text: String
     
     
     // MARK: - Init
     
     init(lessonSection: LessonSection) {
-        arabicText = lessonSection.arabicTitle ?? "vvvv"
-        text = lessonSection.title
+        arabicText = lessonSection.arabicTitle
+        text = lessonSection.title.uppercased()
     }
     
 }

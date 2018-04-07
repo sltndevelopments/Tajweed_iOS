@@ -36,7 +36,7 @@ class ReadingExerciseTextView: UIView {
     
     private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.arialMT, size: 40)
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberry
         textStyle.minimumLineHeight = 35
         textStyle.maximumLineHeight = 35
@@ -46,7 +46,7 @@ class ReadingExerciseTextView: UIView {
     
     private var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.arialMT, size: 40)
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberryLight
         textStyle.minimumLineHeight = 35
         textStyle.maximumLineHeight = 35

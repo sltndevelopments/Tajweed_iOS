@@ -6,7 +6,7 @@ import UIKit
 import Globus
 
 
-class TestExerciseViewController: UIViewController {
+class TestExerciseViewController: UIViewController, HasCompletion {
     
     // MARK: - Outlets
     
@@ -22,9 +22,19 @@ class TestExerciseViewController: UIViewController {
     
     var exercise: TestExercise!
     
+    var completion: VoidClosure?
+
     
     // MARK: - Private properties
     
+    private var arabicTextStyle: GLBTextStyle = {
+        let textStyle = GLBTextStyle()
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.color = .blackOne
+        
+        return textStyle
+    }()
+
     private var textStyle: GLBTextStyle = {
         let textStyle = GLBTextStyle()
         textStyle.font = UIFont(name: FontNames.avNext, size: 24)
@@ -59,13 +69,26 @@ class TestExerciseViewController: UIViewController {
         titleLabel.attributedText = NSAttributedString(
             string: exercise.title,
             attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
-        textLabel.attributedText = NSAttributedString(
-            string: exercise.text,
-            attributes: textStyle.textAttributes)
+        if let text = exercise.text {
+            textLabel.isHidden = false
+            textLabel.attributedText = NSAttributedString(
+                string: text,
+                attributes: textStyle.textAttributes)
+        } else {
+            textLabel.isHidden = true
+        }
         
-        for (index, variant) in exercise.variants.enumerated() {
-            let button = buttons[index]
-            button.setTitle(variant, for: .normal)
+        let exerciseCount = exercise.variants.count
+        
+        for (index, button) in buttons.enumerated() {
+            if index < exerciseCount {
+                let attributedText = NSAttributedString(
+                    string: exercise.variants[index],
+                    attributes: arabicTextStyle.textAttributes)
+                button.setAttributedTitle(attributedText, for: .normal)
+            } else {
+                button.isHidden = true
+            }
         }
         
         actionButton.customImage = #imageLiteral(resourceName: "next")
@@ -92,4 +115,7 @@ class TestExerciseViewController: UIViewController {
         actionButton.isHidden = false
     }
 
+    @IBAction func actionButtonPressed() {
+        completion?()
+    }
 }

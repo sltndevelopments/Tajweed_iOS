@@ -5,17 +5,46 @@
 import Foundation
 
 
-final class Lesson: Decodable {
+final class Lesson: Decodable, CustomStringConvertible {
     
     // MARK: - Public properties
     
     var title: String
+    
     var sections: [LessonSection]
+    
     var exerciseContainers: [ExerciseContainer]
+    
     var exercises: [Exercise] {
         return exerciseContainers.map{ $0.exercise }
     }
     
+    lazy var cards: [LessonCard] = {
+        var cards = [LessonCard]()
+        for section in sections {
+            cards.append(contentsOf: section.cards)
+        }
+        return cards
+    }()
+    
+    var lessonsCount: Int {
+        var count = 0
+        sections.forEach { count += $0.cards.count }
+        return count
+    }
+    
+    var path: String?
+    
+    var index: Int?
+
+    
+    // MARK: - CustomStringConvertible
+    
+    var description: String {
+        let exercisesString = exercises.isEmpty ? "БЕЗ УПРАЖНЕНИЙ" : "\(exercises.count) УПРАЖНЕНИЯ"
+        return "\(lessonsCount) КАРТОЧКИ, \(exercisesString)"
+    }
+
     
     // MARK: - Decodable
     
@@ -29,6 +58,7 @@ final class Lesson: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         sections = try values.decode([LessonSection].self, forKey: .sections)
+        
         exerciseContainers = try values.decode(
             [ExerciseContainer].self,
             forKey: .exerciseContainers)

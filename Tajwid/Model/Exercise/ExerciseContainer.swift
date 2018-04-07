@@ -41,7 +41,6 @@ struct ExerciseContainer: Decodable {
         case .test:
             exercise = try values.decode(TestExercise.self, forKey: .exercise)
             let testExercise = exercise as! TestExercise
-            print(testExercise.text, testExercise.variants)
         case .pronounce:
             exercise = try values.decode(PronounceExercise.self, forKey: .exercise)
         case .writingByExample:

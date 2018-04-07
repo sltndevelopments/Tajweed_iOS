@@ -3,6 +3,10 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+import AVFoundation
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,8 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        Fabric.with([Crashlytics.self])
+        
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+
+        UINavigationBar.appearance().tintColor = .greyishBrownTwo
         UINavigationBar.appearance().isTranslucent = false
-                
+        UINavigationBar.appearance().barTintColor = .whiteThree
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor.greyishBrownTwo,
+            .font: UIFont(name: FontNames.pn, size: 16) ?? UIFont()
+        ]
+        let backButton = #imageLiteral(resourceName: "back")
+        UINavigationBar.appearance().backIndicatorImage = backButton
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButton
+
         return true
     }
 

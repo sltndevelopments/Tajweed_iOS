@@ -7,8 +7,12 @@ import Foundation
 
 final class LessonSection: Decodable {
     
+    // MARK: - Public properties
+    
     var title: String
+    
     var arabicTitle: String?
+    
     var cards: [LessonCard]
     
 }

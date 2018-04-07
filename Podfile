@@ -12,6 +12,9 @@ target 'Tajwid' do
     pod 'SwiftHEXColors'
     pod 'TTTAttributedLabel'
     
+    pod 'Fabric'
+    pod 'Crashlytics'
+    
     target 'TajwidTests' do
         inherit! :complete
     end

@@ -19,7 +19,17 @@ extension UIColor {
         let color = UIColor(hexString: "#f9f9f9") ?? defaultColor
         return color
     }
-    
+
+    static var whiteTwo: UIColor {
+        let color = UIColor(hexString: "#d8d8d8") ?? defaultColor
+        return color
+    }
+
+    static var whiteThree: UIColor {
+        let color = UIColor(hexString: "#f7f7f7") ?? defaultColor
+        return color
+    }
+
     static var warmGrey: UIColor {
         let color = UIColor(hexString: "#979797") ?? defaultColor
         return color
@@ -40,11 +50,6 @@ extension UIColor {
         return color
     }
     
-    static var whiteTwo: UIColor {
-        let color = UIColor(hexString: "#d8d8d8") ?? defaultColor
-        return color
-    }
-    
     static var deepRose: UIColor {
         let color = UIColor(hexString: "#c34d5b") ?? defaultColor
         return color
@@ -59,14 +64,14 @@ extension UIColor {
         let color = UIColor(hexString: "#4a4a4a") ?? defaultColor
         return color
     }
-    
-    static var warmGrey30: UIColor {
-        let color = UIColor(hexString: "#979797", alpha: 0.3) ?? defaultColor
+
+    static var greyishBrownTwo: UIColor {
+        let color = UIColor(hexString: "#434343") ?? defaultColor
         return color
     }
 
-    static var whiteThree: UIColor {
-        let color = UIColor(hexString: "#f7f7f7") ?? defaultColor
+    static var warmGrey30: UIColor {
+        let color = UIColor(hexString: "#979797", alpha: 0.3) ?? defaultColor
         return color
     }
 

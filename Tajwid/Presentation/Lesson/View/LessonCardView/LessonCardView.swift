@@ -18,9 +18,10 @@ class LessonCardView: UIView, ModelTransfer {
         static let top = CGFloat(20)
         static let bottom = CGFloat(20)
         static let titleTop = CGFloat(28)
+        static let defaultVerticalSpace = CGFloat(18)
         static let plainTextToTitleVerticalSapce = CGFloat(15)
         static let highlitedTextLeading = CGFloat(52)
-        static let highlitedTextTop = CGFloat(8)
+        static let highlitedTextTop = CGFloat(14)
         static let textVerticalSpace = CGFloat(14)
         static let arabicTextTop = CGFloat(19)
         static let arabicTextBottom = CGFloat(19)
@@ -28,6 +29,11 @@ class LessonCardView: UIView, ModelTransfer {
         static let arabicTextToCheckVerticalSpace = CGFloat(42)
         static let textToCheckVerticalSpace = CGFloat(32)
         static let checkHeight = CGFloat(41)
+        static let imageLeadingTrailing = CGFloat(0)
+        static let soundBottom = CGFloat(6)
+        
+        static let soundImageViewDefaultColor = UIColor.warmGrey
+        static let soundImageViewPlayingColor = UIColor.blueberry
     }
     
     private enum Element {
@@ -37,6 +43,7 @@ class LessonCardView: UIView, ModelTransfer {
         case title
         case image
         case check
+        case sound
     }
     
     
@@ -62,7 +69,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var arabicTextStyle: GLBTextStyle = {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.arialMT, size: 40)
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         
@@ -83,6 +90,21 @@ class LessonCardView: UIView, ModelTransfer {
     static var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
     }
+    
+    
+    // MARK: - Public properties
+    
+    var isPlayingSound = false {
+        didSet {
+            soundImageView?.tintColor = isPlayingSound ?
+                Constants.soundImageViewPlayingColor : Constants.soundImageViewDefaultColor
+        }
+    }
+    
+    
+    // MARK: - Private properties
+    
+    private var soundImageView: UIImageView?
 
     
     // MARK: - ModelTransfer
@@ -90,13 +112,23 @@ class LessonCardView: UIView, ModelTransfer {
     typealias ModelType = LessonCardViewModel
     
     func update(with model: LessonCardViewModel) {
+        tag = model.index ?? 0
+        
         subviews.forEach { $0.removeFromSuperview() }
         
         var prevElement: Element? = nil
         var previousView: UIView? = nil
         
+        if model.hasSound {
+            previousView = addSoundImage(withPreviousElement: prevElement, previousView: previousView)
+            prevElement = .sound
+        }
+        
         if let title = model.title {
-            previousView = addTitleLabel(with: title)
+            previousView = addTitleLabel(
+                with: title,
+                previousElement: prevElement,
+                previousView: previousView)
             prevElement = .title
         }
         
@@ -110,7 +142,11 @@ class LessonCardView: UIView, ModelTransfer {
                     withPreviousElement: prevElement,
                     text: text,
                     previousView: previousView)
-            default:
+            case .image(let image):
+                previousView = addImageView(
+                    forPreviousElement: prevElement,
+                    image: image,
+                    previousView: previousView)
                 break
             }
             
@@ -152,7 +188,32 @@ class LessonCardView: UIView, ModelTransfer {
         backgroundColor = .white
     }
 
-    private func addTitleLabel(with text: String) -> UILabel {
+    private func addSoundImage(
+        withPreviousElement previousElement: Element?,
+        previousView: UIView?) -> UIImageView {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "sound"))
+        imageView.tintColor = Constants.soundImageViewDefaultColor
+        addSubview(imageView)
+        imageView.snp.makeConstraints { maker in
+            let top = LessonCardView.verticalSpace(between: previousElement, and: .sound)
+            
+            maker.centerX.equalToSuperview()
+            if let prev = previousView {
+                maker.top.equalTo(prev.snp.bottom).offset(top)
+            } else {
+                maker.top.equalToSuperview().offset(top)
+            }
+        }
+        
+        soundImageView = imageView
+        
+        return imageView
+    }
+
+    private func addTitleLabel(
+        with text: String,
+        previousElement: Element?,
+        previousView: UIView?) -> UILabel {
         let attributedText = NSAttributedString(
             string: text,
             attributes: LessonCardView.titleTextStyle.textAttributes)
@@ -163,11 +224,15 @@ class LessonCardView: UIView, ModelTransfer {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { maker in
             let (leading, trailing) = LessonCardView.leadingAndTrailing(for: .title)
-            let top = LessonCardView.verticalSpace(between: nil, and: .title)
+            let top = LessonCardView.verticalSpace(between: previousElement, and: .title)
             
             maker.leading.equalToSuperview().offset(leading)
             maker.trailing.equalToSuperview().offset(-trailing)
-            maker.top.equalToSuperview().offset(top)
+            if let prev = previousView {
+                maker.top.equalTo(prev.snp.bottom).offset(top)
+            } else {
+                maker.top.equalToSuperview().offset(top)
+            }
         }
         
         return titleLabel
@@ -219,12 +284,43 @@ class LessonCardView: UIView, ModelTransfer {
         return label
     }
     
+    private func addImageView(
+        forPreviousElement previousElement: Element?,
+        image: UIImage,
+        previousView: UIView?) -> UIImageView? {
+        
+        let imageView = UIImageView(image: image)
+        addSubview(imageView)
+        
+        let imageSize = image.size
+        let aspectRatio = imageSize.height / imageSize.width
+        
+        imageView.snp.makeConstraints { maker in
+            let (leading, trailing) = LessonCardView.leadingAndTrailing(for: .image)
+            let top = LessonCardView.verticalSpace(between: previousElement, and: .image)
+            
+            maker.leading.equalToSuperview().offset(leading)
+            maker.trailing.equalToSuperview().offset(-trailing)
+            maker.height.equalTo(imageView.snp.width).multipliedBy(aspectRatio)
+            
+            if let prevView = previousView {
+                maker.top.equalTo(prevView.snp.bottom).offset(top)
+            } else {
+                maker.top.equalToSuperview().offset(top)
+            }
+        }
+        
+        return imageView
+    }
+    
     private func addCheck(
         withPreviousElement previousElement: Element?,
         previousView: UIView?) -> UIButton {
         
         let button = UIButton(type: .custom)
-        button.setImage(#imageLiteral(resourceName: "done"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "not-done"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "done"), for: .selected)
+        button.addTarget(self, action: #selector(checkPressed(_:)), for: .touchUpInside)
         addSubview(button)
         
         button.snp.makeConstraints { maker in
@@ -307,6 +403,12 @@ class LessonCardView: UIView, ModelTransfer {
 //        return totalHeight
 //    }
     
+    // MARK: - Actions
+    
+    @objc private func checkPressed(_ checkButton: UIButton) {
+        checkButton.isSelected = !checkButton.isSelected
+    }
+    
     
     // MARK: - Class private methods
     
@@ -314,7 +416,7 @@ class LessonCardView: UIView, ModelTransfer {
         between first: Element?,
         and second: Element?) -> CGFloat {
         
-        let defaultSpace = CGFloat(0)
+        let defaultSpace = Constants.defaultVerticalSpace
         
         if first == nil {
             guard let second = second else { return defaultSpace }
@@ -368,6 +470,13 @@ class LessonCardView: UIView, ModelTransfer {
                 default:
                     return defaultSpace
                 }
+            case .sound:
+                switch second {
+                case .title:
+                    return Constants.titleTop
+                default:
+                    return Constants.soundBottom
+                }
             default:
                 return defaultSpace
             }
@@ -384,6 +493,9 @@ class LessonCardView: UIView, ModelTransfer {
         case .arabicText:
             leading = Constants.leading
             trailing = Constants.arabicTextTrailing
+        case .image:
+            leading = Constants.imageLeadingTrailing
+            trailing = Constants.imageLeadingTrailing
         default:
             leading = Constants.leading
             trailing = Constants.trailing

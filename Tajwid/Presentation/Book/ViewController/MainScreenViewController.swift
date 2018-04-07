@@ -12,7 +12,6 @@ class MainScreenViewController: UIViewController {
     private enum Segues {
         static let bookModuleSegue = "bookModule"
     }
-    
 
 
     // MARK: - Outlets
@@ -37,6 +36,7 @@ class MainScreenViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         obtainBook()
+        indexBook()
         createMenuItems()
     }
     
@@ -44,6 +44,7 @@ class MainScreenViewController: UIViewController {
         super.init(coder: aDecoder)
         
         obtainBook()
+        indexBook()
         createMenuItems()
     }
     
@@ -52,6 +53,8 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.delegate = self
         
         automaticallyAdjustsScrollViewInsets = false
         
@@ -77,10 +80,40 @@ class MainScreenViewController: UIViewController {
                 book = try JSONDecoder().decode(Book.self, from: data)
             }
             catch {
+                print(error)
                 fatalError("Couldn't obtain a book model from the book json!")
             }
         } else {
             fatalError("Couldn't obtain a book json!")
+        }
+    }
+    
+    private func indexBook() {
+        for (index, module) in book.modules.enumerated() {
+            module.index = index
+            module.path = String(index + 1)
+            
+            for (index, lesson) in module.lessons.enumerated() {
+                lesson.index = index
+                lesson.path = "\(module.path!)_\(index + 1)"
+                
+                var cardsCount = 0
+                for section in lesson.sections {
+                    for (index, card) in section.cards.enumerated() {
+                        let index = index + cardsCount
+                        card.index = index
+                        card.path = "\(lesson.path!)_\(index + 1)"
+                    }
+                    
+                    cardsCount += section.cards.count
+                }
+                
+                for (index, exercise) in lesson.exercises.enumerated() {
+                    let index = index + cardsCount
+                    exercise.index = index
+                    exercise.path = "\(lesson.path!)_\(index + 1)"
+                }
+            }
         }
     }
     
@@ -131,6 +164,19 @@ class MainScreenViewController: UIViewController {
             let vc = segue.destination as? BookModuleViewController {
             vc.module = selectedModule!
         }
+    }
+    
+}
+
+
+extension MainScreenViewController: UINavigationControllerDelegate {
+    
+    func navigationController(
+        _ navigationController: UINavigationController,
+        willShow viewController: UIViewController,
+        animated: Bool) {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem = item
     }
     
 }

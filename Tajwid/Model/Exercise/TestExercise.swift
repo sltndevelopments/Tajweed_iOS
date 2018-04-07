@@ -9,7 +9,7 @@ final class TestExercise: Exercise {
     
     // MARK: - Public properties
     
-    var text: String
+    var text: String?
     var variants: [String]
     var correctVariant: String
     
@@ -24,7 +24,7 @@ final class TestExercise: Exercise {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        text = try values.decode(String.self, forKey: .text)
+        text = try? values.decode(String.self, forKey: .text)
         variants = try values.decode([String].self, forKey: .variants)
         correctVariant = try values.decode(String.self, forKey: .correctVariant)
 

@@ -6,8 +6,8 @@ import UIKit
 import Globus
 
 
-class ReadingExerciseViewController: UIViewController {
-
+class ReadingExerciseViewController: UIViewController, HasCompletion {
+    
     // MARK: - Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +21,8 @@ class ReadingExerciseViewController: UIViewController {
     
     var exercise: ReadingExercise!
     
+    var completion: VoidClosure?
+
     
     // MARK: - Private properties
     
@@ -90,6 +92,7 @@ class ReadingExerciseViewController: UIViewController {
     }
     
     @IBAction func buttonPressed() {
+        completion?()
     }
     
 }

@@ -10,7 +10,14 @@ struct LessonCardViewModel {
     // MARK: - Public properties
     
     var title: String?
+    
     var contentItemsValues: [LessonCardContentItemValue]
+    
+    var path: String?
+    
+    var index: Int?
+    
+    var hasSound: Bool
     
     
     // MARK: - Init
@@ -18,6 +25,9 @@ struct LessonCardViewModel {
     init(lessonCard: LessonCard) {
         title = lessonCard.title
         contentItemsValues = lessonCard.contentItems.map() { $0.value }
+        path = lessonCard.path
+        index = lessonCard.index
+        hasSound = lessonCard.soundURL != nil
     }
     
 }
