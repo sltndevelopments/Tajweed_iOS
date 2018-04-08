@@ -121,10 +121,6 @@ class LessonCardsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        scrollView.contentSize = CGSize(
-            width: scrollView.contentSize.width,
-            height: contentView.bounds.height)
-        
 //        let vc = UIStoryboard.viewController(
 //            ofType: WritingByExampleExerciseViewController.self,
 //            fromStoryboard: "Main")
@@ -134,6 +130,15 @@ class LessonCardsViewController: UIViewController {
 //            }
 //        }
 //        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            self.adjustScrollContentSize()
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -298,6 +303,12 @@ class LessonCardsViewController: UIViewController {
     
     // MARK: - UI
     
+    private func adjustScrollContentSize() {
+        scrollView.contentSize = CGSize(
+            width: scrollView.contentSize.width,
+            height: contentView.bounds.height)
+    }
+    
     private func showPlayerIfNeeded() {
         if isPlayerOnScreen { return }
         
@@ -371,8 +382,8 @@ class LessonCardsViewController: UIViewController {
         
         playerView.setCurrentProgress(0)
         playerView.soundDuration = audioPlayer.duration
-        playerView.hasPreviousSound = hasPreviousSound
-        playerView.hasNextSound = hasNextSound
+//        playerView.hasPreviousSound = hasPreviousSound
+//        playerView.hasNextSound = hasNextSound
         playerView.isPlaying = true
         showPlayerIfNeeded()
         
@@ -509,11 +520,15 @@ extension LessonCardsViewController: AVAudioPlayerDelegate {
 extension LessonCardsViewController: SoundPlayerViewDelegate {
     
     func playerDidPressPreviousTrackButton(_ player: SoundPlayerView) {
-        playSound(forCardAt: currentPlayingCardIndex - 1, shouldScrollToPlayingCard: true)
+        FontCreator.fontSizeAddition -= 1
+//        adjustScrollContentSize()
+//        playSound(forCardAt: currentPlayingCardIndex - 1, shouldScrollToPlayingCard: true)
     }
     
     func playerDidPressNextTrackButton(_ player: SoundPlayerView) {
-        playSound(forCardAt: currentPlayingCardIndex + 1, shouldScrollToPlayingCard: true)
+        FontCreator.fontSizeAddition += 1
+//        adjustScrollContentSize()
+//        playSound(forCardAt: currentPlayingCardIndex + 1, shouldScrollToPlayingCard: true)
     }
     
     func playerDidBeginFastBackwarding(_ player: SoundPlayerView) {

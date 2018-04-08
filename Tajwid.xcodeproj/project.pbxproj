@@ -55,7 +55,8 @@
 		1E9E3158202F61E9000892F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E3157202F61E9000892F6 /* Fonts.swift */; };
 		1E9E315A203045F3000892F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E3159203045F2000892F6 /* Colors.swift */; };
 		1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */; };
-		1ECC024020775BD000C91003 /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1ECC023F20775BCF00C91003 /* Book.json */; };
+		1ECC02442079015D00C91003 /* FontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC02432079015D00C91003 /* FontCreator.swift */; };
+		1ECC02472079080700C91003 /* FontSizeAdjustmentsObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */; };
 		1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */; };
 		1ED69F6E206FCFD400228003 /* SoundPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */; };
 		1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */; };
@@ -263,6 +264,7 @@
 		1EE282DD205E66F800EBDF57 /* MenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE282DB205E66F800EBDF57 /* MenuItemView.xib */; };
 		1EE282DF205E68C500EBDF57 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */; };
 		1EE282E4205E7C7500EBDF57 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282E3205E7C7500EBDF57 /* MenuView.swift */; };
+		1EEDA36B207A213A004C91F8 /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDA36A207A213A004C91F8 /* Book.json */; };
 		1EEE89872052C79F00AD7CB0 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89862052C79E00AD7CB0 /* UIButton+Additions.swift */; };
 		1EEE89892053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89882053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift */; };
 		1EEE898B2053E52C00AD7CB0 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */; };
@@ -348,7 +350,8 @@
 		1E9E3157202F61E9000892F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		1E9E3159203045F2000892F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GLBTextStyle+TextAttributes.swift"; sourceTree = "<group>"; };
-		1ECC023F20775BCF00C91003 /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
+		1ECC02432079015D00C91003 /* FontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCreator.swift; sourceTree = "<group>"; };
+		1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeAdjustmentsObserving.swift; sourceTree = "<group>"; };
 		1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerView.swift; sourceTree = "<group>"; };
 		1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundPlayerView.xib; sourceTree = "<group>"; };
 		1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProgressSlider.swift; sourceTree = "<group>"; };
@@ -556,6 +559,7 @@
 		1EE282DB205E66F800EBDF57 /* MenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemView.xib; sourceTree = "<group>"; };
 		1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		1EE282E3205E7C7500EBDF57 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		1EEDA36A207A213A004C91F8 /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
 		1EEE89862052C79E00AD7CB0 /* UIButton+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		1EEE89882053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingByExampleExerciseViewController.swift; sourceTree = "<group>"; };
 		1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -862,12 +866,22 @@
 		1E9E3156202F61DF000892F6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1ECC0245207907BB00C91003 /* Protocol */,
 				1ED69F6A206FCFAF00228003 /* View */,
 				1E9E3157202F61E9000892F6 /* Fonts.swift */,
 				1E9E3159203045F2000892F6 /* Colors.swift */,
 				1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */,
+				1ECC02432079015D00C91003 /* FontCreator.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		1ECC0245207907BB00C91003 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		1ED69DDC206FB16B00228003 /* Sounds */ = {
@@ -1156,7 +1170,7 @@
 		1EE282D0205D4F9D00EBDF57 /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				1ECC023F20775BCF00C91003 /* Book.json */,
+				1EEDA36A207A213A004C91F8 /* Book.json */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -1404,7 +1418,6 @@
 				1ED6A0992070C9B200228003 /* 2_1_4_2.mp3 in Resources */,
 				1ED6A0B82070C9B200228003 /* 2_2_3_9.mp3 in Resources */,
 				1ED6A1332070CF0300228003 /* 1_2_1.mp3 in Resources */,
-				1ECC024020775BD000C91003 /* Book.json in Resources */,
 				1ED6A0AF2070C9B200228003 /* 2_2_2_18.mp3 in Resources */,
 				1ED6A0F32070C9B200228003 /* Icon in Resources */,
 				1ED6A1342070CF0300228003 /* 1_2_12.mp3 in Resources */,
@@ -1481,6 +1494,7 @@
 				1ED6A15B2070CF0300228003 /* Icon? in Resources */,
 				1ED6A0812070C9B200228003 /* 2_1_2_14.mp3 in Resources */,
 				1E9E3124202CDF35000892F6 /* Main.storyboard in Resources */,
+				1EEDA36B207A213A004C91F8 /* Book.json in Resources */,
 				1ED6A0F82070C9B200228003 /* 3_1_3_2.mp3 in Resources */,
 				1ED6A09C2070C9B200228003 /* 2_1_2_18.mp3 in Resources */,
 				1ED6A0AC2070C9B200228003 /* 2_1_3_13.mp3 in Resources */,
@@ -1722,6 +1736,7 @@
 				1E9E315A203045F3000892F6 /* Colors.swift in Sources */,
 				1E80FC6A2067D1EB00BCFD6A /* HasCompletion.swift in Sources */,
 				1E9E311E202CDDEA000892F6 /* LessonSection.swift in Sources */,
+				1ECC02442079015D00C91003 /* FontCreator.swift in Sources */,
 				1EE282DC205E66F800EBDF57 /* MenuItemView.swift in Sources */,
 				1E9E3138202CE61E000892F6 /* ReadingExercise.swift in Sources */,
 				1E6ACAEB2042CCD000714A5F /* TestExerciseViewController.swift in Sources */,
@@ -1749,6 +1764,7 @@
 				1EE282C62055363C00EBDF57 /* ReadingExerciseViewController.swift in Sources */,
 				1EEE89972054325400AD7CB0 /* StateChangesObservableButton.swift in Sources */,
 				1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */,
+				1ECC02472079080700C91003 /* FontSizeAdjustmentsObserving.swift in Sources */,
 				1E9E3134202CE4DC000892F6 /* WritingByExampleExercise.swift in Sources */,
 				1E9E314C202EE468000892F6 /* LessonSectionHeaderView.swift in Sources */,
 				1E9E3136202CE539000892F6 /* WritingByTranscriptionExercise.swift in Sources */,

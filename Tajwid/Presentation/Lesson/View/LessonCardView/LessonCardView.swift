@@ -49,43 +49,43 @@ class LessonCardView: UIView, ModelTransfer {
     
     // MARK: - Class private properties
     
-    static var plainTextStyle: GLBTextStyle = {
+    static var plainTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 20)
+        textStyle.font = FontCreator.fontWithName(FontNames.avNext, size: 20)
         textStyle.minimumLineHeight = 30
         textStyle.color = .greyishBrown
         
         return textStyle
-    }()
+    }
     
-    static var highlitedTextStyle: GLBTextStyle = {
+    static var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNextMed, size: 20)
+        textStyle.font = FontCreator.fontWithName(FontNames.avNextMed, size: 20)
         textStyle.minimumLineHeight = 30
         textStyle.color = .greyishBrown
         
         return textStyle
-    }()
+    }
     
-    static var arabicTextStyle: GLBTextStyle = {
+    static var arabicTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         
         return textStyle
-    }()
+    }
     
-    static var titleTextStyle: GLBTextStyle = {
+    static var titleTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 24)
+        textStyle.font = FontCreator.fontWithName(FontNames.avNext, size: 24)
         textStyle.color = .greyishBrown
         textStyle.alignment = .center
         textStyle.minimumLineHeight = 25
         textStyle.maximumLineHeight = 25
         
         return textStyle
-    }()
+    }
     
     static var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
@@ -100,6 +100,8 @@ class LessonCardView: UIView, ModelTransfer {
                 Constants.soundImageViewPlayingColor : Constants.soundImageViewDefaultColor
         }
     }
+    
+    var fontSizeAddition = 0
     
     
     // MARK: - Private properties
@@ -181,10 +183,15 @@ class LessonCardView: UIView, ModelTransfer {
         configure()
     }
     
+    deinit {
+        endObservingFontSizeAdjustments()
+    }
+    
     
     // MARK: - Private methods
     
     private func configure() {
+        beginObservingFontSizeAdjustments()
         backgroundColor = .white
     }
 
@@ -535,6 +542,29 @@ class LessonCardView: UIView, ModelTransfer {
             return .arabicText
         case .image(_):
             return .image
+        }
+    }
+    
+}
+
+
+extension LessonCardView: FontSizeAdjustmentsObserving {
+    
+    func beginObservingFontSizeAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontSizeAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) {
+        subviews.forEach { subview in
+            if let label = subview as? UILabel {
+                label.font = UIFont(
+                    name: label.font.fontName,
+                    size: label.font.pointSize + value)
+            }
         }
     }
     
