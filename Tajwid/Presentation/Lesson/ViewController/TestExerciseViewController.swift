@@ -54,6 +54,7 @@ class TestExerciseViewController: UIViewController, HasCompletion {
         super.viewDidLoad()
 
         configure()
+        addFontSettingsView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,7 +102,7 @@ class TestExerciseViewController: UIViewController, HasCompletion {
     
     @IBAction func buttonPressed(_ sender: TestButton) {
         guard let correctVariantIndex = self.correctVariantIndex else { return }
-        
+
         if sender.tag == correctVariantIndex {
             sender.testButtonState = .right
         } else {
@@ -109,9 +110,9 @@ class TestExerciseViewController: UIViewController, HasCompletion {
             let correctVariantButton = buttons[correctVariantIndex]
             correctVariantButton.testButtonState = .right
         }
-        
+
         buttons.forEach { $0.isEnabled = false }
-        
+
         actionButton.isHidden = false
     }
 
@@ -119,3 +120,6 @@ class TestExerciseViewController: UIViewController, HasCompletion {
         completion?()
     }
 }
+
+
+extension TestExerciseViewController: HasFontSettingsView { }

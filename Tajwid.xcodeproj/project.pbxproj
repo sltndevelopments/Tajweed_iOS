@@ -56,7 +56,7 @@
 		1E9E315A203045F3000892F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E3159203045F2000892F6 /* Colors.swift */; };
 		1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */; };
 		1ECC02442079015D00C91003 /* FontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC02432079015D00C91003 /* FontCreator.swift */; };
-		1ECC02472079080700C91003 /* FontSizeAdjustmentsObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */; };
+		1ECC02472079080700C91003 /* FontAdjustmentsObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC02462079080700C91003 /* FontAdjustmentsObserving.swift */; };
 		1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */; };
 		1ED69F6E206FCFD400228003 /* SoundPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */; };
 		1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */; };
@@ -265,6 +265,10 @@
 		1EE282DF205E68C500EBDF57 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */; };
 		1EE282E4205E7C7500EBDF57 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282E3205E7C7500EBDF57 /* MenuView.swift */; };
 		1EEDA36B207A213A004C91F8 /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDA36A207A213A004C91F8 /* Book.json */; };
+		1EEDA36D207A3666004C91F8 /* FontSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDA36C207A3666004C91F8 /* FontSettingsView.swift */; };
+		1EEDA36F207A3679004C91F8 /* FontSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDA36E207A3679004C91F8 /* FontSettingsView.xib */; };
+		1EEDA371207A37ED004C91F8 /* FontSizeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDA370207A37ED004C91F8 /* FontSizeSlider.swift */; };
+		1EEDA375207A3EAC004C91F8 /* HasFontSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDA374207A3EAC004C91F8 /* HasFontSettingsView.swift */; };
 		1EEE89872052C79F00AD7CB0 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89862052C79E00AD7CB0 /* UIButton+Additions.swift */; };
 		1EEE89892053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89882053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift */; };
 		1EEE898B2053E52C00AD7CB0 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */; };
@@ -351,7 +355,7 @@
 		1E9E3159203045F2000892F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GLBTextStyle+TextAttributes.swift"; sourceTree = "<group>"; };
 		1ECC02432079015D00C91003 /* FontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCreator.swift; sourceTree = "<group>"; };
-		1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeAdjustmentsObserving.swift; sourceTree = "<group>"; };
+		1ECC02462079080700C91003 /* FontAdjustmentsObserving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAdjustmentsObserving.swift; sourceTree = "<group>"; };
 		1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerView.swift; sourceTree = "<group>"; };
 		1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundPlayerView.xib; sourceTree = "<group>"; };
 		1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProgressSlider.swift; sourceTree = "<group>"; };
@@ -560,6 +564,10 @@
 		1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		1EE282E3205E7C7500EBDF57 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1EEDA36A207A213A004C91F8 /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
+		1EEDA36C207A3666004C91F8 /* FontSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingsView.swift; sourceTree = "<group>"; };
+		1EEDA36E207A3679004C91F8 /* FontSettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSettingsView.xib; sourceTree = "<group>"; };
+		1EEDA370207A37ED004C91F8 /* FontSizeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeSlider.swift; sourceTree = "<group>"; };
+		1EEDA374207A3EAC004C91F8 /* HasFontSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasFontSettingsView.swift; sourceTree = "<group>"; };
 		1EEE89862052C79E00AD7CB0 /* UIButton+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		1EEE89882053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingByExampleExerciseViewController.swift; sourceTree = "<group>"; };
 		1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -879,7 +887,8 @@
 		1ECC0245207907BB00C91003 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				1ECC02462079080700C91003 /* FontSizeAdjustmentsObserving.swift */,
+				1ECC02462079080700C91003 /* FontAdjustmentsObserving.swift */,
+				1EEDA374207A3EAC004C91F8 /* HasFontSettingsView.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -900,6 +909,9 @@
 				1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */,
 				1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */,
 				1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */,
+				1EEDA36C207A3666004C91F8 /* FontSettingsView.swift */,
+				1EEDA36E207A3679004C91F8 /* FontSettingsView.xib */,
+				1EEDA370207A37ED004C91F8 /* FontSizeSlider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1363,6 +1375,7 @@
 				1ED6A14E2070CF0300228003 /* 1_2_19_2.mp3 in Resources */,
 				1E80FC6E2067F33B00BCFD6A /* alphbet.png in Resources */,
 				1E9E3126202CDF35000892F6 /* Assets.xcassets in Resources */,
+				1EEDA36F207A3679004C91F8 /* FontSettingsView.xib in Resources */,
 				1ED6A1392070CF0300228003 /* 1_2_21_2.mp3 in Resources */,
 				1ED6A0D12070C9B200228003 /* 2_2_3_1.mp3 in Resources */,
 				1ED6A0C32070C9B200228003 /* 2_2_5_8.mp3 in Resources */,
@@ -1728,9 +1741,11 @@
 				1E9E311C202CDCEF000892F6 /* LessonCard.swift in Sources */,
 				1EE282CE205D4EDA00EBDF57 /* BookModule.swift in Sources */,
 				1EEE8995205428C900AD7CB0 /* PushableLabel.swift in Sources */,
+				1EEDA36D207A3666004C91F8 /* FontSettingsView.swift in Sources */,
 				1EE282D2205D500600EBDF57 /* Book.swift in Sources */,
 				1E6ACAED2042DC3D00714A5F /* UIScrollView+Additions.swift in Sources */,
 				1EEE89892053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift in Sources */,
+				1EEDA371207A37ED004C91F8 /* FontSizeSlider.swift in Sources */,
 				1E5143D7205EA444004DD9B2 /* BookModuleTableCell.swift in Sources */,
 				1EE282C8205D13C400EBDF57 /* UnderscoredButton.swift in Sources */,
 				1E9E315A203045F3000892F6 /* Colors.swift in Sources */,
@@ -1764,7 +1779,7 @@
 				1EE282C62055363C00EBDF57 /* ReadingExerciseViewController.swift in Sources */,
 				1EEE89972054325400AD7CB0 /* StateChangesObservableButton.swift in Sources */,
 				1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */,
-				1ECC02472079080700C91003 /* FontSizeAdjustmentsObserving.swift in Sources */,
+				1ECC02472079080700C91003 /* FontAdjustmentsObserving.swift in Sources */,
 				1E9E3134202CE4DC000892F6 /* WritingByExampleExercise.swift in Sources */,
 				1E9E314C202EE468000892F6 /* LessonSectionHeaderView.swift in Sources */,
 				1E9E3136202CE539000892F6 /* WritingByTranscriptionExercise.swift in Sources */,
@@ -1776,6 +1791,7 @@
 				1E80FC6C2067D23600BCFD6A /* Closures.swift in Sources */,
 				1E9E3158202F61E9000892F6 /* Fonts.swift in Sources */,
 				1E9E312B202CE10D000892F6 /* Exercise.swift in Sources */,
+				1EEDA375207A3EAC004C91F8 /* HasFontSettingsView.swift in Sources */,
 				1EEE899320540FC100AD7CB0 /* ReadingExerciseTextView.swift in Sources */,
 				1E5143D1205E9E6C004DD9B2 /* MenuItem.swift in Sources */,
 				1EEE898D2053E7B900AD7CB0 /* UIViewController+Additions.swift in Sources */,

@@ -43,4 +43,5 @@ class TrackProgressSlider: UISlider {
         let halfHeight = bounds.height / 2
         return CGRect(x: 0, y: halfHeight - 2, width: bounds.width, height: 4)
     }
+    
 }

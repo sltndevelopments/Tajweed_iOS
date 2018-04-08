@@ -116,6 +116,7 @@ class LessonCardsViewController: UIViewController {
         configureUI()
         configureModels()
         addCards()
+        addFontSettingsView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -170,6 +171,14 @@ class LessonCardsViewController: UIViewController {
     }
     
     private func configureUI() {
+        let barButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "font-settings"),
+            style: .plain,
+            target: self,
+            action: #selector(fontSettingsButtonPressed))
+        barButtonItem.tintColor = .blueberry
+        navigationItem.rightBarButtonItem = barButtonItem
+        
         playerView = UIView.loadFromXib(type: SoundPlayerView.self)
         playerView.delegate = self
         playerView.backgroundColor = .whiteOne
@@ -291,6 +300,14 @@ class LessonCardsViewController: UIViewController {
         showExerciseViewControllerWithContainer(at: 0)
     }
     
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
+    }
+    
     
     // MARK: - Actions
     
@@ -382,8 +399,8 @@ class LessonCardsViewController: UIViewController {
         
         playerView.setCurrentProgress(0)
         playerView.soundDuration = audioPlayer.duration
-//        playerView.hasPreviousSound = hasPreviousSound
-//        playerView.hasNextSound = hasNextSound
+        playerView.hasPreviousSound = hasPreviousSound
+        playerView.hasNextSound = hasNextSound
         playerView.isPlaying = true
         showPlayerIfNeeded()
         
@@ -520,15 +537,11 @@ extension LessonCardsViewController: AVAudioPlayerDelegate {
 extension LessonCardsViewController: SoundPlayerViewDelegate {
     
     func playerDidPressPreviousTrackButton(_ player: SoundPlayerView) {
-        FontCreator.fontSizeAddition -= 1
-//        adjustScrollContentSize()
-//        playSound(forCardAt: currentPlayingCardIndex - 1, shouldScrollToPlayingCard: true)
+        playSound(forCardAt: currentPlayingCardIndex - 1, shouldScrollToPlayingCard: true)
     }
     
     func playerDidPressNextTrackButton(_ player: SoundPlayerView) {
-        FontCreator.fontSizeAddition += 1
-//        adjustScrollContentSize()
-//        playSound(forCardAt: currentPlayingCardIndex + 1, shouldScrollToPlayingCard: true)
+        playSound(forCardAt: currentPlayingCardIndex + 1, shouldScrollToPlayingCard: true)
     }
     
     func playerDidBeginFastBackwarding(_ player: SoundPlayerView) {
@@ -570,3 +583,6 @@ extension LessonCardsViewController: SoundPlayerViewDelegate {
     }
 
 }
+
+
+extension LessonCardsViewController: HasFontSettingsView { }

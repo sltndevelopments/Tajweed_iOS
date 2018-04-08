@@ -51,7 +51,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var plainTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.avNext, size: 20)
+        textStyle.font = FontCreator.mainFont(ofSize: 20)
         textStyle.minimumLineHeight = 30
         textStyle.color = .greyishBrown
         
@@ -60,7 +60,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.avNextMed, size: 20)
+        textStyle.font = FontCreator.mediumMainFont(ofSize: 20)
         textStyle.minimumLineHeight = 30
         textStyle.color = .greyishBrown
         
@@ -78,7 +78,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var titleTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.avNext, size: 24)
+        textStyle.font = FontCreator.mainFont(ofSize: 24)
         textStyle.color = .greyishBrown
         textStyle.alignment = .center
         textStyle.minimumLineHeight = 25
@@ -100,8 +100,6 @@ class LessonCardView: UIView, ModelTransfer {
                 Constants.soundImageViewPlayingColor : Constants.soundImageViewDefaultColor
         }
     }
-    
-    var fontSizeAddition = 0
     
     
     // MARK: - Private properties
@@ -184,14 +182,14 @@ class LessonCardView: UIView, ModelTransfer {
     }
     
     deinit {
-        endObservingFontSizeAdjustments()
+        endObservingFontAdjustments()
     }
     
     
     // MARK: - Private methods
     
     private func configure() {
-        beginObservingFontSizeAdjustments()
+        beginObservingFontAdjustments()
         backgroundColor = .white
     }
 
@@ -548,13 +546,13 @@ class LessonCardView: UIView, ModelTransfer {
 }
 
 
-extension LessonCardView: FontSizeAdjustmentsObserving {
+extension LessonCardView: FontAdjustmentsObserving {
     
-    func beginObservingFontSizeAdjustments() {
+    func beginObservingFontAdjustments() {
         FontCreator.addFontSizeAdjustmentsObserver(self)
     }
     
-    func endObservingFontSizeAdjustments() {
+    func endObservingFontAdjustments() {
         FontCreator.removeFontSizeAdjustmentsObserver(self)
     }
     
@@ -564,6 +562,18 @@ extension LessonCardView: FontSizeAdjustmentsObserving {
                 label.font = UIFont(
                     name: label.font.fontName,
                     size: label.font.pointSize + value)
+            }
+        }
+    }
+    
+    func changeFont(withName name: String, to anotherFontName: String) {
+        subviews.forEach { subview in
+            if let label = subview as? UILabel {
+                if label.font.fontName == name {
+                    label.font = UIFont(
+                        name: anotherFontName,
+                        size: label.font.pointSize)
+                }
             }
         }
     }

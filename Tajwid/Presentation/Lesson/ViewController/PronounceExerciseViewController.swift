@@ -44,6 +44,7 @@ class PronounceExerciseViewController: UIViewController, HasCompletion {
         super.viewDidLoad()
 
         configure()
+        addFontSettingsView()
     }
 
     
@@ -59,10 +60,6 @@ class PronounceExerciseViewController: UIViewController, HasCompletion {
         
         actionButton.customImage = #imageLiteral(resourceName: "next")
         actionButton.customTitle = "ДАЛЕЕ"
-    }
-
-    private func configureSoundURLs() {
-        
     }
     
     
@@ -87,14 +84,14 @@ extension PronounceExerciseViewController: PronounceExerciseTextViewDelegate {
         }
 
         guard let audioPlayer = try? AVAudioPlayer(contentsOf: url) else { return }
-        
+
         self.audioPlayer = audioPlayer
         
         audioPlayer.prepareToPlay()
         audioPlayer.play()
     }
     
-    
-    
-    
 }
+
+
+extension PronounceExerciseViewController: HasFontSettingsView { }
