@@ -19,6 +19,8 @@ struct LessonCardViewModel {
     
     var hasSound: Bool
     
+    var isDone: Bool
+    
     
     // MARK: - Init
     
@@ -28,6 +30,7 @@ struct LessonCardViewModel {
         path = lessonCard.path
         index = lessonCard.index
         hasSound = lessonCard.soundURL != nil
+        isDone = AppProgressManager.isItemDone(key: lessonCard.path)
     }
     
 }

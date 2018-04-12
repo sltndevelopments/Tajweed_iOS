@@ -12,6 +12,8 @@
 		1E5143D4205EA3B8004DD9B2 /* BookModuleTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D3205EA3B8004DD9B2 /* BookModuleTableCellModel.swift */; };
 		1E5143D7205EA444004DD9B2 /* BookModuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D5205EA444004DD9B2 /* BookModuleTableCell.swift */; };
 		1E5143D8205EA444004DD9B2 /* BookModuleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E5143D6205EA444004DD9B2 /* BookModuleTableCell.xib */; };
+		1E5184FA207FD62400CAA841 /* AppProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5184F9207FD62400CAA841 /* AppProgressManager.swift */; };
+		1E5184FC207FE89800CAA841 /* BookProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5184FB207FE89800CAA841 /* BookProgressSlider.swift */; };
 		1E531434203068F000FFA178 /* LessonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E531432203068F000FFA178 /* LessonCardView.swift */; };
 		1E6ACAE9203E12BB00714A5F /* ExerciseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6ACAE8203E12BB00714A5F /* ExerciseContainer.swift */; };
 		1E6ACAEB2042CCD000714A5F /* TestExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6ACAEA2042CCD000714A5F /* TestExerciseViewController.swift */; };
@@ -1084,6 +1086,8 @@
 		1E5143D5205EA444004DD9B2 /* BookModuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModuleTableCell.swift; sourceTree = "<group>"; };
 		1E5143D6205EA444004DD9B2 /* BookModuleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookModuleTableCell.xib; sourceTree = "<group>"; };
 		1E5143D9205EA539004DD9B2 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		1E5184F9207FD62400CAA841 /* AppProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProgressManager.swift; sourceTree = "<group>"; };
+		1E5184FB207FE89800CAA841 /* BookProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProgressSlider.swift; sourceTree = "<group>"; };
 		1E531432203068F000FFA178 /* LessonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCardView.swift; sourceTree = "<group>"; };
 		1E6ACAE8203E12BB00714A5F /* ExerciseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContainer.swift; sourceTree = "<group>"; };
 		1E6ACAEA2042CCD000714A5F /* TestExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExerciseViewController.swift; sourceTree = "<group>"; };
@@ -2187,6 +2191,14 @@
 			path = BookModuleTableCell;
 			sourceTree = "<group>";
 		};
+		1E5184F8207FD60F00CAA841 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1E5184F9207FD62400CAA841 /* AppProgressManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1E6ACAEE2042EB4400714A5F /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -2270,8 +2282,7 @@
 			children = (
 				1E80FC672067D1D500BCFD6A /* Base */,
 				1E9E314E202EE573000892F6 /* Extension */,
-				1E9E3114202CDA4D000892F6 /* Helper */,
-				1E9E3113202CDA42000892F6 /* Service */,
+				1E5184F8207FD60F00CAA841 /* Service */,
 				1E9E3112202CDA38000892F6 /* Presentation */,
 				1E9E3111202CDA21000892F6 /* Model */,
 				1E9E3115202CDA52000892F6 /* SupportingFiles */,
@@ -2319,20 +2330,6 @@
 				1E9E313D202ED73E000892F6 /* Lesson */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		1E9E3113202CDA42000892F6 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		1E9E3114202CDA4D000892F6 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		1E9E3115202CDA52000892F6 /* SupportingFiles */ = {
@@ -3472,6 +3469,7 @@
 			children = (
 				1E5143D2205EA3A1004DD9B2 /* BookModuleTableCell */,
 				1EE282E1205E7BCE00EBDF57 /* Menu */,
+				1E5184FB207FE89800CAA841 /* BookProgressSlider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4803,6 +4801,7 @@
 				1E5143CF205E9C78004DD9B2 /* BookModuleViewController.swift in Sources */,
 				1E9E3125202CDF35000892F6 /* AppDelegate.swift in Sources */,
 				1E6ACAF82043065B00714A5F /* PronounceExerciseTextView.swift in Sources */,
+				1E5184FC207FE89800CAA841 /* BookProgressSlider.swift in Sources */,
 				1E6ACAF22042F26F00714A5F /* ImageTitleVerticalButton.swift in Sources */,
 				1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */,
 				1EEE89912053F1C800AD7CB0 /* WritingByTranscriptionExerciseViewController.swift in Sources */,
@@ -4817,6 +4816,7 @@
 				1E6ACAF02042EB6800714A5F /* TestButton.swift in Sources */,
 				1EEE898B2053E52C00AD7CB0 /* TextStyles.swift in Sources */,
 				1EE282C62055363C00EBDF57 /* ReadingExerciseViewController.swift in Sources */,
+				1E5184FA207FD62400CAA841 /* AppProgressManager.swift in Sources */,
 				1EEE89972054325400AD7CB0 /* StateChangesObservableButton.swift in Sources */,
 				1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */,
 				1ECC02472079080700C91003 /* FontAdjustmentsObserving.swift in Sources */,

@@ -8,6 +8,13 @@ import Globus
 import SnapKit
 
 
+protocol LessonCardViewDelegate: class {
+    
+    func lessonCardView(_ view: LessonCardView, didPressCheck checked: Bool)
+    
+}
+
+
 class LessonCardView: UIView, ModelTransfer {
     
     // MARK: - Nested types
@@ -94,6 +101,8 @@ class LessonCardView: UIView, ModelTransfer {
     
     // MARK: - Public properties
     
+    weak var delegate: LessonCardViewDelegate?
+    
     var isPlayingSound = false {
         didSet {
             soundImageView?.tintColor = isPlayingSound ?
@@ -105,7 +114,7 @@ class LessonCardView: UIView, ModelTransfer {
     // MARK: - Private properties
     
     private var soundImageView: UIImageView?
-
+    
     
     // MARK: - ModelTransfer
     
@@ -155,7 +164,8 @@ class LessonCardView: UIView, ModelTransfer {
         
         previousView = addCheck(
             withPreviousElement: prevElement,
-            previousView: previousView)
+            previousView: previousView,
+            isDone: model.isDone)
         
         let space = LessonCardView.verticalSpace(between: .check, and: nil)
         
@@ -320,12 +330,14 @@ class LessonCardView: UIView, ModelTransfer {
     
     private func addCheck(
         withPreviousElement previousElement: Element?,
-        previousView: UIView?) -> UIButton {
+        previousView: UIView?,
+        isDone: Bool) -> UIButton {
         
         let button = UIButton(type: .custom)
         button.setImage(#imageLiteral(resourceName: "not-done"), for: .normal)
         button.setImage(#imageLiteral(resourceName: "done"), for: .selected)
         button.addTarget(self, action: #selector(checkPressed(_:)), for: .touchUpInside)
+        button.isSelected = isDone
         addSubview(button)
         
         button.snp.makeConstraints { maker in
@@ -412,6 +424,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     @objc private func checkPressed(_ checkButton: UIButton) {
         checkButton.isSelected = !checkButton.isSelected
+        delegate?.lessonCardView(self, didPressCheck: checkButton.isSelected)
     }
     
     

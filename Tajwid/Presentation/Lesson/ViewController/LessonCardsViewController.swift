@@ -253,6 +253,7 @@ class LessonCardsViewController: UIViewController {
                 
                 let view = LessonCardView()
                 view.update(with: model)
+                view.delegate = self
                 if model.hasSound {
                     view.addGestureRecognizer(
                         UITapGestureRecognizer(
@@ -453,7 +454,7 @@ class LessonCardsViewController: UIViewController {
     
     private func showExerciseViewControllerWithContainer(at index: Int) {
         guard lesson.exerciseContainers.count > index else {
-            popToPreviousScreen()
+            lessonFinished()
             return
         }
         
@@ -512,12 +513,51 @@ class LessonCardsViewController: UIViewController {
     }
     
     
+    // MARK: - Private methods
+    
+    private func lessonFinished() {
+        AppProgressManager.setItemDone(areAllCardsDone(), for: lesson.path)
+        popToPreviousScreen()
+    }
+    
+    
     // MARK: - Helpers
     
     private func cardView(at index: Int) -> LessonCardView? {
         guard index >= 0, index < cardViews.count else { return nil }
         
         return cardViews[index]
+    }
+    
+    private func areAllCardsDone() -> Bool {
+        for card in lesson.cards {
+            let isDone = AppProgressManager.isItemDone(key: card.path)
+            if !isDone { return false }
+        }
+        
+        return true
+    }
+    
+}
+
+
+extension LessonCardsViewController: LessonCardViewDelegate {
+    
+    func lessonCardView(_ view: LessonCardView, didPressCheck checked: Bool) {
+        guard lesson.cards.count > view.tag else {
+            assertionFailure()
+            return
+        }
+        
+        let card = lesson.cards[view.tag]
+        AppProgressManager.setItemDone(checked, for: card.path)
+        
+        let isLessonDone = areAllCardsDone() && lesson.exercises.isEmpty
+        AppProgressManager.setItemDone(isLessonDone, for: lesson.path)
+
+        if card === lesson.cards.last!, isLessonDone {
+            popToPreviousScreen()
+        }
     }
     
 }

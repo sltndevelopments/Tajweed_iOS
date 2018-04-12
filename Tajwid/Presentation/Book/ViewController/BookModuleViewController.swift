@@ -48,6 +48,8 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
 
         title = module.title
         navigationItem.backBarButtonItem?.title = ""
+        
+        configureTableManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +59,6 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
             false,
             animated: true)
         
-        configureTableManager()
         configureModels()
     }
     
@@ -84,7 +85,11 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
     private func configureModels() {
         var items = [BookModuleTableCellModel]()
         for (index, lesson) in module.lessons.enumerated() {
-            let item = BookModuleTableCellModel(number: (index + 1), title: lesson.title, subtitle: lesson.description, isPassed: (index < 1))
+            let item = BookModuleTableCellModel(
+                number: (index + 1),
+                title: lesson.title,
+                subtitle: lesson.description,
+                isPassed: AppProgressManager.isItemDone(key: lesson.path))
             items.append(item)
         }
         

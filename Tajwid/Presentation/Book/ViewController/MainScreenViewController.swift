@@ -16,7 +16,7 @@ class MainScreenViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var progressSlider: BookProgressSlider!
     
     @IBOutlet weak var progressLabel: UILabel!
     
@@ -26,8 +26,12 @@ class MainScreenViewController: UIViewController {
     // MARK: - Private properties
     
     private var book: Book!
+    
     private var menuItems: [MenuItem]!
+    
     private var selectedModule: BookModule?
+    
+    private var doneLessonsCount = 0
     
     
     // MARK: - Init
@@ -58,6 +62,9 @@ class MainScreenViewController: UIViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
+        progressSlider.maximumValue = Float(book.lessons.count)
+        progressSlider.isUserInteractionEnabled = false
+        
         menuView.items = menuItems
         menuView.didSelectItem = didSelectItem(_:)
     }
@@ -68,6 +75,8 @@ class MainScreenViewController: UIViewController {
         navigationController?.setNavigationBarHidden(
             true,
             animated: !isMovingToParentViewController)
+        
+        updateProgressSlider()
     }
     
     
@@ -139,6 +148,14 @@ class MainScreenViewController: UIViewController {
     }
     
     
+    // MARK: - UI
+    
+    private func updateProgressSlider() {
+        progressSlider.value = Float(updateDoneLessonsCounter())
+        progressLabel.text = "ВЫ ПРОШЛИ \(doneLessonsCount) УРОК ИЗ \(book.lessons.count)"
+    }
+    
+    
     // MARK: - Actions
     
     private func didSelectItem(_ item: MenuItem) {
@@ -164,6 +181,25 @@ class MainScreenViewController: UIViewController {
             let vc = segue.destination as? BookModuleViewController {
             vc.module = selectedModule!
         }
+    }
+    
+    
+    // MARK: - Private methods
+    
+    private func updateDoneLessonsCounter() -> Int {
+        var counter = 0
+        
+        for module in book.modules {
+            for lesson in module.lessons {
+                if AppProgressManager.isItemDone(key: lesson.path) {
+                    counter += 1
+                }
+            }
+        }
+        
+        doneLessonsCount = counter
+        
+        return doneLessonsCount
     }
     
 }
