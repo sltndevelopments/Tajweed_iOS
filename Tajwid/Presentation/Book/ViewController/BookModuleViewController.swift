@@ -40,6 +40,13 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
     
     private var selectedLesson: Lesson?
     
+    
+    // MARK: - Init
+    
+    deinit {
+        endObservingFontAdjustments()
+    }
+    
 
     // MARK: - View's lifecycle
     
@@ -49,6 +56,7 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
         title = module.title
         navigationItem.backBarButtonItem?.title = ""
         
+        beginObservingFontAdjustments()
         configureTableManager()
     }
     
@@ -88,7 +96,9 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
             let item = BookModuleTableCellModel(
                 number: (index + 1),
                 title: lesson.title,
+                titleFont: FontCreator.mainFont(ofSize: 24),
                 subtitle: lesson.description,
+                subtitleFont: FontCreator.fontWithName(FontNames.pnSemibold, size: 10),
                 isPassed: AppProgressManager.isItemDone(key: lesson.path))
             items.append(item)
         }
@@ -110,6 +120,29 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
             let vc = segue.destination as? LessonCardsViewController {
             vc.lesson = selectedLesson!
         }
+    }
+
+}
+
+
+extension BookModuleViewController: FontAdjustmentsObserving {
+
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+
+    func adjustFontSize(to value: CGFloat) {
+        configureModels()
+    }
+
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        configureModels()
     }
 
 }

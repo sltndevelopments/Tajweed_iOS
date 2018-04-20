@@ -36,20 +36,16 @@ class ReadingExerciseTextView: UIView {
     
     private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberry
-        textStyle.minimumLineHeight = 35
-        textStyle.maximumLineHeight = 35
         
         return textStyle
     }
     
     private var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberryLight
-        textStyle.minimumLineHeight = 35
-        textStyle.maximumLineHeight = 35
         
         return textStyle
     }
@@ -105,9 +101,17 @@ class ReadingExerciseTextView: UIView {
         
         for (rowIndex, row) in rowWords.enumerated() {
             for (wordIndex, word) in row.enumerated() {
+                if word == "وَ" {
+                    print(" ")
+                }
+                
                 /// последнее ли слово
                 let isLastInRow = wordIndex == row.count - 1
                 let isLastInText = isLastInRow && rowIndex == rowWords.count - 1
+                
+                if isLastInText {
+                    print(" ")
+                }
                 
                 /// вычисляем размер текста, который необходимо добавить
                 var textToAppend = word
@@ -118,12 +122,15 @@ class ReadingExerciseTextView: UIView {
                     string: textToAppend,
                     attributes: textStyle.textAttributes)
                 let size = CGSize(width: CGFloat(1000), height: .greatestFiniteMagnitude)
-                let width = attributedText.boundingRect(
+                var width = attributedText.boundingRect(
                     with: size,
                     options: [.usesLineFragmentOrigin, .usesFontLeading],
                     context: nil)
                     .size
                     .width
+                width = CGFloat(ceilf(Float(width)))
+                
+                print(width)
                 
                 /// если не осталось достаточно места в строке, переносим
                 if space >= width {
@@ -134,13 +141,15 @@ class ReadingExerciseTextView: UIView {
                     space = availableSpace
                 }
                 
+                let isComma = word == "،"
                 let pushableLabel = PushableLabel(
                     text: word,
                     normalTextAttributes: textStyle.textAttributes,
                     highlitedTextAttributes: highlitedTextStyle.textAttributes,
-                    isUnderscoreHidden: false)
+                    isUnderscoreHidden: isComma)
                 pushableLabel.didPress = pushableLabelPressed(_:)
                 pushableLabel.tag = counter
+                pushableLabel.isUserInteractionEnabled = !isComma
                 addSubview(pushableLabel)
                 pushableLabel.snp.makeConstraints { maker in
                     if rightView == self {
@@ -189,6 +198,14 @@ class ReadingExerciseTextView: UIView {
         }
     }
     
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        for subview in subviews where subview is PushableLabel {
+            print(subview.frame.width)
+        }
+    }
     
     // MARK: - Actions
     

@@ -76,4 +76,6 @@ extension LessonSectionHeaderView: FontAdjustmentsObserving {
         }
     }
     
+    func fontSettingsChanged() { }
+
 }

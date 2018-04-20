@@ -15,4 +15,6 @@ import UIKit
     
     func changeFont(withName name: String, to anotherFontName: String)
     
+    func fontSettingsChanged()
+    
 }

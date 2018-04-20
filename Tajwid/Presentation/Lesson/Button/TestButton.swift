@@ -37,11 +37,18 @@ class TestButton: UIButton {
         configure()
     }
     
+    deinit {
+        endObservingFontAdjustments()
+    }
+    
     
     // MARK: - Configuration
     
     private func configure() {
-        titleLabel?.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        beginObservingFontAdjustments()
+        
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel?.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
         borderWidth = 1
         cornerRadius = 3
         
@@ -78,4 +85,25 @@ class TestButton: UIButton {
         }
     }
 
+}
+
+
+extension TestButton: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) { }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        titleLabel?.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+    }
+    
 }

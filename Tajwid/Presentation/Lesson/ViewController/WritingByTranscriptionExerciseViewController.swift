@@ -6,7 +6,7 @@ import UIKit
 import Globus
 
 
-class WritingByTranscriptionExerciseViewController: UIViewController, HasCompletion {
+class WritingByTranscriptionExerciseViewController: BaseLessonViewController, HasCompletion {
     
     // MARK: - Outlets
     
@@ -14,6 +14,7 @@ class WritingByTranscriptionExerciseViewController: UIViewController, HasComplet
     @IBOutlet weak var transcriptionLabel: UILabel!
     @IBOutlet weak var correctWritingLabel: UILabel!
     @IBOutlet weak var actionButton: ImageTitleVerticalButton!
+    @IBOutlet weak var labelsContentViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Public properties
@@ -26,20 +27,58 @@ class WritingByTranscriptionExerciseViewController: UIViewController, HasComplet
     // MARK: - Private properties
     
     private var transcriptionTextStyle: GLBTextStyle = {
+        let fontSize: CGFloat
+        switch UIDevice.current.screenType {
+        case .screen3_5:
+            fontSize = 45
+        case .screen4:
+            fontSize = 60
+        case .screen4_7, .screen5_5, .screen5_8, .other:
+            fontSize = 100
+        }
+        
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 100)
+        textStyle.font = UIFont(name: FontNames.avNext, size: fontSize)
         textStyle.color = .blackOne
         
         return textStyle
     }()
     
     private var correctWritingTextStyle: GLBTextStyle = {
+        let fontSize: CGFloat
+        switch UIDevice.current.screenType {
+        case .screen3_5:
+            fontSize = 60
+        case .screen4:
+            fontSize = 80
+        case .screen4_7, .screen5_5, .screen5_8, .other:
+            fontSize = 100
+        }
+
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 100)
+        textStyle.font = UIFont(name: FontNames.simpleArabic, size: fontSize)
         textStyle.color = .blueberry
         
         return textStyle
     }()
+    
+    private var labelsContentViewHeight: CGFloat {
+        switch UIDevice.current.screenType {
+        case .screen3_5:
+            return 135
+        case .screen4:
+            return 185
+        case .screen4_7, .screen5_5, .screen5_8, .other:
+            return 300
+        }
+    }
+    
+    
+    // MARK: - Init
+    
+    deinit {
+        endObservingFontAdjustments()
+    }
 
     
     // MARK: - View's lifecycle
@@ -47,19 +86,32 @@ class WritingByTranscriptionExerciseViewController: UIViewController, HasComplet
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        beginObservingFontAdjustments()
+        
         configure()
+        addFontSettingsView()
     }
     
     
     // MARK: - Configuration
     
     private func configure() {
-        titleLabel.attributedText = NSAttributedString(
-            string: exercise.title,
-            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
+        let barButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "font-settings"),
+            style: .plain,
+            target: self,
+            action: #selector(fontSettingsButtonPressed))
+        barButtonItem.tintColor = .blueberry
+        navigationItem.rightBarButtonItem = barButtonItem
+
+        labelsContentViewHeightConstraint.constant = labelsContentViewHeight
+        
+        configureTitleLabel()
+        transcriptionLabel.adjustsFontSizeToFitWidth = true
         transcriptionLabel.attributedText = NSAttributedString(
             string: exercise.transcription,
             attributes: transcriptionTextStyle.textAttributes)
+        correctWritingLabel.adjustsFontSizeToFitWidth = true
         correctWritingLabel.attributedText = NSAttributedString(
             string: exercise.correctWriting,
             attributes: correctWritingTextStyle.textAttributes)
@@ -67,6 +119,12 @@ class WritingByTranscriptionExerciseViewController: UIViewController, HasComplet
 
         actionButton.customImage = #imageLiteral(resourceName: "show")
         actionButton.customTitle = "ПРАВИЛЬНЫЙ ОТВЕТ"
+    }
+    
+    private func configureTitleLabel() {
+        titleLabel.attributedText = NSAttributedString(
+            string: exercise.title,
+            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
     }
 
 
@@ -82,4 +140,36 @@ class WritingByTranscriptionExerciseViewController: UIViewController, HasComplet
         }
     }
 
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
+    }
+
 }
+
+
+extension WritingByTranscriptionExerciseViewController: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) { }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        configureTitleLabel()
+    }
+    
+}
+
+
+extension WritingByTranscriptionExerciseViewController: HasFontSettingsView { }

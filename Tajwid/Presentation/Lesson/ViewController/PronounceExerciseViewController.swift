@@ -7,7 +7,7 @@ import Globus
 import AVFoundation
 
 
-class PronounceExerciseViewController: UIViewController, HasCompletion {
+class PronounceExerciseViewController: BaseLessonViewController, HasCompletion {
     
     // MARK: - Outlets
     
@@ -37,11 +37,24 @@ class PronounceExerciseViewController: UIViewController, HasCompletion {
     
     private var audioPlayer: AVAudioPlayer?
     
+    private var availableSpace: CGFloat {
+        return UIScreen.main.bounds.width - textViewLeading.constant - textViewTrailing.constant
+    }
+
+    
+    // MARK: - Init
+    
+    deinit {
+        endObservingFontAdjustments()
+    }
+
     
     // MARK: - View's lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginObservingFontAdjustments()
 
         configure()
         addFontSettingsView()
@@ -51,15 +64,26 @@ class PronounceExerciseViewController: UIViewController, HasCompletion {
     // MARK: - Configuration
     
     private func configure() {
-        titleLabel.attributedText = NSAttributedString(
-            string: exercise.title,
-            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
+        let barButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "font-settings"),
+            style: .plain,
+            target: self,
+            action: #selector(fontSettingsButtonPressed))
+        barButtonItem.tintColor = .blueberry
+        navigationItem.rightBarButtonItem = barButtonItem
 
-        let space = UIScreen.main.bounds.width - textViewLeading.constant - textViewTrailing.constant
-        textView.setRow(exercise.rows, withAvailableSpace: space)
+        configureTitleLabel()
+        
+        textView.setRow(exercise.rows, withAvailableSpace: availableSpace)
         
         actionButton.customImage = #imageLiteral(resourceName: "next")
         actionButton.customTitle = "ДАЛЕЕ"
+    }
+    
+    private func configureTitleLabel() {
+        titleLabel.attributedText = NSAttributedString(
+            string: exercise.title,
+            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
     }
     
     
@@ -67,6 +91,14 @@ class PronounceExerciseViewController: UIViewController, HasCompletion {
     
     @IBAction func buttonPressed() {
         completion?()
+    }
+    
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
     }
     
 }
@@ -89,6 +121,28 @@ extension PronounceExerciseViewController: PronounceExerciseTextViewDelegate {
         
         audioPlayer.prepareToPlay()
         audioPlayer.play()
+    }
+    
+}
+
+
+extension PronounceExerciseViewController: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) { }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        configureTitleLabel()
+        textView.setRow(exercise.rows, withAvailableSpace: availableSpace)
     }
     
 }

@@ -8,7 +8,7 @@ import AVFoundation
 import SnapKit
 
 
-class LessonCardsViewController: UIViewController {
+class LessonCardsViewController: BaseLessonViewController {
     
     // MARK: - Nested types
     
@@ -40,6 +40,7 @@ class LessonCardsViewController: UIViewController {
             scrollView.backgroundColor = .whiteOne
         }
     }
+    
     var contentView: UIView!
     
     
@@ -101,6 +102,13 @@ class LessonCardsViewController: UIViewController {
         return cardView(at: currentPlayingCardIndex)
     }
     
+    private var needToShowProgressSlider: Bool {
+        return !lesson.exercises.isEmpty
+    }
+    
+    private var progressNavigationController: ProgressNavigationViewController? {
+        return navigationController as? ProgressNavigationViewController
+    }
     
     
     // MARK: - View's lifecycle
@@ -117,20 +125,29 @@ class LessonCardsViewController: UIViewController {
         configureModels()
         addCards()
         addFontSettingsView()
+        addProgressSliderIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
 //        let vc = UIStoryboard.viewController(
-//            ofType: WritingByExampleExerciseViewController.self,
+//            ofType: WritingByTranscriptionExerciseViewController.self,
 //            fromStoryboard: "Main")
 //        for exercise in lesson!.exercises {
-//            if let exercise = exercise as? WritingByExampleExercise {
+//            if let exercise = exercise as? WritingByTranscriptionExercise {
 //                vc.exercise = exercise
 //            }
 //        }
 //        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isMovingFromParentViewController {
+            removeProgressSliderIfNeeded()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -203,6 +220,46 @@ class LessonCardsViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @objc func nextButtonPressed() {
+        showExerciseViewControllerWithContainer(at: 0)
+    }
+    
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
+    }
+    
+    
+    // MARK: - Actions
+    
+    @objc private func didTapCard(_ gestureRecognizer: UITapGestureRecognizer) {
+        if let view = gestureRecognizer.view {
+            playSound(forCardAt: view.tag)
+        }
+    }
+    
+    
+    // MARK: - UI
+    
+    private func addProgressSliderIfNeeded() {
+        if !needToShowProgressSlider { return }
+        
+        progressNavigationController?.progressViewMaxiumumValue = Float(lesson.exercises.count + 2)
+        progressNavigationController?.progressViewValue = 1
+        progressNavigationController?.addProgressView()
+    }
+    
+    private func removeProgressSliderIfNeeded() {
+        if !needToShowProgressSlider { return }
+        
+        progressNavigationController?.removeProgressView()
+    }
+    
     private func addCards() {
         contentView = UIView()
         scrollView.addSubview(contentView)
@@ -235,7 +292,7 @@ class LessonCardsViewController: UIViewController {
                         maker.top.equalTo(prevView.snp.bottom)
                     }
                 }
-
+                
                 prevView = view
             } else if let model = model as? LessonCardViewModel {
                 if prevView is LessonCardView {
@@ -294,33 +351,6 @@ class LessonCardsViewController: UIViewController {
         }
     }
     
-    
-    // MARK: - Actions
-    
-    @objc func nextButtonPressed() {
-        showExerciseViewControllerWithContainer(at: 0)
-    }
-    
-    @objc func fontSettingsButtonPressed() {
-        if isFontSettingsViewHidden {
-            showFontSettingsView()
-        } else {
-            hideFontSettingsView()
-        }
-    }
-    
-    
-    // MARK: - Actions
-    
-    @objc private func didTapCard(_ gestureRecognizer: UITapGestureRecognizer) {
-        if let view = gestureRecognizer.view {
-            playSound(forCardAt: view.tag)
-        }
-    }
-    
-    
-    // MARK: - UI
-    
     private func adjustScrollContentSize() {
         scrollView.contentSize = CGSize(
             width: scrollView.contentSize.width,
@@ -357,7 +387,7 @@ class LessonCardsViewController: UIViewController {
         scrollView.scrollRectToVisible(frameTopLeft, animated: true)
 
     }
-    
+        
     
     // MARK: - Sounds
     
@@ -454,6 +484,8 @@ class LessonCardsViewController: UIViewController {
     
     private func showExerciseViewControllerWithContainer(at index: Int) {
         guard lesson.exerciseContainers.count > index else {
+            progressNavigationController?.progressViewValue =
+                progressNavigationController?.progressViewMaxiumumValue ?? 0
             lessonFinished()
             return
         }
@@ -499,10 +531,14 @@ class LessonCardsViewController: UIViewController {
         }
         vc.title = "\(title!). Упражнение \(index + 1)"
         navigationController?.pushViewController(vc, animated: true)
+        
+        progressNavigationController?.progressViewValue = Float(index + 2)
     }
     
     private func popToPreviousScreen() {
         guard let viewControllers = navigationController?.viewControllers else { return }
+        
+        removeProgressSliderIfNeeded()
         
         for vc in viewControllers {
             if let vc = vc as? BookModuleViewController {
@@ -622,6 +658,13 @@ extension LessonCardsViewController: SoundPlayerViewDelegate {
         audioPlayer?.currentTime = value
     }
 
+}
+
+
+extension LessonCardsViewController: UINavigationControllerDelegate {
+    
+    
+    
 }
 
 

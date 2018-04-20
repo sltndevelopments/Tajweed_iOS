@@ -10,39 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
-            timestampString = "544375364.996489"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "arrangeText()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
-            timestampString = "544375364.996644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "arrangeText()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
-            timestampString = "544375364.996696"
+            timestampString = "545599688.099987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -57,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
-            timestampString = "544375364.996768"
+            filePath = "Tajwid/Presentation/Base/Protocol/HasFontSettingsView.swift"
+            timestampString = "545495164.530324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "setRow(_:withAvailableSpace:)"
+            landmarkName = "showFontSettingsView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +41,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Base/Protocol/HasFontSettingsView.swift"
-            timestampString = "544894031.008186"
+            filePath = "Tajwid/Presentation/Lesson/View/ReadingExerciseTextView.swift"
+            timestampString = "545599688.100134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "showFontSettingsView()"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "arrangeText()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tajwid/Presentation/Lesson/View/ReadingExerciseTextView.swift"
+            timestampString = "545599688.100212"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "arrangeText()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

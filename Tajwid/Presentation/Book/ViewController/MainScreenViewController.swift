@@ -52,6 +52,10 @@ class MainScreenViewController: UIViewController {
         createMenuItems()
     }
     
+    deinit {
+        endObservingFontAdjustments()
+    }
+    
     
     // MARK: - View's lifecycle
     
@@ -59,8 +63,9 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.delegate = self
-        
         automaticallyAdjustsScrollViewInsets = false
+        
+        beginObservingFontAdjustments()
         
         progressSlider.maximumValue = Float(book.lessons.count)
         progressSlider.isUserInteractionEnabled = false
@@ -163,7 +168,7 @@ class MainScreenViewController: UIViewController {
         case .module(let module):
             showModuleScreen(with: module)
         case .settings:
-            break
+            showSettingsScreen()
         }
     }
     
@@ -183,6 +188,13 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    private func showSettingsScreen() {
+        let settingsVC = UIStoryboard.viewController(
+            ofType: SettingsViewController.self,
+            fromStoryboard: "Main")
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
+    
     
     // MARK: - Private methods
     
@@ -200,6 +212,29 @@ class MainScreenViewController: UIViewController {
         doneLessonsCount = counter
         
         return doneLessonsCount
+    }
+    
+}
+
+
+extension MainScreenViewController: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) {
+        menuView.items = menuItems
+    }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        menuView.items = menuItems
     }
     
 }

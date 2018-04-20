@@ -33,14 +33,14 @@ class MenuItemView: UIView, ModelTransfer {
     
     // MARK: - Private properties
     
-    private var titleTextStyle: GLBTextStyle = {
+    private var titleTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 24)
+        textStyle.font = FontCreator.mainFont(ofSize: 24)
         textStyle.color = .blackOne
         textStyle.alignment = .center
         
         return textStyle
-    }()
+    }
 
 
     
@@ -53,6 +53,7 @@ class MenuItemView: UIView, ModelTransfer {
             string: model.title,
             attributes: titleTextStyle.textAttributes)
         subtitleLabel.text = model.subtitle
+        subtitleLabel.font = FontCreator.fontWithName(FontNames.pnSemibold, size: 10)
         subtitleLabel.isHidden = model.isSubtitleHidden
         separtorView.isHidden = model.isSeparatorHidden
     }

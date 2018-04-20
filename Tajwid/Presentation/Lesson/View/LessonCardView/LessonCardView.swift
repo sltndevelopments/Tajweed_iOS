@@ -88,8 +88,6 @@ class LessonCardView: UIView, ModelTransfer {
         textStyle.font = FontCreator.mainFont(ofSize: 24)
         textStyle.color = .greyishBrown
         textStyle.alignment = .center
-        textStyle.minimumLineHeight = 25
-        textStyle.maximumLineHeight = 25
         
         return textStyle
     }
@@ -591,5 +589,7 @@ extension LessonCardView: FontAdjustmentsObserving {
         }
     }
     
+    func fontSettingsChanged() { }
+
 }
 

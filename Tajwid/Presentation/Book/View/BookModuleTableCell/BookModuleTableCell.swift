@@ -30,7 +30,9 @@ class BookModuleTableCell: UITableViewCell, ModelTransfer {
         numberLabel.textColor = model.isPassed ? .white : .blackOne
         numberLabel.text = String(model.number)
         titleLabel.text = model.title
+        titleLabel.font = model.titleFont
         subtitleLabel.text = model.subtitle
+        subtitleLabel.font = model.subtitleFont
     }
     
     

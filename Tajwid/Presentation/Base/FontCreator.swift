@@ -59,6 +59,13 @@ final class FontCreator  {
                 }
             }
         }
+        didSet {
+            for object in observers.objectEnumerator() {
+                if let observer = object as? FontAdjustmentsObserving {
+                    observer.fontSettingsChanged()
+                }
+            }
+        }
     }
     
     static var mainFontName = FontName.avenirNext {
@@ -74,6 +81,13 @@ final class FontCreator  {
                             observer.changeFont(withName: oldName, to: newName)
                         }
                     }
+                }
+            }
+        }
+        didSet {
+            for object in observers.objectEnumerator() {
+                if let observer = object as? FontAdjustmentsObserving {
+                    observer.fontSettingsChanged()
                 }
             }
         }

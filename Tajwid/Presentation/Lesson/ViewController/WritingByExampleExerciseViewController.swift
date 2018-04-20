@@ -7,7 +7,7 @@ import UIKit
 import Globus
 
 
-class WritingByExampleExerciseViewController: UIViewController, HasCompletion {
+class WritingByExampleExerciseViewController: BaseLessonViewController, HasCompletion {
     
     // MARK: - Constants
     
@@ -34,50 +34,75 @@ class WritingByExampleExerciseViewController: UIViewController, HasCompletion {
     
     // MARK: - Private properties
     
-    private var bigTextStyle: GLBTextStyle = {
+    private var bigTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 100)
+        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 100)
         textStyle.color = .blueberry
         textStyle.alignment = .center
         
         return textStyle
-    }()
+    }
 
-    private var smallTextStyle: GLBTextStyle = {
+    private var smallTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         textStyle.minimumLineHeight = 70
         
         return textStyle
-    }()
+    }
+    
+    private var isBigText: Bool {
+        return exercise.example.count <= 5
+    }
 
+    
+    // MARK: - Init
+    
+    deinit {
+        endObservingFontAdjustments()
+    }
+    
     
     // MARK: - View's lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginObservingFontAdjustments()
 
         configure()
+        addFontSettingsView()
     }
     
 
     // MARK: - Configuration
     
     private func configure() {
-        titleLabel.attributedText = NSAttributedString(
-            string: exercise.title,
-            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
-        let isBigText = exercise.example.count <= 5
-        textLabel.attributedText = NSAttributedString(
-            string: exercise.example,
-            attributes: isBigText ? bigTextStyle.textAttributes : smallTextStyle.textAttributes)
+        let barButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "font-settings"),
+            style: .plain,
+            target: self,
+            action: #selector(fontSettingsButtonPressed))
+        barButtonItem.tintColor = .blueberry
+        navigationItem.rightBarButtonItem = barButtonItem
+
+        configureLabels()
         textLabelTopSpace.constant = isBigText
             ? Constants.bigTextLabelTopSpace : Constants.smallTextLabelTopSpace
         
         actionButton.customImage = #imageLiteral(resourceName: "next")
         actionButton.customTitle = "ДАЛЕЕ"
+    }
+    
+    private func configureLabels() {
+        titleLabel.attributedText = NSAttributedString(
+            string: exercise.title,
+            attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
+        textLabel.attributedText = NSAttributedString(
+            string: exercise.example,
+            attributes: isBigText ? bigTextStyle.textAttributes : smallTextStyle.textAttributes)
     }
     
     
@@ -87,4 +112,36 @@ class WritingByExampleExerciseViewController: UIViewController, HasCompletion {
         completion?()
     }
 
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
+    }
+
 }
+
+
+extension WritingByExampleExerciseViewController: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) { }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        configureLabels()
+    }
+    
+}
+
+
+extension WritingByExampleExerciseViewController: HasFontSettingsView { }

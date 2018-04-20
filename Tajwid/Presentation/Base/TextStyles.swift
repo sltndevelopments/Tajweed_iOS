@@ -10,7 +10,7 @@ extension GLBTextStyle {
     
     static var exerciseTitleTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 20)
+        textStyle.font = FontCreator.mainFont(ofSize: 20)
         textStyle.minimumLineHeight = 30
         textStyle.color = .greyishBrown
         

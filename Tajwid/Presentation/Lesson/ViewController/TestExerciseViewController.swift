@@ -6,7 +6,7 @@ import UIKit
 import Globus
 
 
-class TestExerciseViewController: UIViewController, HasCompletion {
+class TestExerciseViewController: BaseLessonViewController, HasCompletion {
     
     // MARK: - Outlets
     
@@ -27,31 +27,32 @@ class TestExerciseViewController: UIViewController, HasCompletion {
     
     // MARK: - Private properties
     
-    private var arabicTextStyle: GLBTextStyle = {
+    private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.mainFont(ofSize: 24)
         textStyle.color = .blackOne
         
         return textStyle
-    }()
-
-    private var textStyle: GLBTextStyle = {
-        let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.avNext, size: 24)
-        textStyle.color = .blackOne
-        
-        return textStyle
-    }()
+    }
 
     private var correctVariantIndex: Int? {
         return exercise.variants.index(of: exercise.correctVariant)
     }
 
     
+    // MARK: - Init
+    
+    deinit {
+        endObservingFontAdjustments()
+    }
+    
+    
     // MARK: - View's lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        beginObservingFontAdjustments()
 
         configure()
         addFontSettingsView()
@@ -67,6 +68,32 @@ class TestExerciseViewController: UIViewController, HasCompletion {
     // MARK: - Configuration
     
     private func configure() {
+        let barButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "font-settings"),
+            style: .plain,
+            target: self,
+            action: #selector(fontSettingsButtonPressed))
+        barButtonItem.tintColor = .blueberry
+        navigationItem.rightBarButtonItem = barButtonItem
+        
+        configureLabels()
+
+        let exerciseCount = exercise.variants.count
+        
+        for (index, button) in buttons.enumerated() {
+            if index < exerciseCount {
+                button.setTitle(exercise.variants[index], for: .normal)
+            } else {
+                button.isHidden = true
+            }
+        }
+        
+        actionButton.customImage = #imageLiteral(resourceName: "next")
+        actionButton.customTitle = "ДАЛЕЕ"
+        actionButton.isHidden = true
+    }
+    
+    private func configureLabels() {
         titleLabel.attributedText = NSAttributedString(
             string: exercise.title,
             attributes: GLBTextStyle.exerciseTitleTextStyle.textAttributes)
@@ -78,23 +105,6 @@ class TestExerciseViewController: UIViewController, HasCompletion {
         } else {
             textLabel.isHidden = true
         }
-        
-        let exerciseCount = exercise.variants.count
-        
-        for (index, button) in buttons.enumerated() {
-            if index < exerciseCount {
-                let attributedText = NSAttributedString(
-                    string: exercise.variants[index],
-                    attributes: arabicTextStyle.textAttributes)
-                button.setAttributedTitle(attributedText, for: .normal)
-            } else {
-                button.isHidden = true
-            }
-        }
-        
-        actionButton.customImage = #imageLiteral(resourceName: "next")
-        actionButton.customTitle = "ДАЛЕЕ"
-        actionButton.isHidden = true
     }
     
 
@@ -119,6 +129,36 @@ class TestExerciseViewController: UIViewController, HasCompletion {
     @IBAction func actionButtonPressed() {
         completion?()
     }
+    
+    @objc func fontSettingsButtonPressed() {
+        if isFontSettingsViewHidden {
+            showFontSettingsView()
+        } else {
+            hideFontSettingsView()
+        }
+    }
+    
+}
+
+
+extension TestExerciseViewController: FontAdjustmentsObserving {
+    
+    func beginObservingFontAdjustments() {
+        FontCreator.addFontSizeAdjustmentsObserver(self)
+    }
+    
+    func endObservingFontAdjustments() {
+        FontCreator.removeFontSizeAdjustmentsObserver(self)
+    }
+    
+    func adjustFontSize(to value: CGFloat) { }
+    
+    func changeFont(withName name: String, to anotherFontName: String) { }
+    
+    func fontSettingsChanged() {
+        configureLabels()
+    }
+    
 }
 
 

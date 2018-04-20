@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1395472087D32D00CE23D5 /* LocalNotifcationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1395462087D32D00CE23D5 /* LocalNotifcationsManager.swift */; };
 		1E5143CF205E9C78004DD9B2 /* BookModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */; };
 		1E5143D1205E9E6C004DD9B2 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D0205E9E6C004DD9B2 /* MenuItem.swift */; };
 		1E5143D4205EA3B8004DD9B2 /* BookModuleTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D3205EA3B8004DD9B2 /* BookModuleTableCellModel.swift */; };
@@ -24,6 +25,7 @@
 		1E6ACAF82043065B00714A5F /* PronounceExerciseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6ACAF72043065B00714A5F /* PronounceExerciseTextView.swift */; };
 		1E7E462720382156008AFBA8 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E462620382155008AFBA8 /* UIView+Additions.swift */; };
 		1E7E462B20382787008AFBA8 /* LessonCardSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E462A20382787008AFBA8 /* LessonCardSeparatorView.swift */; };
+		1E8080652089D50000FBA5B1 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8080642089D50000FBA5B1 /* SettingsManager.swift */; };
 		1E80FC5F2066969C00BCFD6A /* Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E80FC5E2066969C00BCFD6A /* Proxima Nova Regular.otf */; };
 		1E80FC662067C66500BCFD6A /* imagename.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1E80FC652067C66500BCFD6A /* imagename.jpeg */; };
 		1E80FC6A2067D1EB00BCFD6A /* HasCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80FC692067D1EB00BCFD6A /* HasCompletion.swift */; };
@@ -57,7 +59,6 @@
 		1E9E3158202F61E9000892F6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E3157202F61E9000892F6 /* Fonts.swift */; };
 		1E9E315A203045F3000892F6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E3159203045F2000892F6 /* Colors.swift */; };
 		1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */; };
-		1EB27AE0207BE6F40020BDAB /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EB27ADF207BE6F40020BDAB /* Book.json */; };
 		1EB27EAD207BF0A80020BDAB /* 1_5_14_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1EB27AE1207BEFED0020BDAB /* 1_5_14_5.mp3 */; };
 		1EB27EAE207BF0A80020BDAB /* 1_10_18_13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1EB27AE2207BEFEE0020BDAB /* 1_10_18_13.mp3 */; };
 		1EB27EAF207BF0A80020BDAB /* 1_3_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1EB27AE3207BEFEE0020BDAB /* 1_3_9.mp3 */; };
@@ -1035,6 +1036,12 @@
 		1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */; };
 		1ED69F6E206FCFD400228003 /* SoundPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */; };
 		1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */; };
+		1EDD77C22081FBBE00A4425B /* LessonProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */; };
+		1EDD77C4208203EA00A4425B /* BaseLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */; };
+		1EDD77C620820D0400A4425B /* ProgressNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */; };
+		1EDD77C820824DA300A4425B /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD77C720824DA300A4425B /* Book.json */; };
+		1EDD77CA2083A2DD00A4425B /* UIDevice+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */; };
+		1EDD77CD20851FFF00A4425B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */; };
 		1EE282C42055337C00EBDF57 /* Proxima Nova Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EE282C32055337C00EBDF57 /* Proxima Nova Semibold.otf */; };
 		1EE282C62055363C00EBDF57 /* ReadingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282C52055363C00EBDF57 /* ReadingExerciseViewController.swift */; };
 		1EE282C8205D13C400EBDF57 /* UnderscoredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282C7205D13C400EBDF57 /* UnderscoredButton.swift */; };
@@ -1045,6 +1052,7 @@
 		1EE282DD205E66F800EBDF57 /* MenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE282DB205E66F800EBDF57 /* MenuItemView.xib */; };
 		1EE282DF205E68C500EBDF57 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */; };
 		1EE282E4205E7C7500EBDF57 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE282E3205E7C7500EBDF57 /* MenuView.swift */; };
+		1EE6333920876AEE005254F7 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE6333820876AEE005254F7 /* AlertView.swift */; };
 		1EEDA36D207A3666004C91F8 /* FontSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDA36C207A3666004C91F8 /* FontSettingsView.swift */; };
 		1EEDA36F207A3679004C91F8 /* FontSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDA36E207A3679004C91F8 /* FontSettingsView.xib */; };
 		1EEDA371207A37ED004C91F8 /* FontSizeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDA370207A37ED004C91F8 /* FontSizeSlider.swift */; };
@@ -1080,6 +1088,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1395462087D32D00CE23D5 /* LocalNotifcationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifcationsManager.swift; sourceTree = "<group>"; };
 		1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModuleViewController.swift; sourceTree = "<group>"; };
 		1E5143D0205E9E6C004DD9B2 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		1E5143D3205EA3B8004DD9B2 /* BookModuleTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModuleTableCellModel.swift; sourceTree = "<group>"; };
@@ -1098,6 +1107,7 @@
 		1E6ACAF72043065B00714A5F /* PronounceExerciseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronounceExerciseTextView.swift; sourceTree = "<group>"; };
 		1E7E462620382155008AFBA8 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		1E7E462A20382787008AFBA8 /* LessonCardSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCardSeparatorView.swift; sourceTree = "<group>"; };
+		1E8080642089D50000FBA5B1 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1E80FC5E2066969C00BCFD6A /* Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		1E80FC652067C66500BCFD6A /* imagename.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imagename.jpeg; sourceTree = "<group>"; };
 		1E80FC692067D1EB00BCFD6A /* HasCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCompletion.swift; sourceTree = "<group>"; };
@@ -1136,7 +1146,6 @@
 		1E9E3157202F61E9000892F6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		1E9E3159203045F2000892F6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GLBTextStyle+TextAttributes.swift"; sourceTree = "<group>"; };
-		1EB27ADF207BE6F40020BDAB /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
 		1EB27AE1207BEFED0020BDAB /* 1_5_14_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1_5_14_5.mp3; sourceTree = "<group>"; };
 		1EB27AE2207BEFEE0020BDAB /* 1_10_18_13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1_10_18_13.mp3; sourceTree = "<group>"; };
 		1EB27AE3207BEFEE0020BDAB /* 1_3_9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1_3_9.mp3; sourceTree = "<group>"; };
@@ -2114,6 +2123,12 @@
 		1ED69F6B206FCFC600228003 /* SoundPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerView.swift; sourceTree = "<group>"; };
 		1ED69F6D206FCFD400228003 /* SoundPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundPlayerView.xib; sourceTree = "<group>"; };
 		1ED69F6F206FDAAF00228003 /* TrackProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackProgressSlider.swift; sourceTree = "<group>"; };
+		1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgressSlider.swift; sourceTree = "<group>"; };
+		1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLessonViewController.swift; sourceTree = "<group>"; };
+		1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNavigationViewController.swift; sourceTree = "<group>"; };
+		1EDD77C720824DA300A4425B /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
+		1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Additions.swift"; sourceTree = "<group>"; };
+		1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1EE282C32055337C00EBDF57 /* Proxima Nova Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.otf"; sourceTree = "<group>"; };
 		1EE282C52055363C00EBDF57 /* ReadingExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingExerciseViewController.swift; sourceTree = "<group>"; };
 		1EE282C7205D13C400EBDF57 /* UnderscoredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderscoredButton.swift; sourceTree = "<group>"; };
@@ -2124,6 +2139,7 @@
 		1EE282DB205E66F800EBDF57 /* MenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemView.xib; sourceTree = "<group>"; };
 		1EE282DE205E68C500EBDF57 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		1EE282E3205E7C7500EBDF57 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		1EE6333820876AEE005254F7 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1EEDA36C207A3666004C91F8 /* FontSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettingsView.swift; sourceTree = "<group>"; };
 		1EEDA36E207A3679004C91F8 /* FontSettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSettingsView.xib; sourceTree = "<group>"; };
 		1EEDA370207A37ED004C91F8 /* FontSizeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeSlider.swift; sourceTree = "<group>"; };
@@ -2195,6 +2211,8 @@
 			isa = PBXGroup;
 			children = (
 				1E5184F9207FD62400CAA841 /* AppProgressManager.swift */,
+				1E1395462087D32D00CE23D5 /* LocalNotifcationsManager.swift */,
+				1E8080642089D50000FBA5B1 /* SettingsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2375,6 +2393,8 @@
 		1E9E3148202EE433000892F6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */,
+				1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */,
 				1E9E313E202ED75E000892F6 /* LessonCardsViewController.swift */,
 				1E6ACAEA2042CCD000714A5F /* TestExerciseViewController.swift */,
 				1E6ACAF52043059100714A5F /* PronounceExerciseViewController.swift */,
@@ -2394,6 +2414,7 @@
 				1E6ACAF72043065B00714A5F /* PronounceExerciseTextView.swift */,
 				1EEE899220540FC100AD7CB0 /* ReadingExerciseTextView.swift */,
 				1EEE8994205428C800AD7CB0 /* PushableLabel.swift */,
+				1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2408,6 +2429,7 @@
 				1EEE89862052C79E00AD7CB0 /* UIButton+Additions.swift */,
 				1EEE898C2053E7B800AD7CB0 /* UIViewController+Additions.swift */,
 				1EEE898E2053E7C600AD7CB0 /* UIStoryboard+Additions.swift */,
+				1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2433,6 +2455,7 @@
 				1E9E3159203045F2000892F6 /* Colors.swift */,
 				1EEE898A2053E52C00AD7CB0 /* TextStyles.swift */,
 				1ECC02432079015D00C91003 /* FontCreator.swift */,
+				1EE6333820876AEE005254F7 /* AlertView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -3441,7 +3464,7 @@
 		1EE282D0205D4F9D00EBDF57 /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				1EB27ADF207BE6F40020BDAB /* Book.json */,
+				1EDD77C720824DA300A4425B /* Book.json */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -3460,6 +3483,7 @@
 			children = (
 				1EE282D4205D515900EBDF57 /* MainScreenViewController.swift */,
 				1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */,
+				1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4532,6 +4556,7 @@
 				1EB281CB207BF0AE0020BDAB /* 2_2_5_7.mp3 in Resources */,
 				1EB280F1207BF0AC0020BDAB /* 3_5_3.mp3 in Resources */,
 				1EB27F11207BF0A90020BDAB /* 1_9_13_9.mp3 in Resources */,
+				1EDD77C820824DA300A4425B /* Book.json in Resources */,
 				1EB28099207BF0AC0020BDAB /* 1_11_18_13.mp3 in Resources */,
 				1EB281A3207BF0AE0020BDAB /* 3_7_1.mp3 in Resources */,
 				1EB28278207BF0B00020BDAB /* 1_7_13_10.mp3 in Resources */,
@@ -4592,7 +4617,6 @@
 				1EB27EB0207BF0A80020BDAB /* 2_1_4_13.mp3 in Resources */,
 				1EB28250207BF0B00020BDAB /* 1_2_21_1.mp3 in Resources */,
 				1EB280B4207BF0AC0020BDAB /* 2_2_2_2.mp3 in Resources */,
-				1EB27AE0207BE6F40020BDAB /* Book.json in Resources */,
 				1EB27F8E207BF0AA0020BDAB /* 1_2_19_10.mp3 in Resources */,
 				1EB28105207BF0AD0020BDAB /* 1_11_18_1.mp3 in Resources */,
 				1EB2809F207BF0AC0020BDAB /* 2_4_2_14.mp3 in Resources */,
@@ -4787,11 +4811,14 @@
 				1E5143D7205EA444004DD9B2 /* BookModuleTableCell.swift in Sources */,
 				1EE282C8205D13C400EBDF57 /* UnderscoredButton.swift in Sources */,
 				1E9E315A203045F3000892F6 /* Colors.swift in Sources */,
+				1E1395472087D32D00CE23D5 /* LocalNotifcationsManager.swift in Sources */,
+				1EDD77C4208203EA00A4425B /* BaseLessonViewController.swift in Sources */,
 				1E80FC6A2067D1EB00BCFD6A /* HasCompletion.swift in Sources */,
 				1E9E311E202CDDEA000892F6 /* LessonSection.swift in Sources */,
 				1ECC02442079015D00C91003 /* FontCreator.swift in Sources */,
 				1EE282DC205E66F800EBDF57 /* MenuItemView.swift in Sources */,
 				1E9E3138202CE61E000892F6 /* ReadingExercise.swift in Sources */,
+				1EDD77C22081FBBE00A4425B /* LessonProgressSlider.swift in Sources */,
 				1E6ACAEB2042CCD000714A5F /* TestExerciseViewController.swift in Sources */,
 				1E7E462720382156008AFBA8 /* UIView+Additions.swift in Sources */,
 				1E9E3132202CE3E3000892F6 /* PronounceExercise.swift in Sources */,
@@ -4807,13 +4834,17 @@
 				1EEE89912053F1C800AD7CB0 /* WritingByTranscriptionExerciseViewController.swift in Sources */,
 				1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */,
 				1EEE898F2053E7C600AD7CB0 /* UIStoryboard+Additions.swift in Sources */,
+				1EDD77C620820D0400A4425B /* ProgressNavigationViewController.swift in Sources */,
+				1EDD77CD20851FFF00A4425B /* SettingsViewController.swift in Sources */,
 				1EE282E4205E7C7500EBDF57 /* MenuView.swift in Sources */,
 				1E9E313A202CE6C3000892F6 /* Lesson.swift in Sources */,
 				1E9E313F202ED75E000892F6 /* LessonCardsViewController.swift in Sources */,
 				1EE282D5205D515900EBDF57 /* MainScreenViewController.swift in Sources */,
+				1EE6333920876AEE005254F7 /* AlertView.swift in Sources */,
 				1E5143D4205EA3B8004DD9B2 /* BookModuleTableCellModel.swift in Sources */,
 				1E9E3143202EE21F000892F6 /* LessonCardViewModel.swift in Sources */,
 				1E6ACAF02042EB6800714A5F /* TestButton.swift in Sources */,
+				1EDD77CA2083A2DD00A4425B /* UIDevice+Additions.swift in Sources */,
 				1EEE898B2053E52C00AD7CB0 /* TextStyles.swift in Sources */,
 				1EE282C62055363C00EBDF57 /* ReadingExerciseViewController.swift in Sources */,
 				1E5184FA207FD62400CAA841 /* AppProgressManager.swift in Sources */,
@@ -4821,6 +4852,7 @@
 				1ED69F70206FDAAF00228003 /* TrackProgressSlider.swift in Sources */,
 				1ECC02472079080700C91003 /* FontAdjustmentsObserving.swift in Sources */,
 				1E9E3134202CE4DC000892F6 /* WritingByExampleExercise.swift in Sources */,
+				1E8080652089D50000FBA5B1 /* SettingsManager.swift in Sources */,
 				1E9E314C202EE468000892F6 /* LessonSectionHeaderView.swift in Sources */,
 				1E9E3136202CE539000892F6 /* WritingByTranscriptionExercise.swift in Sources */,
 				1E9E3150202EE5A1000892F6 /* UIView+Designable.swift in Sources */,

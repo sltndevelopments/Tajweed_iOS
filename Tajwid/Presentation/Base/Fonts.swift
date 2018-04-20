@@ -12,6 +12,7 @@ enum FontNames {
     static let simpleArabic = "SimplifiedArabic"
     static let pnSemibold = "ProximaNova-Semibold"
     static let pn = "ProximaNova-Regular"
+    static let pnBold = "ProximaNova-Bold"
 }
 
 
