@@ -10,6 +10,7 @@
 		1E1395472087D32D00CE23D5 /* LocalNotifcationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1395462087D32D00CE23D5 /* LocalNotifcationsManager.swift */; };
 		1E36543E208F882C00C4C717 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36543D208F882B00C4C717 /* String+Localized.swift */; };
 		1E365445208F929C00C4C717 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E365447208F929C00C4C717 /* Localizable.strings */; };
+		1E36544A208FAB6500C4C717 /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E365449208FAB6400C4C717 /* Book.json */; };
 		1E5143CF205E9C78004DD9B2 /* BookModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */; };
 		1E5143D1205E9E6C004DD9B2 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D0205E9E6C004DD9B2 /* MenuItem.swift */; };
 		1E5143D4205EA3B8004DD9B2 /* BookModuleTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5143D3205EA3B8004DD9B2 /* BookModuleTableCellModel.swift */; };
@@ -1041,7 +1042,6 @@
 		1EDD77C22081FBBE00A4425B /* LessonProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */; };
 		1EDD77C4208203EA00A4425B /* BaseLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */; };
 		1EDD77C620820D0400A4425B /* ProgressNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */; };
-		1EDD77C820824DA300A4425B /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD77C720824DA300A4425B /* Book.json */; };
 		1EDD77CA2083A2DD00A4425B /* UIDevice+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */; };
 		1EDD77CD20851FFF00A4425B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */; };
 		1EE282C42055337C00EBDF57 /* Proxima Nova Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EE282C32055337C00EBDF57 /* Proxima Nova Semibold.otf */; };
@@ -1094,6 +1094,7 @@
 		1E36543D208F882B00C4C717 /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		1E365446208F929C00C4C717 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1E365448208F929E00C4C717 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E365449208FAB6400C4C717 /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
 		1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModuleViewController.swift; sourceTree = "<group>"; };
 		1E5143D0205E9E6C004DD9B2 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		1E5143D3205EA3B8004DD9B2 /* BookModuleTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModuleTableCellModel.swift; sourceTree = "<group>"; };
@@ -2131,7 +2132,6 @@
 		1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgressSlider.swift; sourceTree = "<group>"; };
 		1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLessonViewController.swift; sourceTree = "<group>"; };
 		1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNavigationViewController.swift; sourceTree = "<group>"; };
-		1EDD77C720824DA300A4425B /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
 		1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Additions.swift"; sourceTree = "<group>"; };
 		1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1EE282C32055337C00EBDF57 /* Proxima Nova Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.otf"; sourceTree = "<group>"; };
@@ -3471,7 +3471,7 @@
 		1EE282D0205D4F9D00EBDF57 /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				1EDD77C720824DA300A4425B /* Book.json */,
+				1E365449208FAB6400C4C717 /* Book.json */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -4174,6 +4174,7 @@
 				1EB281B3207BF0AE0020BDAB /* 1_9_13_10.mp3 in Resources */,
 				1EB281A0207BF0AE0020BDAB /* 2_1_2_19.mp3 in Resources */,
 				1EB27FC1207BF0AA0020BDAB /* 2_4_4_8.mp3 in Resources */,
+				1E36544A208FAB6500C4C717 /* Book.json in Resources */,
 				1EB27F49207BF0A90020BDAB /* 1_1_2.mp3 in Resources */,
 				1EB28178207BF0AE0020BDAB /* 1_12_19_5.mp3 in Resources */,
 				1EB27F2D207BF0A90020BDAB /* 1_12_19_6.mp3 in Resources */,
@@ -4563,7 +4564,6 @@
 				1EB281CB207BF0AE0020BDAB /* 2_2_5_7.mp3 in Resources */,
 				1EB280F1207BF0AC0020BDAB /* 3_5_3.mp3 in Resources */,
 				1EB27F11207BF0A90020BDAB /* 1_9_13_9.mp3 in Resources */,
-				1EDD77C820824DA300A4425B /* Book.json in Resources */,
 				1EB28099207BF0AC0020BDAB /* 1_11_18_13.mp3 in Resources */,
 				1EB281A3207BF0AE0020BDAB /* 3_7_1.mp3 in Resources */,
 				1EB28278207BF0B00020BDAB /* 1_7_13_10.mp3 in Resources */,

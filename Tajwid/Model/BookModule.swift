@@ -16,5 +16,13 @@ final class BookModule: Decodable {
     var path: String?
     
     var index: Int?
+    
+    var doneLessonsCount: Int {
+        var count = 0
+        for lesson in lessons {
+            if AppProgressManager.isItemDone(key: lesson.path) { count += 1 }
+        }
+        return count
+    }
  
 }

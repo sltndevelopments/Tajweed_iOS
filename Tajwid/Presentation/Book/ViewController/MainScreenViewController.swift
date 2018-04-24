@@ -33,6 +33,8 @@ class MainScreenViewController: UIViewController {
     
     private var doneLessonsCount = 0
     
+    private var firstAppearance = true
+    
     
     // MARK: - Init
     
@@ -82,6 +84,13 @@ class MainScreenViewController: UIViewController {
             animated: !isMovingToParentViewController)
         
         updateProgressSlider()
+        
+        if !firstAppearance {
+            createMenuItems()
+            menuView.items = menuItems
+        }
+        
+        firstAppearance = false
     }
     
     
@@ -136,7 +145,7 @@ class MainScreenViewController: UIViewController {
         
         for module in book.modules {
             let title = module.title
-            let subtitle = "ПРОЙДЕНО 1 ИЗ 12"
+            let subtitle = "ПРОЙДЕНО \(module.doneLessonsCount) ИЗ \(module.lessons.count)"
             
             let item = MenuItem(
                 type: .module(module),
