@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="310" height="73"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X3z-W7-juo">
-                    <rect key="frame" x="101" y="33" width="107" height="22"/>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X3z-W7-juo">
+                    <rect key="frame" x="101.5" y="33" width="107" height="22"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-RZ-8UR">
                             <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -42,8 +42,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Буква «АЛИФ»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-u0-Jqg">
-                            <rect key="frame" x="32" y="0.0" width="75" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Буква «АЛИФ»" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-u0-Jqg">
+                            <rect key="frame" x="32" y="4" width="75" height="14"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -54,7 +54,9 @@
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="1T6-wj-AAU" firstAttribute="bottom" secondItem="X3z-W7-juo" secondAttribute="bottom" constant="18" id="3eD-Mh-eah"/>
-                <constraint firstItem="X3z-W7-juo" firstAttribute="centerX" secondItem="1T6-wj-AAU" secondAttribute="centerX" id="5Tl-xo-9Dd"/>
+                <constraint firstItem="X3z-W7-juo" firstAttribute="centerX" secondItem="1T6-wj-AAU" secondAttribute="centerX" id="Cza-tE-VJa"/>
+                <constraint firstItem="X3z-W7-juo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1T6-wj-AAU" secondAttribute="leading" constant="25" id="IcC-Jg-u8g"/>
+                <constraint firstItem="1T6-wj-AAU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X3z-W7-juo" secondAttribute="trailing" constant="25" id="Jzz-hW-Om2"/>
                 <constraint firstItem="X3z-W7-juo" firstAttribute="top" secondItem="1T6-wj-AAU" secondAttribute="top" constant="33" id="obw-q4-2Ou"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

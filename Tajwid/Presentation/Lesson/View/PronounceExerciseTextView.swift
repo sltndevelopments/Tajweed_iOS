@@ -22,6 +22,8 @@ class PronounceExerciseTextView: UIView {
         static let hitEdgeInsets = UIEdgeInsets(top: -5, left: -10, bottom: -5, right: -10)
     }
     
+    typealias Phrase = (String, Int, Bool)
+    
     
     // MARK: - Public properties
     
@@ -34,13 +36,15 @@ class PronounceExerciseTextView: UIView {
     
     private var rowWords: [[String]]?
     
+    private var rowPhrases: [[Phrase]]?
+    
     private var wordsSeaparator = " "
     
     private var availableSpace = UIScreen.main.bounds.width
     
     private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberry
         
         return textStyle
@@ -48,7 +52,7 @@ class PronounceExerciseTextView: UIView {
     
     private var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberryLight
         
         return textStyle
@@ -58,6 +62,7 @@ class PronounceExerciseTextView: UIView {
     // MARK: - Public methods
     
     func setRow(_ rows: [String], withAvailableSpace space: CGFloat? = nil) {
+        self.rows = rows
         for row in rows {
             if row.contains(" ، ") {
                 wordsSeaparator = " ، "
@@ -69,6 +74,7 @@ class PronounceExerciseTextView: UIView {
         }
         
         rowWords = rowWords(from: rows)
+        rowPhrases = rowPhrases(from: rowWords)
         arrangeText()
     }
     
@@ -81,37 +87,89 @@ class PronounceExerciseTextView: UIView {
         return rows.map{ $0.components(separatedBy: wordsSeaparator) }
     }
     
-    private func arrangeText() {
-        subviews.forEach { $0.removeFromSuperview() }
+    private func rowPhrases(from rowWords: [[String]]?) -> [[Phrase]]? {
+        guard let rowWords = rowWords, !rowWords.isEmpty else { return nil }
         
-        guard let rowWords = rowWords else { return }
-        
-        var rightView: UIView = self
-        var topView: UIView = self
-        var space = availableSpace
-        var overallIndex = 0
-        
-        for (rowIndex, row) in rowWords.enumerated() {
+        var rowPhrases = [[Phrase]]()
+        var counter = 0
+        for row in rowWords {
+            var phrases = [Phrase]()
             for (wordIndex, word) in row.enumerated() {
-                /// последнее ли слово
                 let isLastInRow = wordIndex == row.count - 1
-                let isLastInText = isLastInRow && rowIndex == rowWords.count - 1
-                
-                /// вычисляем размер текста, который необходимо добавить
-                var textToAppend = word
+                var text = word
                 if !isLastInRow {
-                    textToAppend += wordsSeaparator
+                    text += wordsSeaparator
                 }
+
                 let attributedText = NSAttributedString(
-                    string: textToAppend,
+                    string: text,
                     attributes: textStyle.textAttributes)
-                let size = CGSize(width: CGFloat(1000), height: .greatestFiniteMagnitude)
-                let width = attributedText.boundingRect(
+                let size = CGSize(width: CGFloat(10000), height: .greatestFiniteMagnitude)
+                var width = attributedText.boundingRect(
                     with: size,
                     options: [.usesLineFragmentOrigin, .usesFontLeading],
                     context: nil)
                     .size
                     .width
+                width = CGFloat(ceil(Double(width)))
+                
+                let words: [String]
+                
+                if width > availableSpace {
+                    words = splitPhrase(word)
+                } else {
+                    words = [word]
+                }
+                
+                let count  = words.count
+                for (index, word) in words.enumerated() {
+                    let hasCompletion = index != (count - 1)
+                    phrases.append((word, counter, hasCompletion))
+                }
+                
+                counter += 1
+            }
+            
+            rowPhrases.append(phrases)
+        }
+        
+        return rowPhrases
+    }
+    
+    private func arrangeText() {
+        subviews.forEach { $0.removeFromSuperview() }
+        
+        guard let rowPhrases = rowPhrases else { return }
+        
+        var rightView: UIView = self
+        var topView: UIView = self
+        var space = availableSpace
+        
+        for (rowIndex, row) in rowPhrases.enumerated() {
+            for (phraseIndex, phrase) in row.enumerated() {
+                /// последнее ли слово
+                let isLastInRow = phraseIndex == row.count - 1
+                let isLastInText = isLastInRow && rowIndex == rowPhrases.count - 1
+                
+                let (word, index, hasCompletion) = phrase
+                
+                /// вычисляем размер текста, который необходимо добавить
+                var textToAppend = word
+                let separator = hasCompletion ? " " : wordsSeaparator
+                if !isLastInRow {
+                    textToAppend += separator
+                }
+                let attributedText = NSAttributedString(
+                    string: textToAppend,
+                    attributes: textStyle.textAttributes)
+                let size = CGSize(width: CGFloat(1000), height: .greatestFiniteMagnitude)
+                var width = attributedText.boundingRect(
+                    with: size,
+                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                    context: nil)
+                    .size
+                    .width
+                width = CGFloat(ceil(Double(width)))
                 
                 /// если не осталось достаточно места в строке, переносим
                 if space >= width {
@@ -119,15 +177,20 @@ class PronounceExerciseTextView: UIView {
                 } else {
                     topView = rightView
                     rightView = self
-                    space = availableSpace
+                    space = availableSpace - width
                 }
                 
                 let pushableLabel = PushableLabel(
                     text: word,
                     normalTextAttributes: textStyle.textAttributes,
                     highlitedTextAttributes: highlitedTextStyle.textAttributes)
-                pushableLabel.didPress = pushableLabelPressed(_:)
-                pushableLabel.tag = overallIndex
+                pushableLabel.didPress = { [weak self] label in
+                    self?.pushableLabelPressed(label)
+                }
+                pushableLabel.highlitedStateChanged = { [weak self] label in
+                    self?.pushableLabelDidChangeHighlitedState(label)
+                }
+                pushableLabel.tag = index
                 addSubview(pushableLabel)
                 pushableLabel.snp.makeConstraints { maker in
                     if rightView == self {
@@ -149,12 +212,11 @@ class PronounceExerciseTextView: UIView {
                     }
                 }
                 rightView = pushableLabel
-                overallIndex += 1
                 
                 if !isLastInRow {
                     let label = UILabel()
                     label.attributedText = NSAttributedString(
-                        string: wordsSeaparator,
+                        string: separator,
                         attributes: textStyle.textAttributes)
                     addSubview(label)
                     label.snp.makeConstraints { maker in
@@ -174,10 +236,46 @@ class PronounceExerciseTextView: UIView {
     }
     
     
+    private func splitPhrase(_ phrase: String) -> [String] {
+        let words = phrase.split(separator: " ")
+        let count = words.count
+        if count < 2 { return [phrase] }
+        
+        let middle = count / 2
+        var firstLine = ""
+        var secondLine = ""
+        for (index, word) in words.enumerated() {
+            if index < middle {
+                if !firstLine.isEmpty {
+                    firstLine.append(" ")
+                }
+                firstLine.append(String(word))
+            } else {
+                if !secondLine.isEmpty {
+                    secondLine.append(" ")
+                }
+                secondLine.append(String(word))
+            }
+        }
+        
+        return [firstLine, secondLine]
+    }
+    
+    
     // MARK: - Actions
     
     private func pushableLabelPressed(_ label: PushableLabel) {
         delegate?.textView(self, didSelectWord: label.text, at: label.tag)
+    }
+    
+    private func pushableLabelDidChangeHighlitedState(_ label: PushableLabel) {
+        for subview in subviews {
+            if let subview = subview as? PushableLabel {
+                if subview.tag == label.tag, subview !== label {
+                    subview.isHighlighted = label.isHighlighted
+                }
+            }
+        }
     }
     
 }

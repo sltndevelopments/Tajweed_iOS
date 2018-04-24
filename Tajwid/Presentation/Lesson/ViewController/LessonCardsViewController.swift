@@ -132,10 +132,10 @@ class LessonCardsViewController: BaseLessonViewController {
         super.viewDidAppear(animated)
         
 //        let vc = UIStoryboard.viewController(
-//            ofType: WritingByTranscriptionExerciseViewController.self,
+//            ofType: PronounceExerciseViewController.self,
 //            fromStoryboard: "Main")
 //        for exercise in lesson!.exercises {
-//            if let exercise = exercise as? WritingByTranscriptionExercise {
+//            if let exercise = exercise as? PronounceExercise {
 //                vc.exercise = exercise
 //            }
 //        }
@@ -166,8 +166,7 @@ class LessonCardsViewController: BaseLessonViewController {
             stopTimer()
         } else {
             if audioPlayer?.isPlaying != false {
-                audioPlayer?.pause()
-                playerView.isPlaying = false
+                pausePlaingSound()
             }
         }
     }
@@ -234,12 +233,15 @@ class LessonCardsViewController: BaseLessonViewController {
         }
     }
     
-    
-    // MARK: - Actions
-    
     @objc private func didTapCard(_ gestureRecognizer: UITapGestureRecognizer) {
         if let view = gestureRecognizer.view {
-            playSound(forCardAt: view.tag)
+            if view === currentPlayingCardView, audioPlayer?.isPlaying == true {
+                pausePlaingSound()
+            } else if view === currentPlayingCardView, audioPlayer != nil {
+                resumePlaingSound()
+            } else {
+                playSound(forCardAt: view.tag)
+            }
         }
     }
     
@@ -440,6 +442,16 @@ class LessonCardsViewController: BaseLessonViewController {
         startTimer()
     }
     
+    private func pausePlaingSound() {
+        audioPlayer?.pause()
+        playerView.isPlaying = false
+    }
+    
+    private func resumePlaingSound() {
+        audioPlayer?.play()
+        playerView.isPlaying = true
+    }
+
     
     // MARK: - Timer
     

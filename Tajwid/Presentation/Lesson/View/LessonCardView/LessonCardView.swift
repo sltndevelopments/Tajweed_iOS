@@ -76,7 +76,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var arabicTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         

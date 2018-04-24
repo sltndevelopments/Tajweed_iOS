@@ -82,7 +82,10 @@ class TestExerciseViewController: BaseLessonViewController, HasCompletion {
         
         for (index, button) in buttons.enumerated() {
             if index < exerciseCount {
-                button.setTitle(exercise.variants[index], for: .normal)
+                UIView.performWithoutAnimation {
+                    button.setTitle(exercise.variants[index], for: .normal)
+                    button.layoutIfNeeded()
+                }
             } else {
                 button.isHidden = true
             }

@@ -30,7 +30,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
         
         beginObservingFontAdjustments()
         
-        arabicTitleLabel.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 18)
+        arabicTitleLabel.font = FontCreator.fontWithName(FontNames.roboto, size: 18)
         titleLabel.font = FontCreator.boldMainFont(ofSize: 10)
     }
     
@@ -42,6 +42,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
     func update(with model: LessionSectionHeaderViewModel) {
         arabicTitleLabel.text = model.arabicText
         arabicTitleLabelView.isHidden = arabicTitleLabel.text?.isEmpty ?? true
+        titleLabel.numberOfLines = arabicTitleLabelView.isHidden ? 0 : 1
         titleLabel.text = model.text
     }
     

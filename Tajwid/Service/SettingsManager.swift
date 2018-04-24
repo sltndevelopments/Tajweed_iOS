@@ -2,7 +2,7 @@
 //  Created by Tagir Nafikov on 20/04/2018.
 //
 
-import Foundation
+import UIKit
 
 
 final class SettingsManager {
@@ -11,6 +11,8 @@ final class SettingsManager {
     
     private enum Constants {
         static let isReminderEnabledKey = "isReminderEnabledKey"
+        static let fontSizeAdditionKey = "fontSizeAdditionKey"
+        static let mainFontNameKey = "mainFontNameKey"
     }
     
     
@@ -26,4 +28,20 @@ final class SettingsManager {
         }
     }
     
+    static var fontSizeAddition: CGFloat {
+        get {
+            return CGFloat(UserDefaults.standard.float(forKey: Constants.fontSizeAdditionKey))
+        } set {
+            UserDefaults.standard.set(Float(newValue), forKey: Constants.fontSizeAdditionKey)
+        }
+    }
+
+    static var mainFontName: String? {
+        get {
+            return UserDefaults.standard.value(forKey: Constants.mainFontNameKey) as? String
+        } set {
+            UserDefaults.standard.set(newValue, forKey: Constants.mainFontNameKey)
+        }
+    }
+
 }

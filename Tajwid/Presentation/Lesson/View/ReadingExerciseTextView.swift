@@ -36,7 +36,7 @@ class ReadingExerciseTextView: UIView {
     
     private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberry
         
         return textStyle
@@ -44,7 +44,7 @@ class ReadingExerciseTextView: UIView {
     
     private var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberryLight
         
         return textStyle
@@ -101,17 +101,9 @@ class ReadingExerciseTextView: UIView {
         
         for (rowIndex, row) in rowWords.enumerated() {
             for (wordIndex, word) in row.enumerated() {
-                if word == "وَ" {
-                    print(" ")
-                }
-                
                 /// последнее ли слово
                 let isLastInRow = wordIndex == row.count - 1
                 let isLastInText = isLastInRow && rowIndex == rowWords.count - 1
-                
-                if isLastInText {
-                    print(" ")
-                }
                 
                 /// вычисляем размер текста, который необходимо добавить
                 var textToAppend = word
@@ -130,15 +122,13 @@ class ReadingExerciseTextView: UIView {
                     .width
                 width = CGFloat(ceilf(Float(width)))
                 
-                print(width)
-                
                 /// если не осталось достаточно места в строке, переносим
                 if space >= width {
                     space -= width
                 } else {
                     topView = rightView
                     rightView = self
-                    space = availableSpace
+                    space = availableSpace - width
                 }
                 
                 let isComma = word == "،"

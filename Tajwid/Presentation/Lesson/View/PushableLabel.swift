@@ -25,6 +25,8 @@ class PushableLabel: UILabel {
         }
     }
     
+    var highlitedStateChanged: PushableLabelClosure?
+
     
     // MARK: - Private properties
     
@@ -80,11 +82,22 @@ class PushableLabel: UILabel {
         return button.bounds.contains(convertedPoint) ? button : nil
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                setupTextForHighlitedState()
+            } else {
+                setupTextForNormalState()
+            }
+        }
+    }
+    
     
     // MARK: - Private methods
     
     private func configure() {
         isUserInteractionEnabled = true
+        numberOfLines = 0
         
         setupTextForNormalState()
         configureButton()
@@ -100,12 +113,11 @@ class PushableLabel: UILabel {
             self,
             action: #selector(buttonPressed),
             for: UIControlEvents.touchUpInside)
-        button.highlitedStateChanged = { [weak self] isHighlited in
-            if isHighlited {
-                self?.setupTextForHighlitedState()
-            } else {
-                self?.setupTextForNormalState()
-            }
+        button.highlitedStateChanged = { [weak self] isButtonHighlited in
+            guard let `self` = self else { return }
+            
+            self.isHighlighted = isButtonHighlited
+            self.highlitedStateChanged?(self)
         }
         addSubview(button)
         button.snp.makeConstraints { [weak self] maker in

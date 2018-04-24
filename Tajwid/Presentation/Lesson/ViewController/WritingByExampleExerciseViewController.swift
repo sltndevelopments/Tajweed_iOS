@@ -36,7 +36,7 @@ class WritingByExampleExerciseViewController: BaseLessonViewController, HasCompl
     
     private var bigTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 100)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 100)
         textStyle.color = .blueberry
         textStyle.alignment = .center
         
@@ -45,7 +45,7 @@ class WritingByExampleExerciseViewController: BaseLessonViewController, HasCompl
 
     private var smallTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         textStyle.minimumLineHeight = 70

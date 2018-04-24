@@ -28,7 +28,11 @@ class PronounceExerciseViewController: BaseLessonViewController, HasCompletion {
     
     // MARK: - Public properties
     
-    var exercise: PronounceExercise!
+    var exercise: PronounceExercise! {
+        didSet {
+            correctExerciseText()
+        }
+    }
     
     var completion: VoidClosure?
     
@@ -100,7 +104,22 @@ class PronounceExerciseViewController: BaseLessonViewController, HasCompletion {
             hideFontSettingsView()
         }
     }
+ 
     
+    // MARK: - Helpers
+    
+    private func correctExerciseText() {
+        var rows = [String]()
+        
+        for row in exercise.rows {
+            var correctedRow = row.replacingOccurrences(of: " ،", with: " ، ")
+            correctedRow = correctedRow.replacingOccurrences(of: " ،  ", with: " ، ")
+            rows.append(correctedRow)
+        }
+        
+        exercise.rows = rows
+    }
+
 }
 
 

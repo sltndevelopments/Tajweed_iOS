@@ -5,7 +5,7 @@
 import UIKit
 
 
-enum FontName {
+enum FontName: String {
     case avenirNext
     case georgia
     
@@ -47,44 +47,58 @@ final class FontCreator  {
     
     // MARK: - Class public properties
     
-    static var fontSizeAddition: CGFloat = 0 {
-        willSet {
+    static var fontSizeAddition: CGFloat {
+        get {
+            return SettingsManager.fontSizeAddition
+        }
+        set {
+            if newValue == fontSizeAddition { return }
+            
             let difference = newValue - fontSizeAddition
             
-            if difference != 0 {
-                for object in observers.objectEnumerator() {
-                    if let observer = object as? FontAdjustmentsObserving {
-                        observer.adjustFontSize(to: difference)
-                    }
+            for object in observers.objectEnumerator() {
+                if let observer = object as? FontAdjustmentsObserving {
+                    observer.adjustFontSize(to: difference)
                 }
             }
-        }
-        didSet {
+            
+            SettingsManager.fontSizeAddition = newValue
+            
             for object in observers.objectEnumerator() {
                 if let observer = object as? FontAdjustmentsObserving {
                     observer.fontSettingsChanged()
                 }
             }
+
         }
     }
     
-    static var mainFontName = FontName.avenirNext {
-        willSet {
-            if mainFontName != newValue {
-                let oldNames = mainFontName.allNames
-                let newNames = newValue.allNames
-                for (index, oldName) in oldNames.enumerated() {
-                    let newName = newNames[index]
-                    
-                    for object in observers.objectEnumerator() {
-                        if let observer = object as? FontAdjustmentsObserving {
-                            observer.changeFont(withName: oldName, to: newName)
-                        }
+    static var mainFontName: FontName {
+        get {
+            if let fontNameString = SettingsManager.mainFontName,
+                let fontName = FontName(rawValue: fontNameString) {
+                return fontName
+            }
+            
+            return FontName.avenirNext
+        }
+        set {
+            if mainFontName == newValue { return }
+            
+            let oldNames = mainFontName.allNames
+            let newNames = newValue.allNames
+            for (index, oldName) in oldNames.enumerated() {
+                let newName = newNames[index]
+                
+                for object in observers.objectEnumerator() {
+                    if let observer = object as? FontAdjustmentsObserving {
+                        observer.changeFont(withName: oldName, to: newName)
                     }
                 }
             }
-        }
-        didSet {
+            
+            SettingsManager.mainFontName = newValue.rawValue
+            
             for object in observers.objectEnumerator() {
                 if let observer = object as? FontAdjustmentsObserving {
                     observer.fontSettingsChanged()

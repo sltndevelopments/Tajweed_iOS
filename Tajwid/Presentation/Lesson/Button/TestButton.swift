@@ -48,7 +48,7 @@ class TestButton: UIButton {
         beginObservingFontAdjustments()
         
         titleLabel?.adjustsFontSizeToFitWidth = true
-        titleLabel?.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        titleLabel?.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
         borderWidth = 1
         cornerRadius = 3
         
@@ -103,7 +103,7 @@ extension TestButton: FontAdjustmentsObserving {
     func changeFont(withName name: String, to anotherFontName: String) { }
     
     func fontSettingsChanged() {
-        titleLabel?.font = FontCreator.fontWithName(FontNames.simpleArabic, size: 40)
+        titleLabel?.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
     }
     
 }
