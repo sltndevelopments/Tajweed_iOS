@@ -157,7 +157,9 @@ class MainScreenViewController: UIViewController {
     
     private func updateProgressSlider() {
         progressSlider.value = Float(updateDoneLessonsCounter())
-        progressLabel.text = "ВЫ ПРОШЛИ \(doneLessonsCount) УРОК ИЗ \(book.lessons.count)"
+        let lessons = "lesson".localizedPlural(for: doneLessonsCount)
+        progressLabel.text =
+        "ВЫ ПРОШЛИ \(doneLessonsCount) \(lessons.uppercased()) ИЗ \(book.lessons.count)"
     }
     
     

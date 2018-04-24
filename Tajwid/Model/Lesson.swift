@@ -27,7 +27,7 @@ final class Lesson: Decodable, CustomStringConvertible {
         return cards
     }()
     
-    var lessonsCount: Int {
+    var cardsCount: Int {
         var count = 0
         sections.forEach { count += $0.cards.count }
         return count
@@ -41,8 +41,13 @@ final class Lesson: Decodable, CustomStringConvertible {
     // MARK: - CustomStringConvertible
     
     var description: String {
-        let exercisesString = exercises.isEmpty ? "БЕЗ УПРАЖНЕНИЙ" : "\(exercises.count) УПРАЖНЕНИЯ"
-        return "\(lessonsCount) КАРТОЧКИ, \(exercisesString)"
+        let exercisesCount = exercises.count
+        let exercisesPluralString = "exercise".localizedPlural(for: exercisesCount).uppercased()
+        let exercisesString = exercises.isEmpty ? "БЕЗ УПРАЖНЕНИЙ" : "\(exercisesCount) \(exercisesPluralString)"
+        let cardsCount = self.cardsCount
+        let cardsPluralString = "card".localizedPlural(for: cardsCount).uppercased()
+        
+        return "\(cardsCount) \(cardsPluralString), \(exercisesString)"
     }
 
     
