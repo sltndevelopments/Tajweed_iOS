@@ -13,6 +13,16 @@ class TestButton: UIButton {
         case normal, right, wrong
     }
     
+    private enum Constants {
+        static let titleInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    
+    // MARK: - Public class properties
+    
+    static var recommendedWidth = UIScreen.main.bounds.width - 30
+    static var minimumHeight = CGFloat(70)
+
     
     // MARK: - Public properties
     
@@ -20,6 +30,19 @@ class TestButton: UIButton {
         didSet {
             setupColors()
         }
+    }
+    
+    var fontSize = CGFloat(40) {
+        didSet {
+            titleLabel?.font = defaultFont
+        }
+    }
+
+    
+    // MARK: - Private properties
+    
+    private var defaultFont: UIFont {
+        return FontCreator.fontWithName(FontNames.roboto, size: fontSize) ?? UIFont()
     }
     
 
@@ -42,13 +65,51 @@ class TestButton: UIButton {
     }
     
     
+    // MARK: - Public methods
+    
+    func heightForTitle(_ title: String) -> CGFloat {
+        let width = TestButton.recommendedWidth - titleEdgeInsets.left - titleEdgeInsets.right
+        let attributedText = NSAttributedString(
+            string: title,
+            attributes: [.font: defaultFont])
+        let size = CGSize(width: width, height: .greatestFiniteMagnitude)
+        var height = attributedText.boundingRect(
+            with: size,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil)
+            .size
+            .height
+        height = CGFloat(ceil(Double(height)))
+        height += titleEdgeInsets.top
+        height += titleEdgeInsets.bottom
+        height = max(height, TestButton.minimumHeight)
+        
+        return height
+    }
+    
+
+    // MARK: - Override
+    
+    override var intrinsicContentSize: CGSize {
+        guard let text = titleLabel?.text
+            else {
+                return CGSize(width: TestButton.recommendedWidth, height: TestButton.minimumHeight)
+        }
+        
+        let height = heightForTitle(text)
+        return CGSize(width: TestButton.recommendedWidth, height: height)
+    }
+    
     // MARK: - Configuration
     
     private func configure() {
         beginObservingFontAdjustments()
         
-        titleLabel?.adjustsFontSizeToFitWidth = true
-        titleLabel?.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
+        titleEdgeInsets = Constants.titleInsets
+        
+        titleLabel?.lineBreakMode = .byWordWrapping
+        titleLabel?.textAlignment = .center
+        titleLabel?.font = defaultFont
         borderWidth = 1
         cornerRadius = 3
         
@@ -84,7 +145,7 @@ class TestButton: UIButton {
             return .blueberry
         }
     }
-
+    
 }
 
 
@@ -103,7 +164,7 @@ extension TestButton: FontAdjustmentsObserving {
     func changeFont(withName name: String, to anotherFontName: String) { }
     
     func fontSettingsChanged() {
-        titleLabel?.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
+        titleLabel?.font = defaultFont
     }
     
 }

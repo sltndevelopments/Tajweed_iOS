@@ -8,6 +8,14 @@ import Globus
 
 class TestExerciseViewController: BaseLessonViewController, HasCompletion {
     
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let buttonMinimumHeight = CGFloat(70)
+        static let buttonDefaultFontSize = CGFloat(40)
+    }
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -16,6 +24,8 @@ class TestExerciseViewController: BaseLessonViewController, HasCompletion {
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet var buttons: [TestButton]!
     @IBOutlet weak var actionButton: ImageTitleVerticalButton!
+    @IBOutlet weak var leftInsetConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightInsetConstraint: NSLayoutConstraint!
     
     
     // MARK: - Public properties
@@ -68,6 +78,10 @@ class TestExerciseViewController: BaseLessonViewController, HasCompletion {
     // MARK: - Configuration
     
     private func configure() {
+        TestButton.recommendedWidth =
+            UIScreen.main.bounds.width - leftInsetConstraint.constant - rightInsetConstraint.constant
+        TestButton.minimumHeight = Constants.buttonMinimumHeight
+        
         let barButtonItem = UIBarButtonItem(
             image: #imageLiteral(resourceName: "font-settings"),
             style: .plain,
@@ -80,7 +94,27 @@ class TestExerciseViewController: BaseLessonViewController, HasCompletion {
 
         let exerciseCount = exercise.variants.count
         
+        /// нужно вычислить общий для всех кнопок на этом экране размер шрифта
+        /// его нужно варьировать, иначе длинные варианты ответа будут занимать слишком много места
+        var maxHeight = CGFloat(0)
+        for variant in exercise.variants {
+            let button = buttons[0]
+            let height = button.heightForTitle(variant)
+            maxHeight = max(maxHeight, height)
+        }
+        let multilpier = maxHeight / TestButton.minimumHeight
+        var fontSize = Constants.buttonDefaultFontSize
+        if multilpier > 4 {
+            fontSize -= 20
+        } else if multilpier > 3 {
+            fontSize -= 15
+        } else if multilpier > 1 {
+            fontSize -= 10
+        }
+        
         for (index, button) in buttons.enumerated() {
+            button.fontSize = fontSize
+            
             if index < exerciseCount {
                 UIView.performWithoutAnimation {
                     button.setTitle(exercise.variants[index], for: .normal)

@@ -434,13 +434,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-V2-Wv8">
-                                                <rect key="frame" x="25" y="126.5" width="325" height="340"/>
+                                                <rect key="frame" x="25" y="126.5" width="325" height="192"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iw1-7H-D2g" customClass="TestButton" customModule="Tajwid" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="70"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="Hdl-mC-MvC"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="بث">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -461,10 +458,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfe-OL-ueP" customClass="TestButton" customModule="Tajwid" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="90" width="325" height="70"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="dEP-GF-aAn"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="53" width="325" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="تب">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -485,10 +479,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGp-Y8-X1A" customClass="TestButton" customModule="Tajwid" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="180" width="325" height="70"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="Y1g-Mb-GlM"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="106" width="325" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="ثبت">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -509,10 +500,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-a3-f0w" customClass="TestButton" customModule="Tajwid" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="270" width="325" height="70"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="8Do-dx-dFJ"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="159" width="325" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="تبت">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -581,6 +569,8 @@
                     <connections>
                         <outlet property="actionButton" destination="U64-4G-agD" id="hi0-Q0-gdV"/>
                         <outlet property="buttonsStackView" destination="yWb-V2-Wv8" id="KqO-JN-gHV"/>
+                        <outlet property="leftInsetConstraint" destination="lHD-MD-cZl" id="XOm-oL-vG1"/>
+                        <outlet property="rightInsetConstraint" destination="WUX-Fm-br6" id="Oj8-At-J8r"/>
                         <outlet property="scrollView" destination="2N1-cu-m53" id="HDG-F1-k99"/>
                         <outlet property="textLabel" destination="GkZ-5O-y0E" id="QjS-3B-F1O"/>
                         <outlet property="titleLabel" destination="X7H-ID-2K8" id="6SU-YE-osh"/>
