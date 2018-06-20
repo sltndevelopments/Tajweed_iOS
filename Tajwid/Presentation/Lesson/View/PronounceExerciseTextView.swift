@@ -44,7 +44,7 @@ class PronounceExerciseTextView: UIView {
     
     private var textStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
         textStyle.color = .blueberry
         
         return textStyle
@@ -52,7 +52,7 @@ class PronounceExerciseTextView: UIView {
     
     private var highlitedTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
         textStyle.color = .blueberryLight
         
         return textStyle

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1E9E2F7A202728E7000892F6"
-               BuildableName = "Tajwid.app"
+               BuildableName = "&#x422;&#x430;&#x434;&#x436;&#x432;&#x438;&#x434;.app"
                BlueprintName = "Tajwid"
                ReferencedContainer = "container:Tajwid.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E9E2F7A202728E7000892F6"
-            BuildableName = "Tajwid.app"
+            BuildableName = "&#x422;&#x430;&#x434;&#x436;&#x432;&#x438;&#x434;.app"
             BlueprintName = "Tajwid"
             ReferencedContainer = "container:Tajwid.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E9E2F7A202728E7000892F6"
-            BuildableName = "Tajwid.app"
+            BuildableName = "&#x422;&#x430;&#x434;&#x436;&#x432;&#x438;&#x434;.app"
             BlueprintName = "Tajwid"
             ReferencedContainer = "container:Tajwid.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E9E2F7A202728E7000892F6"
-            BuildableName = "Tajwid.app"
+            BuildableName = "&#x422;&#x430;&#x434;&#x436;&#x432;&#x438;&#x434;.app"
             BlueprintName = "Tajwid"
             ReferencedContainer = "container:Tajwid.xcodeproj">
          </BuildableReference>

@@ -30,7 +30,7 @@ class LessonSectionHeaderView: UIView, ModelTransfer {
         
         beginObservingFontAdjustments()
         
-        arabicTitleLabel.font = FontCreator.fontWithName(FontNames.roboto, size: 18)
+        arabicTitleLabel.font = FontCreator.fontWithName(FontNames.arabic, size: 18)
         titleLabel.font = FontCreator.boldMainFont(ofSize: 10)
     }
     

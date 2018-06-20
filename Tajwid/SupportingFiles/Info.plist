@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>15</string>
+	<string>20</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,6 +36,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PDMS_Saleem_QuranFont-signed.ttf</string>
+		<string>Al Qalam Quran.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>Proxima Nova Regular.otf</string>
 		<string>Proxima Nova Bold.otf</string>

@@ -42,7 +42,7 @@ class TestButton: UIButton {
     // MARK: - Private properties
     
     private var defaultFont: UIFont {
-        return FontCreator.fontWithName(FontNames.roboto, size: fontSize) ?? UIFont()
+        return FontCreator.fontWithName(FontNames.arabic, size: fontSize) ?? UIFont()
     }
     
 
@@ -131,7 +131,7 @@ class TestButton: UIButton {
         case .right:
             return .shamrockGreen
         case .wrong:
-            return .blueberry
+            return .redOne
         }
     }
     
@@ -142,7 +142,7 @@ class TestButton: UIButton {
         case .right:
             return .shamrockGreen
         case .wrong:
-            return .blueberry
+            return .redOne
         }
     }
     

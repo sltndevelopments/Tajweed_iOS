@@ -76,7 +76,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     static var arabicTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
-        textStyle.font = FontCreator.fontWithName(FontNames.roboto, size: 40)
+        textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
         textStyle.color = .blueberry
         textStyle.alignment = .right
         
@@ -278,6 +278,7 @@ class LessonCardView: UIView, ModelTransfer {
         let label = UILabel()
         label.numberOfLines = 0
         label.attributedText = attributedText
+        label.clipsToBounds = false
         
         addSubview(label)
         label.snp.makeConstraints { maker in

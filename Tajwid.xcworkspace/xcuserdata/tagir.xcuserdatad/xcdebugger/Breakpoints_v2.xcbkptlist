@@ -9,14 +9,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Lesson/ViewController/PronounceExerciseViewController.swift"
-            timestampString = "546185039.509204"
+            filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
+            timestampString = "551178562.586604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "correctExerciseText()"
-            landmarkType = "7">
+            startingLineNumber = "282"
+            endingLineNumber = "282">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,12 +23,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tajwid/Presentation/Lesson/View/PronounceExerciseTextView.swift"
-            timestampString = "546286454.698428"
+            filePath = "Tajwid/Presentation/Lesson/ViewController/WritingByTranscriptionExerciseViewController.swift"
+            timestampString = "551178562.586702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282">
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "configure()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

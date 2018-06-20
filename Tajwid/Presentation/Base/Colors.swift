@@ -80,5 +80,10 @@ extension UIColor {
         return color
     }
 
+    static var redOne: UIColor {
+        let color = UIColor(hexString: "#e14949") ?? defaultColor
+        return color
+    }
+
 }
 

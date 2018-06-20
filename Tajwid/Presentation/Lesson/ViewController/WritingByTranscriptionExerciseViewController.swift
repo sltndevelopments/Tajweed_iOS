@@ -56,7 +56,7 @@ class WritingByTranscriptionExerciseViewController: BaseLessonViewController, Ha
         }
 
         let textStyle = GLBTextStyle()
-        textStyle.font = UIFont(name: FontNames.roboto, size: fontSize)
+        textStyle.font = UIFont(name: FontNames.arabic, size: fontSize)
         textStyle.color = .blueberry
         
         return textStyle
