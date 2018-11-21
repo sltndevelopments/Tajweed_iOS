@@ -85,5 +85,15 @@ extension UIColor {
         return color
     }
 
+    static var redTwo: UIColor {
+        let color = UIColor(hexString: "#E92530") ?? defaultColor
+        return color
+    }
+
+    static var blueOne: UIColor {
+        let color = UIColor(hexString: "#1FADE3") ?? defaultColor
+        return color
+    }
+
 }
 

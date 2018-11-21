@@ -53,6 +53,15 @@ class LessonCardView: UIView, ModelTransfer {
         case sound
     }
     
+    private enum ArabicLetterHighlitingType {
+        case red, blue
+    }
+    
+    private struct ArabicLetterHighlitingSearchResult {
+        var type: ArabicLetterHighlitingType
+        var range: NSRange
+    }
+    
     
     // MARK: - Class private properties
     
@@ -83,6 +92,24 @@ class LessonCardView: UIView, ModelTransfer {
         return textStyle
     }
     
+    static var arabicBlueTextStyle: GLBTextStyle {
+        let textStyle = GLBTextStyle()
+        textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
+        textStyle.color = .blueOne
+        textStyle.alignment = .right
+        
+        return textStyle
+    }
+    
+    static var arabicRedTextStyle: GLBTextStyle {
+        let textStyle = GLBTextStyle()
+        textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
+        textStyle.color = .redTwo
+        textStyle.alignment = .right
+        
+        return textStyle
+    }
+
     static var titleTextStyle: GLBTextStyle {
         let textStyle = GLBTextStyle()
         textStyle.font = FontCreator.mainFont(ofSize: 24)
@@ -112,6 +139,7 @@ class LessonCardView: UIView, ModelTransfer {
     // MARK: - Private properties
     
     private var soundImageView: UIImageView?
+    private var path: String?
     
     
     // MARK: - ModelTransfer
@@ -120,6 +148,7 @@ class LessonCardView: UIView, ModelTransfer {
     
     func update(with model: LessonCardViewModel) {
         tag = model.index ?? 0
+        path = model.path
         
         subviews.forEach { $0.removeFromSuperview() }
         
@@ -257,24 +286,28 @@ class LessonCardView: UIView, ModelTransfer {
         text: String,
         previousView: UIView?) -> UILabel? {
         
-        var optionalTextStyle: GLBTextStyle? = nil
+        var optionalAttributedText: NSAttributedString? = nil
         
         switch element {
         case .plainText:
-            optionalTextStyle = LessonCardView.plainTextStyle
+            let textStyle = LessonCardView.plainTextStyle
+            optionalAttributedText = NSAttributedString(string: text, attributes: textStyle.textAttributes)
         case .highlitedText:
-            optionalTextStyle = LessonCardView.highlitedTextStyle
+            let textStyle = LessonCardView.highlitedTextStyle
+            optionalAttributedText = NSAttributedString(string: text, attributes: textStyle.textAttributes)
         case .arabicText:
-            optionalTextStyle = LessonCardView.arabicTextStyle
+            let textStyle = LessonCardView.arabicTextStyle
+            // костыль
+            if path == "3_20_1", text.count <= 3, let font = textStyle.font {
+                textStyle.font = UIFont(name: font.fontName, size: font.pointSize / 2)
+            }
+            optionalAttributedText = attributedText(forArabicText: text, defaultTextStyle: textStyle)
         default:
             break
         }
         
-        guard let textStyle = optionalTextStyle else { return nil }
+        guard let attributedText = optionalAttributedText else { return nil }
         
-        let attributedText = NSAttributedString(
-            string: text,
-            attributes: textStyle.textAttributes)
         let label = UILabel()
         label.numberOfLines = 0
         label.attributedText = attributedText
@@ -366,58 +399,68 @@ class LessonCardView: UIView, ModelTransfer {
         }
     }
     
-//    // MARK: - Class public methods
-//    
-//    class func height(for model: LessonCardViewModel) -> CGFloat {
-//        var totalHeight = CGFloat(0)
-//        
-//        var previous: Element? = nil
-//        var current: Element
-//        
-//        if let title = model.title {
-//            current = .title
-//            totalHeight += verticalSpace(between: previous, and: current)
-//            totalHeight += height(
-//                for: current,
-//                with: title,
-//                attributes: titleTextStyle.textAttributes)
-//            
-//            previous = current
-//        }
-//        
-//        for contentItemValue in model.contentItemsValues {
-//            current = element(for: contentItemValue)
-//            totalHeight += verticalSpace(between: previous, and: current)
-//            
-//            switch contentItemValue {
-//            case .arabic(let text):
-//                totalHeight += height(
-//                    for: current,
-//                    with: text,
-//                    attributes: arabicTextStyle.textAttributes)
-//            case .plainText(let text):
-//                totalHeight += height(
-//                    for: current,
-//                    with: text,
-//                    attributes: plainTextStyle.textAttributes)
-//            case .highlitedText(let text):
-//                totalHeight += height(
-//                    for: current,
-//                    with: text,
-//                    attributes: highlitedTextStyle.textAttributes)
-//            default:
-//                break
-//            }
-//            
-//            previous = current
-//        }
-//        
-//        totalHeight += verticalSpace(between: previous, and: .check)
-//        totalHeight += Constants.checkHeight
-//        totalHeight += verticalSpace(between: .check, and: nil)
-//        
-//        return totalHeight
-//    }
+    private func attributedText(forArabicText text: String, defaultTextStyle: GLBTextStyle) -> NSAttributedString {
+        guard let regexForRed = try? NSRegularExpression(pattern: "<;[^(;>)]+;>", options: .caseInsensitive),
+            let regexForBlue = try? NSRegularExpression(pattern: "<:[^(:>)]+:>", options: .caseInsensitive)
+            else {
+                return NSAttributedString(string: text, attributes: defaultTextStyle.textAttributes)
+        }
+        
+        let string = text as NSString
+        let stringRange = NSRange(location: 0, length: string.length)
+        let resultsForRed = regexForRed.matches(in: text, options: [], range: stringRange)
+        let resultsForBlue = regexForBlue.matches(in: text, options: [], range: stringRange)
+        
+        var allResults: [ArabicLetterHighlitingSearchResult] =
+            resultsForRed.map { ArabicLetterHighlitingSearchResult(type: .red, range: $0.range) }
+        allResults.append(contentsOf: resultsForBlue.map { ArabicLetterHighlitingSearchResult(type: .blue, range: $0.range) })
+        allResults = allResults.sorted { $0.range.location < $1.range.location }
+        
+        var resultsAfter = [ArabicLetterHighlitingSearchResult]()
+        var offset = 0
+        for result in allResults {
+            let range = result.range
+            let newRange = NSMakeRange(range.location - offset, range.length - 4)
+            resultsAfter.append(ArabicLetterHighlitingSearchResult(type: result.type, range: newRange))
+            offset += 4
+        }
+        
+        var newText = text
+        newText = newText.replacingOccurrences(of: "<:", with: "")
+        newText = newText.replacingOccurrences(of: ":>", with: "")
+        newText = newText.replacingOccurrences(of: "<;", with: "")
+        newText = newText.replacingOccurrences(of: ";>", with: "")
+        newText = newText.replacingOccurrences(of: "ِّ;>", with: "ِّ")
+        newText = newText.replacingOccurrences(of: "<:ً", with: "ً")
+        newText = newText.replacingOccurrences(of: "<:ْ", with: "ْ")
+        newText = newText.replacingOccurrences(of: "<:ٌ", with: "ٌ")
+        newText = newText.replacingOccurrences(of: "<:ٍ", with: "ٍ")
+        newText = newText.replacingOccurrences(of: "<:ًّ", with: "ًّ")
+        newText = newText.replacingOccurrences(of: ":>ْ", with: "ْ")
+        newText = newText.replacingOccurrences(of: "<:َ", with: "َ")
+        newText = newText.replacingOccurrences(of: "<:ُ", with: "ُ")
+        newText = newText.replacingOccurrences(of: ":>ِ", with: "ِ")
+        newText = newText.replacingOccurrences(of: ":>َ", with: "َ")
+        newText = newText.replacingOccurrences(of: "<;ُ", with: "ُ")
+        newText = newText.replacingOccurrences(of: "<;َ", with: "َ")
+        newText = newText.replacingOccurrences(of: "<;ْ", with: "ْ")
+        newText = newText.replacingOccurrences(of: "<;ِ", with: "ِ")
+        newText = newText.replacingOccurrences(of: ";>ِ", with: "ِ")
+        newText = newText.replacingOccurrences(of: ";>َ", with: "َ")
+        newText = newText.replacingOccurrences(of: ";>ُ", with: "ُ")
+        newText = newText.replacingOccurrences(of: "<:ِ", with: "ِ")
+        newText = newText.replacingOccurrences(of: "<;َّ", with: "َّ")
+        newText = newText.replacingOccurrences(of: "<;ِّ", with: "ِّ")
+        
+        let attrbiutedString = NSMutableAttributedString(string: newText, attributes: defaultTextStyle.textAttributes)
+        for result in resultsAfter {
+            let textStyle = result.type == .red ? LessonCardView.arabicRedTextStyle : LessonCardView.arabicBlueTextStyle
+            attrbiutedString.addAttributes(textStyle.textAttributes!, range: result.range)
+        }
+        
+        return attrbiutedString
+    }
+    
     
     // MARK: - Actions
     
