@@ -152,15 +152,12 @@ class TestExerciseViewController: BaseLessonViewController, HasCompletion {
 
         if sender.tag == correctVariantIndex {
             sender.testButtonState = .right
+            buttons.forEach { $0.isEnabled = false }
+            actionButton.isHidden = false
         } else {
             sender.testButtonState = .wrong
-            let correctVariantButton = buttons[correctVariantIndex]
-            correctVariantButton.testButtonState = .right
         }
 
-        buttons.forEach { $0.isEnabled = false }
-
-        actionButton.isHidden = false
     }
 
     @IBAction func actionButtonPressed() {

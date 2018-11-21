@@ -188,15 +188,7 @@ class ReadingExerciseTextView: UIView {
         }
     }
     
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
-        for subview in subviews where subview is PushableLabel {
-            print(subview.frame.width)
-        }
-    }
-    
     // MARK: - Actions
     
     private func pushableLabelPressed(_ label: PushableLabel) {

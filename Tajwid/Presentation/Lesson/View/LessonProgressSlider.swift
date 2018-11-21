@@ -19,10 +19,6 @@ final class LessonProgressSlider: UISlider {
         configure()
     }
     
-    deinit {
-        print("deinit slider")
-    }
-    
     
     // MARK: - Private methods
     

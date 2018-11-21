@@ -23,7 +23,8 @@ final class ReadingExercise: Exercise {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         text = try values.decode(String.self, forKey: .text)
-        correctWords = try values.decode([String].self, forKey: .correctWords)
+        let rawCorrectWords = try values.decode([String].self, forKey: .correctWords)
+        correctWords = rawCorrectWords.map { $0.trimmingCharacters(in: CharacterSet.whitespaces) }
         
         try super.init(from: decoder)
     }

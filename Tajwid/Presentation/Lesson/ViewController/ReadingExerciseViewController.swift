@@ -38,6 +38,8 @@ class ReadingExerciseViewController: BaseLessonViewController, HasCompletion {
     private var availableSpace: CGFloat {
         return UIScreen.main.bounds.width - textViewLeading.constant - textViewTrailing.constant
     }
+    
+    private var selectedCorrectWordIndexes = [Int]()
 
     
     // MARK: - Init
@@ -79,6 +81,7 @@ class ReadingExerciseViewController: BaseLessonViewController, HasCompletion {
         
         actionButton.customImage = #imageLiteral(resourceName: "next")
         actionButton.customTitle = "ДАЛЕЕ"
+        actionButton.isHidden = true
     }
     
     private func configureTitleLabel() {
@@ -108,15 +111,15 @@ class ReadingExerciseViewController: BaseLessonViewController, HasCompletion {
     // MARK: - Actions
     
     func didSelectWordWithIndex(_ index: Int) {
-        print(index)
-        
         if correctWordIndexes.contains(index) {
+            selectedCorrectWordIndexes.append(index)
             textView.markWords(at: [index], asCorrect: true)
+            
+            if selectedCorrectWordIndexes.count == correctWordIndexes.count {
+                actionButton.isHidden = false
+            }
         } else {
             textView.markWords(at: [index], asCorrect: false)
-            textView.markWords(at: correctWordIndexes, asCorrect: true)
-
-            textView.isUserInteractionEnabled = false
         }
     }
     
