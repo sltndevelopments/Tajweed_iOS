@@ -80,7 +80,7 @@ class ReadingExerciseTextView: UIView {
     private func rows(from text: String?) -> [String]? {
         guard let text = text, !text.isEmpty else { return nil }
         
-        return text.components(separatedBy: "\n")
+        return text.components(separatedBy: CharacterSet.newlines)
     }
     
     private func rowWords(from rows: [String]?) -> [[String]]? {
@@ -104,16 +104,21 @@ class ReadingExerciseTextView: UIView {
                 /// последнее ли слово
                 let isLastInRow = wordIndex == row.count - 1
                 let isLastInText = isLastInRow && rowIndex == rowWords.count - 1
+                let isComma = word == "،"
                 
                 /// вычисляем размер текста, который необходимо добавить
                 var textToAppend = word
                 if !isLastInRow {
                     textToAppend += Constants.wordsSeaparator
                 }
+                if isComma {
+                    textToAppend += " "
+                }
+                /// для ، есть баг с вычислением размера, нужно вычислять еще с одним пробелом
                 let attributedText = NSAttributedString(
                     string: textToAppend,
                     attributes: textStyle.textAttributes)
-                let size = CGSize(width: CGFloat(1000), height: .greatestFiniteMagnitude)
+                let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
                 var width = attributedText.boundingRect(
                     with: size,
                     options: [.usesLineFragmentOrigin, .usesFontLeading],
@@ -131,7 +136,6 @@ class ReadingExerciseTextView: UIView {
                     space = availableSpace - width
                 }
                 
-                let isComma = word == "،"
                 let pushableLabel = PushableLabel(
                     text: word,
                     normalTextAttributes: textStyle.textAttributes,
@@ -139,6 +143,7 @@ class ReadingExerciseTextView: UIView {
                     isUnderscoreHidden: isComma)
                 pushableLabel.didPress = pushableLabelPressed(_:)
                 pushableLabel.tag = counter
+                pushableLabel.textAlignment = isComma ? .right : .natural
                 pushableLabel.isUserInteractionEnabled = !isComma
                 addSubview(pushableLabel)
                 pushableLabel.snp.makeConstraints { maker in
@@ -164,7 +169,7 @@ class ReadingExerciseTextView: UIView {
                 rightView = pushableLabel
                 pushableLabels.append(pushableLabel)
                 
-                if !isLastInRow {
+                if !isLastInRow && !isComma {
                     let label = UILabel()
                     label.attributedText = NSAttributedString(
                         string: Constants.wordsSeaparator,

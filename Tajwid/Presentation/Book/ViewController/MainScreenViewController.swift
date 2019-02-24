@@ -135,6 +135,10 @@ class MainScreenViewController: UIViewController {
                     let index = index + cardsCount
                     exercise.index = index
                     exercise.path = "\(lesson.path!)_\(index + 1)"
+                    
+                    if exercise is PronounceExercise {
+                        print("path \(exercise.path!)")
+                    }
                 }
             }
         }

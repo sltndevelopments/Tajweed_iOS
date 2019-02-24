@@ -18,7 +18,7 @@ class PronounceExerciseTextView: UIView {
     // MARK: - Constants
     
     private enum Constants {
-        static let spaceBetweenLines = CGFloat(70)
+        static let spaceBetweenLines = CGFloat(86)
         static let hitEdgeInsets = UIEdgeInsets(top: -5, left: -10, bottom: -5, right: -10)
     }
     
@@ -38,7 +38,11 @@ class PronounceExerciseTextView: UIView {
     
     private var rowPhrases: [[Phrase]]?
     
-    private var wordsSeaparator = " "
+    private var isCommaSeparated = false
+    
+    private var wordsSeaparator: String {
+        return isCommaSeparated ? " ، " : " "
+    }
     
     private var availableSpace = UIScreen.main.bounds.width
     
@@ -46,6 +50,9 @@ class PronounceExerciseTextView: UIView {
         let textStyle = GLBTextStyle()
         textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
         textStyle.color = .blueberry
+        if !isCommaSeparated {
+            textStyle.alignment = .right
+        }
         
         return textStyle
     }
@@ -54,6 +61,9 @@ class PronounceExerciseTextView: UIView {
         let textStyle = GLBTextStyle()
         textStyle.font = FontCreator.fontWithName(FontNames.arabic, size: 40)
         textStyle.color = .blueberryLight
+        if !isCommaSeparated {
+            textStyle.alignment = .right
+        }
         
         return textStyle
     }
@@ -65,7 +75,8 @@ class PronounceExerciseTextView: UIView {
         self.rows = rows
         for row in rows {
             if row.contains(" ، ") {
-                wordsSeaparator = " ، "
+                isCommaSeparated = true
+                break
             }
         }
         
@@ -73,9 +84,13 @@ class PronounceExerciseTextView: UIView {
             availableSpace = space
         }
         
-        rowWords = rowWords(from: rows)
-        rowPhrases = rowPhrases(from: rowWords)
-        arrangeText()
+        if isCommaSeparated {
+            rowWords = rowWords(from: rows)
+            rowPhrases = rowPhrases(from: rowWords)
+            arrangeTextForCommaSeparated()
+        } else {
+            arrangeTextForDefault()
+        }
     }
     
     
@@ -136,7 +151,7 @@ class PronounceExerciseTextView: UIView {
         return rowPhrases
     }
     
-    private func arrangeText() {
+    private func arrangeTextForCommaSeparated() {
         subviews.forEach { $0.removeFromSuperview() }
         
         guard let rowPhrases = rowPhrases else { return }
@@ -232,6 +247,49 @@ class PronounceExerciseTextView: UIView {
             topView = rightView
             rightView = self
             space = availableSpace
+        }
+    }
+    
+    private func arrangeTextForDefault() {
+        subviews.forEach { $0.removeFromSuperview() }
+        
+        guard let rows = rows, !rows.isEmpty else { return }
+        
+        var topView: UIView = self
+        let count = rows.count
+        
+        for (index, row) in rows.enumerated() {
+            let isLast = index == count - 1
+            
+            let pushableLabel = PushableLabel(
+                text: row,
+                normalTextAttributes: textStyle.textAttributes,
+                highlitedTextAttributes: highlitedTextStyle.textAttributes)
+            pushableLabel.didPress = { [weak self] label in
+                self?.pushableLabelPressed(label)
+            }
+            pushableLabel.highlitedStateChanged = { [weak self] label in
+                self?.pushableLabelDidChangeHighlitedState(label)
+            }
+            pushableLabel.tag = index
+            addSubview(pushableLabel)
+            pushableLabel.snp.makeConstraints { maker in
+                maker.leading.equalToSuperview()
+                maker.trailing.equalToSuperview()
+                if topView == self {
+                    maker.top.equalToSuperview()
+                } else {
+                    maker
+                        .firstBaseline
+                        .equalTo(topView.snp.lastBaseline)
+                        .offset(Constants.spaceBetweenLines)
+                }
+                if isLast {
+                    maker.bottom.equalToSuperview()
+                }
+            }
+            
+            topView = pushableLabel
         }
     }
     
