@@ -1545,6 +1545,7 @@
 		1EDD15082222843E0076E704 /* 2_8_5_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD0F4A2222843D0076E704 /* 2_8_5_9.mp3 */; };
 		1EDD150A222284D10076E704 /* Book.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD1509222284D10076E704 /* Book.json */; };
 		1EDD150C2222C1130076E704 /* PronouncePhrasesExerciseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD150B2222C1130076E704 /* PronouncePhrasesExerciseTextView.swift */; };
+		1EDD150E2222D2890076E704 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD150D2222D2890076E704 /* Array+Additions.swift */; };
 		1EDD77C22081FBBE00A4425B /* LessonProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */; };
 		1EDD77C4208203EA00A4425B /* BaseLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */; };
 		1EDD77C620820D0400A4425B /* ProgressNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */; };
@@ -3142,6 +3143,7 @@
 		1EDD0F4A2222843D0076E704 /* 2_8_5_9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2_8_5_9.mp3; sourceTree = "<group>"; };
 		1EDD1509222284D10076E704 /* Book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Book.json; sourceTree = "<group>"; };
 		1EDD150B2222C1130076E704 /* PronouncePhrasesExerciseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronouncePhrasesExerciseTextView.swift; sourceTree = "<group>"; };
+		1EDD150D2222D2890076E704 /* Array+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
 		1EDD77C12081FBBE00A4425B /* LessonProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgressSlider.swift; sourceTree = "<group>"; };
 		1EDD77C3208203EA00A4425B /* BaseLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLessonViewController.swift; sourceTree = "<group>"; };
 		1EDD77C520820D0400A4425B /* ProgressNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNavigationViewController.swift; sourceTree = "<group>"; };
@@ -3447,6 +3449,7 @@
 				1EEE898C2053E7B800AD7CB0 /* UIViewController+Additions.swift */,
 				1EEE898E2053E7C600AD7CB0 /* UIStoryboard+Additions.swift */,
 				1EDD77C92083A2DD00A4425B /* UIDevice+Additions.swift */,
+				1EDD150D2222D2890076E704 /* Array+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -6809,6 +6812,7 @@
 				1EE282D2205D500600EBDF57 /* Book.swift in Sources */,
 				1E6ACAED2042DC3D00714A5F /* UIScrollView+Additions.swift in Sources */,
 				1EEE89892053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift in Sources */,
+				1EDD150E2222D2890076E704 /* Array+Additions.swift in Sources */,
 				1EEDA371207A37ED004C91F8 /* FontSizeSlider.swift in Sources */,
 				1E5143D7205EA444004DD9B2 /* BookModuleTableCell.swift in Sources */,
 				1EE282C8205D13C400EBDF57 /* UnderscoredButton.swift in Sources */,

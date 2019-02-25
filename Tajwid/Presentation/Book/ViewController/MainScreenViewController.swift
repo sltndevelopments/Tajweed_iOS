@@ -136,8 +136,8 @@ class MainScreenViewController: UIViewController {
                     exercise.index = index
                     exercise.path = "\(lesson.path!)_\(index + 1)"
                     
-                    if exercise is PronounceExercise {
-                        print("path \(exercise.path!)")
+                    if let readingExercise = exercise as? ReadingExercise {
+                        readingExercise.correctWords = readingExercise.correctWords.withoutDuplicates()
                     }
                 }
             }

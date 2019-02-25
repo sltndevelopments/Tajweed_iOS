@@ -115,6 +115,7 @@ class ReadingExerciseTextView: UIView {
                     textToAppend += " "
                 }
                 /// для ، есть баг с вычислением размера, нужно вычислять еще с одним пробелом
+
                 let attributedText = NSAttributedString(
                     string: textToAppend,
                     attributes: textStyle.textAttributes)
@@ -141,7 +142,9 @@ class ReadingExerciseTextView: UIView {
                     normalTextAttributes: textStyle.textAttributes,
                     highlitedTextAttributes: highlitedTextStyle.textAttributes,
                     isUnderscoreHidden: isComma)
-                pushableLabel.didPress = pushableLabelPressed(_:)
+                pushableLabel.didPress = { [weak self] label in
+                    self?.pushableLabelPressed(label)
+                }
                 pushableLabel.tag = counter
                 pushableLabel.textAlignment = isComma ? .right : .natural
                 pushableLabel.isUserInteractionEnabled = !isComma
