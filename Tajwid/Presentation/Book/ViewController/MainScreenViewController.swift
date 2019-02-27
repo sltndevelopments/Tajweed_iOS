@@ -92,7 +92,7 @@ class MainScreenViewController: UIViewController {
         
         firstAppearance = false
     }
-    
+
     
     // MARK: - Configuration
     

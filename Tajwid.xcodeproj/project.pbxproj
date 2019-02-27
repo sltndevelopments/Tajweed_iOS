@@ -7034,17 +7034,17 @@
 			baseConfigurationReference = 361B5AA44087CF32B4DAC46E /* Pods-Tajwid.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ildar Ayupov (YMV5M75QDH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 745NRKRZ6M;
+				DEVELOPMENT_TEAM = 93BS6TU778;
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.teorius.tajwid;
+				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = tajwid_dev_new;
+				PROVISIONING_PROFILE_SPECIFIER = "tajwid-new-dev";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -7056,17 +7056,17 @@
 			baseConfigurationReference = 28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ildar Ayupov (YMV5M75QDH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rinat Sultanov (93BS6TU778)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rinat Sultanov (93BS6TU778)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 745NRKRZ6M;
+				DEVELOPMENT_TEAM = 93BS6TU778;
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.teorius.tajwid;
+				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = tajwid_dev_new;
+				PROVISIONING_PROFILE_SPECIFIER = "tajwid-new-appstore2";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

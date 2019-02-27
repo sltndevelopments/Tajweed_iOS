@@ -11,7 +11,8 @@ class SettingsViewController: UITableViewController {
     // MARK: - Constants
     
     private enum Constants {
-        static let appStoreURLString = "itms-apps://itunes.apple.com/app/idAPP_ID"
+        static let appStoreURLString = "itms-apps://itunes.apple.com/ru/app/id1454203769"
+        static let appShareURLString = "https://itunes.apple.com/ru/app/id1454203769"
     }
     
 
@@ -52,8 +53,6 @@ class SettingsViewController: UITableViewController {
         if section == 1 {
             if row == 0 {
                 showFeedbackScreen()
-            } else if row == 1 {
-                showAppInfoScreen()
             }
         } else if section == 2 {
             if row == 0 {
@@ -73,9 +72,8 @@ class SettingsViewController: UITableViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setToRecipients(["sltn.developments@gmail.com"])
         mailComposerVC.setSubject("Отзыв на приложение Таджвид")
-//        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
         
         return mailComposerVC
     }
@@ -99,9 +97,6 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    private func showAppInfoScreen() {
-    }
-    
     private func showAppInAppStore() {
         guard let url = URL(string: Constants.appStoreURLString),
             UIApplication.shared.canOpenURL(url)
@@ -109,11 +104,15 @@ class SettingsViewController: UITableViewController {
                 return
         }
         
-        UIApplication.shared.openURL(url)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     private func shareApp() {
-        let link = Constants.appStoreURLString
+        let link = Constants.appShareURLString
         let activityViewController = UIActivityViewController(
             activityItems: [link],
             applicationActivities: nil)
