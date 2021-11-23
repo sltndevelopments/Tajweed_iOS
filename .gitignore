@@ -1,10 +1,10 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Mac OS X Finder
+.DS_Store
 
 ## Build generated
 build/
 DerivedData/
+project.xcworkspace/
 
 ## Various settings
 *.pbxuser
