@@ -1,6 +1,0 @@
-framework module Pods_Tajwid_TajwidTests {
-  umbrella header "Pods-Tajwid-TajwidTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
