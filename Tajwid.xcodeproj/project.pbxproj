@@ -7007,7 +7007,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				CODE_SIGN_STYLE = Manual;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 93BS6TU778;
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
