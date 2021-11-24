@@ -1575,7 +1575,7 @@
 		1EEE899320540FC100AD7CB0 /* ReadingExerciseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE899220540FC100AD7CB0 /* ReadingExerciseTextView.swift */; };
 		1EEE8995205428C900AD7CB0 /* PushableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE8994205428C800AD7CB0 /* PushableLabel.swift */; };
 		1EEE89972054325400AD7CB0 /* StateChangesObservableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89962054325400AD7CB0 /* StateChangesObservableButton.swift */; };
-		2D72EEA1D94638F8A6035C8E /* Pods_Tajwid_TajwidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC506C85EC7566FAFECCBF83 /* Pods_Tajwid_TajwidTests.framework */; };
+		74DD25E2274CE6DC007DE23A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74DD25E1274CE6DC007DE23A /* GoogleService-Info.plist */; };
 		7F2A050F6C203293EA491026 /* Pods_Tajwid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0C6D9E5C2523CA96E50392 /* Pods_Tajwid.framework */; };
 /* End PBXBuildFile section */
 
@@ -3174,11 +3174,9 @@
 		1EEE8994205428C800AD7CB0 /* PushableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushableLabel.swift; sourceTree = "<group>"; };
 		1EEE89962054325400AD7CB0 /* StateChangesObservableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateChangesObservableButton.swift; sourceTree = "<group>"; };
 		28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid.release.xcconfig"; sourceTree = "<group>"; };
-		2DB9B961BD124A53DC6BA2BB /* Pods-Tajwid-TajwidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid-TajwidTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid-TajwidTests/Pods-Tajwid-TajwidTests.release.xcconfig"; sourceTree = "<group>"; };
 		361B5AA44087CF32B4DAC46E /* Pods-Tajwid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid.debug.xcconfig"; sourceTree = "<group>"; };
+		74DD25E1274CE6DC007DE23A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C0C6D9E5C2523CA96E50392 /* Pods_Tajwid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tajwid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA8C9AD484F458B0E86986DF /* Pods-Tajwid-TajwidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid-TajwidTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid-TajwidTests/Pods-Tajwid-TajwidTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EC506C85EC7566FAFECCBF83 /* Pods_Tajwid_TajwidTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tajwid_TajwidTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3194,7 +3192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D72EEA1D94638F8A6035C8E /* Pods_Tajwid_TajwidTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3212,7 +3209,6 @@
 			isa = PBXGroup;
 			children = (
 				8C0C6D9E5C2523CA96E50392 /* Pods_Tajwid.framework */,
-				EC506C85EC7566FAFECCBF83 /* Pods_Tajwid_TajwidTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3380,6 +3376,7 @@
 				1E9E3120202CDF35000892F6 /* AppDelegate.swift */,
 				1E9E3121202CDF35000892F6 /* Assets.xcassets */,
 				1E9E3122202CDF35000892F6 /* Info.plist */,
+				74DD25E1274CE6DC007DE23A /* GoogleService-Info.plist */,
 				1E9E3123202CDF35000892F6 /* LaunchScreen.storyboard */,
 				1E9E311F202CDF35000892F6 /* Main.storyboard */,
 				1E365447208F929C00C4C717 /* Localizable.strings */,
@@ -5053,8 +5050,6 @@
 			children = (
 				361B5AA44087CF32B4DAC46E /* Pods-Tajwid.debug.xcconfig */,
 				28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */,
-				EA8C9AD484F458B0E86986DF /* Pods-Tajwid-TajwidTests.debug.xcconfig */,
-				2DB9B961BD124A53DC6BA2BB /* Pods-Tajwid-TajwidTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -5071,7 +5066,7 @@
 				1E9E2F78202728E7000892F6 /* Frameworks */,
 				1E9E2F79202728E7000892F6 /* Resources */,
 				D9E6A18F73C188D05D5A41A9 /* [CP] Embed Pods Frameworks */,
-				1E80FC83206957FB00BCFD6A /* ShellScript */,
+				74DD25E4274CE790007DE23A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5086,11 +5081,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E9E2FA6202728E7000892F6 /* Build configuration list for PBXNativeTarget "TajwidTests" */;
 			buildPhases = (
-				935226D370664FFA10063E78 /* [CP] Check Pods Manifest.lock */,
 				1E9E2F8B202728E7000892F6 /* Sources */,
 				1E9E2F8C202728E7000892F6 /* Frameworks */,
 				1E9E2F8D202728E7000892F6 /* Resources */,
-				6156746F1B43A950BE07B3FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -6326,6 +6319,7 @@
 				1EDD12FE2222843E0076E704 /* 1_7_13_27.mp3 in Resources */,
 				1EDD10D12222843D0076E704 /* 3_5_5_4.mp3 in Resources */,
 				1EDD117C2222843D0076E704 /* 2_5_4_11.mp3 in Resources */,
+				74DD25E2274CE6DC007DE23A /* GoogleService-Info.plist in Resources */,
 				1EDD14382222843E0076E704 /* 2_1_4_17.mp3 in Resources */,
 				1EDD144C2222843E0076E704 /* 1_8_13_25.mp3 in Resources */,
 				1EDD11A72222843D0076E704 /* 1_5_13_28.mp3 in Resources */,
@@ -6691,19 +6685,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E80FC83206957FB00BCFD6A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6c9ecead37e8c2445313bcda92f065c33f082e01 041f32e64a467c7112cd22736b99a182782335fb9820e64020add52efcfd9728";
-		};
 		5D7DB0343D39B9888151FCD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6722,51 +6703,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6156746F1B43A950BE07B3FE /* [CP] Embed Pods Frameworks */ = {
+		74DD25E4274CE790007DE23A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Tajwid-TajwidTests/Pods-Tajwid-TajwidTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DTModelStorage/DTModelStorage.framework",
-				"${BUILT_PRODUCTS_DIR}/DTTableViewManager/DTTableViewManager.framework",
-				"${BUILT_PRODUCTS_DIR}/Globus/Globus.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
-				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTModelStorage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTTableViewManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Globus.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tajwid-TajwidTests/Pods-Tajwid-TajwidTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		935226D370664FFA10063E78 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tajwid-TajwidTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		D9E6A18F73C188D05D5A41A9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6774,26 +6728,42 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Tajwid/Pods-Tajwid-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DTModelStorage/DTModelStorage.framework",
 				"${BUILT_PRODUCTS_DIR}/DTTableViewManager/DTTableViewManager.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/Globus/Globus.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTModelStorage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTTableViewManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Globus.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tajwid/Pods-Tajwid-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -7037,9 +7007,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 93BS6TU778;
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
@@ -7061,7 +7032,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 93BS6TU778;
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
@@ -7074,7 +7045,6 @@
 		};
 		1E9E2FA7202728E7000892F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA8C9AD484F458B0E86986DF /* Pods-Tajwid-TajwidTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -7092,7 +7062,6 @@
 		};
 		1E9E2FA8202728E7000892F6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DB9B961BD124A53DC6BA2BB /* Pods-Tajwid-TajwidTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
