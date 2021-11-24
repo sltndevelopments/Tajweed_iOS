@@ -109,6 +109,8 @@ class MainScreenViewController: UIViewController {
         } else {
             fatalError("Couldn't obtain a book json!")
         }
+        
+        print("1")
     }
     
     private func indexBook() {
