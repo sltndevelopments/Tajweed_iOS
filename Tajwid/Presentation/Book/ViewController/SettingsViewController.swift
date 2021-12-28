@@ -13,6 +13,8 @@ class SettingsViewController: UITableViewController {
     private enum Constants {
         static let appStoreURLString = "itms-apps://itunes.apple.com/ru/app/id1454203769"
         static let appShareURLString = "https://itunes.apple.com/ru/app/id1454203769"
+        static let supportEmail = "sltn.developments@gmail.com"
+        static let supportSubject = "Отзыв на приложение Таджвид"
     }
     
 
@@ -72,8 +74,8 @@ class SettingsViewController: UITableViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["sltn.developments@gmail.com"])
-        mailComposerVC.setSubject("Отзыв на приложение Таджвид")
+        mailComposerVC.setToRecipients([Constants.supportEmail])
+        mailComposerVC.setSubject(Constants.supportSubject)
         
         return mailComposerVC
     }
@@ -93,7 +95,28 @@ class SettingsViewController: UITableViewController {
             let mailComposeViewController = configuredMailComposeViewController()
             present(mailComposeViewController, animated: true, completion: nil)
         } else {
+            openMailTo()
+        }
+    }
+    
+    /// Will open user preferred Email app if it's configured.
+    private func openMailTo() {
+
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path = Constants.supportEmail
+        components.queryItems = [
+              URLQueryItem(name: "subject", value: Constants.supportSubject),
+        ]
+
+        guard let url = components.url else {
             showSendMailErrorAlert()
+            return
+        }
+
+        UIApplication.shared.open(url) { [weak self] success in
+            guard !success else { return }
+            self?.showSendMailErrorAlert()
         }
     }
     
@@ -104,11 +127,7 @@ class SettingsViewController: UITableViewController {
                 return
         }
         
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     private func shareApp() {
