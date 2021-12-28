@@ -55,7 +55,6 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
 
         title = module.title
         navigationItem.backBarButtonItem?.title = ""
-        
         beginObservingFontAdjustments()
         configureTableManager()
     }

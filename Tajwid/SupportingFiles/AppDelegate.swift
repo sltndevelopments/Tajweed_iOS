@@ -20,18 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-
-        UINavigationBar.appearance().tintColor = .greyishBrownTwo
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .whiteThree
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor.greyishBrownTwo,
-            .font: UIFont(name: FontNames.pn, size: 16) ?? UIFont()
-        ]
-        let backButton = #imageLiteral(resourceName: "back")
-        UINavigationBar.appearance().backIndicatorImage = backButton
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButton
         
+        setupNavigationBarAppearance()
         askForPermissions()
 
         return true
@@ -47,18 +37,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.synchronize()
     }
     
+    // MARK: - Private helpers
+    
+    private func setupNavigationBarAppearance() {
+        
+        UINavigationBar.appearance().tintColor = .greyishBrownTwo
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .whiteThree
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor.greyishBrownTwo,
+            .font: UIFont(name: FontNames.pn, size: 16) ?? UIFont()
+        ]
+        let backButton = #imageLiteral(resourceName: "back")
+        UINavigationBar.appearance().backIndicatorImage = backButton
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButton
+        
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
     
     private func askForPermissions() {
-        if #available(iOS 10.0, *) {
-            let options: UNAuthorizationOptions = [.alert, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(options: options) { _, _ in
-                
-            }
-        } else {
-            let types: UIUserNotificationType = [.alert, .sound]
-            let settings = UIUserNotificationSettings(types: types, categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(settings)
-        }
+        let types: UIUserNotificationType = [.alert, .sound]
+        let settings = UIUserNotificationSettings(types: types, categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
     }
     
 }
