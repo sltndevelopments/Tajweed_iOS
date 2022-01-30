@@ -95,5 +95,14 @@ extension UIColor {
         return color
     }
 
+    static var tabItemHalfGreen: UIColor {
+        let color = UIColor(hexString: "#B7DA00")?.withAlphaComponent(0.5) ?? defaultColor
+        return color
+    }
+    
+    static var tabItemGreen: UIColor {
+        let color = UIColor(hexString: "#B7DA00") ?? defaultColor
+        return color
+    }
 }
 
