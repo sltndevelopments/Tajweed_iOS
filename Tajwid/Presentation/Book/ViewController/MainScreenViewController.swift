@@ -65,7 +65,6 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.delegate = self
-        automaticallyAdjustsScrollViewInsets = false
         
         beginObservingFontAdjustments()
         

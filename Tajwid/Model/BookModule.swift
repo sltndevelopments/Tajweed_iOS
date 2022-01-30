@@ -9,7 +9,15 @@ final class BookModule: Decodable {
     
     // MARK: - Public properties
     
+    enum ModuleType: String, Codable {
+        case letters = "letters"
+        case pronunciation = "pronunciationRules"
+        case reading = "readingRules"
+    }
+    
     var title: String
+    
+    var type: ModuleType
     
     var lessons: [Lesson]
     

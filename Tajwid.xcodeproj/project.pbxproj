@@ -1575,6 +1575,11 @@
 		1EEE899320540FC100AD7CB0 /* ReadingExerciseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE899220540FC100AD7CB0 /* ReadingExerciseTextView.swift */; };
 		1EEE8995205428C900AD7CB0 /* PushableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE8994205428C800AD7CB0 /* PushableLabel.swift */; };
 		1EEE89972054325400AD7CB0 /* StateChangesObservableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE89962054325400AD7CB0 /* StateChangesObservableButton.swift */; };
+		74B9CBA227A54A480059BE89 /* TabBarController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA127A54A480059BE89 /* TabBarController .swift */; };
+		74B9CBA427A54A870059BE89 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA327A54A870059BE89 /* BaseTabBarController.swift */; };
+		74B9CBA727A54CBD0059BE89 /* TabBarControllersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA627A54CBD0059BE89 /* TabBarControllersBuilder.swift */; };
+		74B9CBA927A69DCF0059BE89 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA827A69DCF0059BE89 /* BookService.swift */; };
+		74B9CBAB27A6A69E0059BE89 /* TabBarItemsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBAA27A6A69E0059BE89 /* TabBarItemsBuilder.swift */; };
 		74DD25E2274CE6DC007DE23A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74DD25E1274CE6DC007DE23A /* GoogleService-Info.plist */; };
 		7F2A050F6C203293EA491026 /* Pods_Tajwid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0C6D9E5C2523CA96E50392 /* Pods_Tajwid.framework */; };
 /* End PBXBuildFile section */
@@ -3175,6 +3180,11 @@
 		1EEE89962054325400AD7CB0 /* StateChangesObservableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateChangesObservableButton.swift; sourceTree = "<group>"; };
 		28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid.release.xcconfig"; sourceTree = "<group>"; };
 		361B5AA44087CF32B4DAC46E /* Pods-Tajwid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tajwid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tajwid/Pods-Tajwid.debug.xcconfig"; sourceTree = "<group>"; };
+		74B9CBA127A54A480059BE89 /* TabBarController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarController .swift"; sourceTree = "<group>"; };
+		74B9CBA327A54A870059BE89 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		74B9CBA627A54CBD0059BE89 /* TabBarControllersBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllersBuilder.swift; sourceTree = "<group>"; };
+		74B9CBA827A69DCF0059BE89 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		74B9CBAA27A6A69E0059BE89 /* TabBarItemsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsBuilder.swift; sourceTree = "<group>"; };
 		74DD25E1274CE6DC007DE23A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C0C6D9E5C2523CA96E50392 /* Pods_Tajwid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tajwid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -3229,6 +3239,8 @@
 				1E5184F9207FD62400CAA841 /* AppProgressManager.swift */,
 				1E1395462087D32D00CE23D5 /* LocalNotifcationsManager.swift */,
 				1E8080642089D50000FBA5B1 /* SettingsManager.swift */,
+				74B9CBA827A69DCF0059BE89 /* BookService.swift */,
+				74B9CBAC27A6A6A30059BE89 /* TabBarBuilders */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -3359,6 +3371,7 @@
 		1E9E3112202CDA38000892F6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				74B9CBA527A54C570059BE89 /* TabBarClasses */,
 				1E9E3156202F61DF000892F6 /* Base */,
 				1EE282D3205D512E00EBDF57 /* Book */,
 				1E9E313D202ED73E000892F6 /* Lesson */,
@@ -5052,6 +5065,24 @@
 				28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		74B9CBA527A54C570059BE89 /* TabBarClasses */ = {
+			isa = PBXGroup;
+			children = (
+				74B9CBA127A54A480059BE89 /* TabBarController .swift */,
+				74B9CBA327A54A870059BE89 /* BaseTabBarController.swift */,
+			);
+			path = TabBarClasses;
+			sourceTree = "<group>";
+		};
+		74B9CBAC27A6A6A30059BE89 /* TabBarBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				74B9CBA627A54CBD0059BE89 /* TabBarControllersBuilder.swift */,
+				74B9CBAA27A6A69E0059BE89 /* TabBarItemsBuilder.swift */,
+			);
+			path = TabBarBuilders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -6781,9 +6812,11 @@
 				1EEDA36D207A3666004C91F8 /* FontSettingsView.swift in Sources */,
 				1EE282D2205D500600EBDF57 /* Book.swift in Sources */,
 				1E6ACAED2042DC3D00714A5F /* UIScrollView+Additions.swift in Sources */,
+				74B9CBA427A54A870059BE89 /* BaseTabBarController.swift in Sources */,
 				1EEE89892053E29A00AD7CB0 /* WritingByExampleExerciseViewController.swift in Sources */,
 				1EDD150E2222D2890076E704 /* Array+Additions.swift in Sources */,
 				1EEDA371207A37ED004C91F8 /* FontSizeSlider.swift in Sources */,
+				74B9CBA927A69DCF0059BE89 /* BookService.swift in Sources */,
 				1E5143D7205EA444004DD9B2 /* BookModuleTableCell.swift in Sources */,
 				1EE282C8205D13C400EBDF57 /* UnderscoredButton.swift in Sources */,
 				1E9E315A203045F3000892F6 /* Colors.swift in Sources */,
@@ -6794,18 +6827,21 @@
 				1ECC02442079015D00C91003 /* FontCreator.swift in Sources */,
 				1EE282DC205E66F800EBDF57 /* MenuItemView.swift in Sources */,
 				1E9E3138202CE61E000892F6 /* ReadingExercise.swift in Sources */,
+				74B9CBAB27A6A69E0059BE89 /* TabBarItemsBuilder.swift in Sources */,
 				1EDD77C22081FBBE00A4425B /* LessonProgressSlider.swift in Sources */,
 				1E6ACAEB2042CCD000714A5F /* TestExerciseViewController.swift in Sources */,
 				1E7E462720382156008AFBA8 /* UIView+Additions.swift in Sources */,
 				1E9E3132202CE3E3000892F6 /* PronounceExercise.swift in Sources */,
 				1E9E3145202EE25D000892F6 /* LessionSectionHeaderViewModel.swift in Sources */,
 				1E6ACAE9203E12BB00714A5F /* ExerciseContainer.swift in Sources */,
+				74B9CBA727A54CBD0059BE89 /* TabBarControllersBuilder.swift in Sources */,
 				1EEE89872052C79F00AD7CB0 /* UIButton+Additions.swift in Sources */,
 				1E5143CF205E9C78004DD9B2 /* BookModuleViewController.swift in Sources */,
 				1E9E3125202CDF35000892F6 /* AppDelegate.swift in Sources */,
 				1E6ACAF82043065B00714A5F /* PronounceExerciseTextView.swift in Sources */,
 				1E5184FC207FE89800CAA841 /* BookProgressSlider.swift in Sources */,
 				1E6ACAF22042F26F00714A5F /* ImageTitleVerticalButton.swift in Sources */,
+				74B9CBA227A54A480059BE89 /* TabBarController .swift in Sources */,
 				1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */,
 				1EEE89912053F1C800AD7CB0 /* WritingByTranscriptionExerciseViewController.swift in Sources */,
 				1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */,

@@ -13,7 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    lazy var bookService: BookService = BookServiceImplementation()
+    lazy var tabBarControllersBuilder: TabBarControllersBuildable = TabBarControllersBuilder()
+    lazy var mainTabBarController = MainTabBarController()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         FirebaseApp.configure()
@@ -22,7 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupNavigationBarAppearance()
         askForPermissions()
-
+        
+        tabBarControllersBuilder.buildTabBarControllers(with: bookService, tabBarItemsBuilder: TabBarItemsBuilder()) { [unowned self] controllers in
+            self.mainTabBarController.configuredTabBar(with: controllers)
+            self.window?.rootViewController = mainTabBarController
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 
