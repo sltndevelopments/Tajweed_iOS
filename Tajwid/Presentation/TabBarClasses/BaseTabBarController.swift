@@ -55,14 +55,13 @@ class BaseTabBarController: UITabBarController {
             appearance.shadowImage = nil
             appearance.backgroundColor = .white
             
-            let itemTitleFont: UIFont = .systemFont(ofSize: 10)
+            let itemTitleFont: UIFont = .systemFont(ofSize: 9, weight: .medium)
             
             appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
                 .foregroundColor: UIColor.systemGray,
                 .font: itemTitleFont
             ]
-//            appearance.stackedLayoutAppearance.selected.iconColor =
             
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
                 .foregroundColor: UIColor.black
@@ -71,12 +70,10 @@ class BaseTabBarController: UITabBarController {
             ]
             
             tabBar.standardAppearance = appearance
+            
+            if #available(iOS 15.0, *) {
+                tabBar.scrollEdgeAppearance = appearance
+            }
         }
-       
-#if swift(>=5.5)
-        if #available(iOS 15.0, *) {
-            tabBar.scrollEdgeAppearance = appearance
-        }
-#endif
     }
 }

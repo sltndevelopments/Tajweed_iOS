@@ -53,7 +53,7 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = module.title
+        navigationItem.title = module.title
         navigationItem.backBarButtonItem?.title = ""
         beginObservingFontAdjustments()
         configureTableManager()
@@ -64,7 +64,7 @@ class BookModuleViewController: UIViewController, DTTableViewManageable {
         
         navigationController?.setNavigationBarHidden(
             false,
-            animated: true)
+            animated: false)
         
         configureModels()
     }
