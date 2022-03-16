@@ -37,6 +37,7 @@ final class MainViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "tajweed_icon")
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -71,18 +72,23 @@ final class MainViewController: UIViewController {
         logoLabelsStack.alignment = .leading
         logoLabelsStack.axis = .vertical
         logoLabelsStack.spacing = 0
+        logoLabelsStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let logoStack = UIStackView(arrangedSubviews: [logoImageView, logoLabelsStack])
-        logoStack.alignment = .center
+        let logoStack = UIStackView(arrangedSubviews: [UIView(), logoImageView, logoLabelsStack, UIView()])
         logoStack.axis = .horizontal
         logoStack.spacing = 8
         logoStack.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(logoStack)
         
+        let authorLabelHeight = authorLabel.intrinsicContentSize.height
+        let logoLabelHeight = logoLabel.intrinsicContentSize.height
+        
         NSLayoutConstraint.activate([
             logoStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             logoStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            logoImageView.heightAnchor.constraint(equalToConstant: authorLabelHeight + logoLabelHeight),
         ])
     }
     

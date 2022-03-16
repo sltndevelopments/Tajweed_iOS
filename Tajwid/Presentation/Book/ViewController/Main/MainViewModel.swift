@@ -15,3 +15,9 @@ protocol MainViewModelInterface {
 final class MainViewModel: MainViewModelInterface {
     
 }
+
+//extension MainViewModel {
+//    enum StatisticElement {
+//        case 
+//    }
+//}
