@@ -19,7 +19,6 @@ final class MainViewController: UIViewController {
     
     private let authorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ильдар Аляутдинов"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textColor = .textSecondary
         return label
@@ -27,7 +26,6 @@ final class MainViewController: UIViewController {
     
     private let logoLabel: UILabel = {
         let label = UILabel()
-        label.text = "TAJWEED"
         label.font = .systemFont(ofSize: 32, weight: .black)
         label.textColor = .textPrimary
         return label
@@ -35,7 +33,6 @@ final class MainViewController: UIViewController {
     
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "tajweed_icon")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -63,8 +60,14 @@ final class MainViewController: UIViewController {
     
     private func setUp() {
         view.backgroundColor = .mainBackground
-        
+        setUpViews()
         setUpConstraints()
+    }
+    
+    private func setUpViews() {
+        authorLabel.text = viewModel.authorText
+        logoLabel.text = viewModel.logoText
+        logoImageView.image = viewModel.logoImage
     }
     
     private func setUpConstraints() {
@@ -89,6 +92,8 @@ final class MainViewController: UIViewController {
             logoStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             logoImageView.heightAnchor.constraint(equalToConstant: authorLabelHeight + logoLabelHeight),
+            
+            
         ])
     }
     
