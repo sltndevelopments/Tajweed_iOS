@@ -6,7 +6,6 @@
 //  Copyright © 2022 teorius. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol MainViewModelInterface {
@@ -16,6 +15,9 @@ protocol MainViewModelInterface {
     var introTitleText: String { get }
     var introDesvriptionText: String { get }
     var buttonTitleText: String { get }
+    
+    func getStatisticViewModels() -> [StatisticElementViewModel]
+    func teacherButtonTap()
 }
 
 final class MainViewModel: MainViewModelInterface {
@@ -31,5 +33,54 @@ final class MainViewModel: MainViewModelInterface {
         """
     var buttonTitleText = "С учителем"
     var logoImage = UIImage(named: "tajweed_icon")
+    
+    private let statisticElementIcons: [UIImage?] = [
+    	UIImage(named: "letters_icon"),
+        UIImage(named: "pronon_icon"),
+        UIImage(named: "reading_icon"),
+    ]
+    
+    private var book: Book!
+    
+    init() {
+        obtainBook()
+    }
+    
+    func getStatisticViewModels() -> [StatisticElementViewModel] {
+        var statisticViewModels: [StatisticElementViewModel] = []
+        for (index, module) in book.modules.enumerated() {
+            let titleText = module.title
+            let totalScore = module.lessons.count
+            let currentScore = module.doneLessonsCount
+            let statisticViewModel = StatisticElementViewModel(
+                titleText: titleText,
+                totalScore: totalScore,
+                currentScore: currentScore,
+                iconImage: statisticElementIcons[index]
+            )
+            statisticViewModels.append(statisticViewModel)
+        }
+        return statisticViewModels
+    }
+    
+    func teacherButtonTap() {
+        print("teacherButtonTap")
+    }
+    
+    private func obtainBook() {
+        if let url = Bundle.main.url(forResource: "Book", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                book = try JSONDecoder().decode(Book.self, from: data)
+            }
+            catch {
+                print(error)
+                fatalError("Couldn't obtain a book model from the book json!")
+            }
+        } else {
+            fatalError("Couldn't obtain a book json!")
+        }
+    }
+    
     
 }

@@ -1578,6 +1578,9 @@
 		5F198BB627A6D166004DCD2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F198BB527A6D166004DCD2B /* MainViewController.swift */; };
 		5F198BB827A6D16F004DCD2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F198BB727A6D16F004DCD2B /* MainViewModel.swift */; };
 		5F198BBA27A6F3D8004DCD2B /* StatisticElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F198BB927A6F3D8004DCD2B /* StatisticElementView.swift */; };
+		5F6CDD3627E25F16009716AB /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CDD3527E25F16009716AB /* StatisticView.swift */; };
+		5F6CDD3827E2621C009716AB /* UIStackView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CDD3727E2621C009716AB /* UIStackView+Additions.swift */; };
+		5F9CCA6127E2582F005A2CC2 /* StatisticElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CCA6027E2582F005A2CC2 /* StatisticElementViewModel.swift */; };
 		74B9CBA227A54A480059BE89 /* TabBarController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA127A54A480059BE89 /* TabBarController .swift */; };
 		74B9CBA427A54A870059BE89 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA327A54A870059BE89 /* BaseTabBarController.swift */; };
 		74B9CBA727A54CBD0059BE89 /* TabBarControllersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B9CBA627A54CBD0059BE89 /* TabBarControllersBuilder.swift */; };
@@ -3186,6 +3189,9 @@
 		5F198BB527A6D166004DCD2B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5F198BB727A6D16F004DCD2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5F198BB927A6F3D8004DCD2B /* StatisticElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticElementView.swift; sourceTree = "<group>"; };
+		5F6CDD3527E25F16009716AB /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		5F6CDD3727E2621C009716AB /* UIStackView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Additions.swift"; sourceTree = "<group>"; };
+		5F9CCA6027E2582F005A2CC2 /* StatisticElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticElementViewModel.swift; sourceTree = "<group>"; };
 		74B9CBA127A54A480059BE89 /* TabBarController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarController .swift"; sourceTree = "<group>"; };
 		74B9CBA327A54A870059BE89 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		74B9CBA627A54CBD0059BE89 /* TabBarControllersBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllersBuilder.swift; sourceTree = "<group>"; };
@@ -3457,6 +3463,7 @@
 			isa = PBXGroup;
 			children = (
 				1E36543D208F882B00C4C717 /* String+Localized.swift */,
+				5F6CDD3727E2621C009716AB /* UIStackView+Additions.swift */,
 				1E9E314F202EE5A1000892F6 /* UIView+Designable.swift */,
 				1E7E462620382155008AFBA8 /* UIView+Additions.swift */,
 				1E9E315B20305154000892F6 /* GLBTextStyle+TextAttributes.swift */,
@@ -5079,7 +5086,9 @@
 			children = (
 				5F198BB527A6D166004DCD2B /* MainViewController.swift */,
 				5F198BB727A6D16F004DCD2B /* MainViewModel.swift */,
+				5F6CDD3527E25F16009716AB /* StatisticView.swift */,
 				5F198BB927A6F3D8004DCD2B /* StatisticElementView.swift */,
+				5F9CCA6027E2582F005A2CC2 /* StatisticElementViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -6852,6 +6861,7 @@
 				1E9E3132202CE3E3000892F6 /* PronounceExercise.swift in Sources */,
 				1E9E3145202EE25D000892F6 /* LessionSectionHeaderViewModel.swift in Sources */,
 				1E6ACAE9203E12BB00714A5F /* ExerciseContainer.swift in Sources */,
+				5F6CDD3627E25F16009716AB /* StatisticView.swift in Sources */,
 				74B9CBA727A54CBD0059BE89 /* TabBarControllersBuilder.swift in Sources */,
 				1EEE89872052C79F00AD7CB0 /* UIButton+Additions.swift in Sources */,
 				1E5143CF205E9C78004DD9B2 /* BookModuleViewController.swift in Sources */,
@@ -6862,6 +6872,7 @@
 				1E6ACAF22042F26F00714A5F /* ImageTitleVerticalButton.swift in Sources */,
 				74B9CBA227A54A480059BE89 /* TabBarController .swift in Sources */,
 				1E9E315C20305154000892F6 /* GLBTextStyle+TextAttributes.swift in Sources */,
+				5F6CDD3827E2621C009716AB /* UIStackView+Additions.swift in Sources */,
 				1EEE89912053F1C800AD7CB0 /* WritingByTranscriptionExerciseViewController.swift in Sources */,
 				1ED69F6C206FCFC600228003 /* SoundPlayerView.swift in Sources */,
 				1EEE898F2053E7C600AD7CB0 /* UIStoryboard+Additions.swift in Sources */,
@@ -6899,6 +6910,7 @@
 				1EEDA375207A3EAC004C91F8 /* HasFontSettingsView.swift in Sources */,
 				1EEE899320540FC100AD7CB0 /* ReadingExerciseTextView.swift in Sources */,
 				1E5143D1205E9E6C004DD9B2 /* MenuItem.swift in Sources */,
+				5F9CCA6127E2582F005A2CC2 /* StatisticElementViewModel.swift in Sources */,
 				1EEE898D2053E7B900AD7CB0 /* UIViewController+Additions.swift in Sources */,
 				1EE282DF205E68C500EBDF57 /* MenuItemViewModel.swift in Sources */,
 			);

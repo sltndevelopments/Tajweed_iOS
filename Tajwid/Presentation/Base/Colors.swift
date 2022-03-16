@@ -119,5 +119,10 @@ extension UIColor {
         let color = UIColor(named: "textSecondary") ?? defaultColor
         return color
     }
+    
+    static var separator: UIColor {
+        let color = UIColor(named: "separator") ?? defaultColor
+        return color
+    }
 }
 

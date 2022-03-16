@@ -10,59 +10,45 @@ import UIKit
 
 final class StatisticElementView: UIView {
     
-    // MARK: - Properties
-    
-    var currentScore: Int = 0 {
-        didSet {
-            scoreLabel.text = "\(currentScore) / \(totalScore)"
-        }
-    }
-    
-    private var totalScore = 0
-    
     // MARK: - Views
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .left
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .textPrimary
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let scoreLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .right
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .textSecondary
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .warmGray
+        view.backgroundColor = .separator
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: - Init
     
-    convenience init(iconName: String, titleText: String, totalScore: Int) {
-        self.init(frame: CGRect.zero)
-
-        iconImageView.image = UIImage(named: iconName)
-        titleLabel.text = titleText
-        self.totalScore = totalScore
-        scoreLabel.text = "\(currentScore) / \(totalScore)"
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUp()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -71,32 +57,37 @@ final class StatisticElementView: UIView {
     
     // MARK: - Methods
     
-    private func setUp() {
-        let emptyView = UIView()
-        
-        let hStack = UIStackView(arrangedSubviews: [
-            iconImageView,
-            titleLabel,
-            emptyView,
-            scoreLabel
-        ])
-        hStack.axis = .horizontal
-        hStack.spacing = 8
-        hStack.translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(hStack)
+    func setup(by viewModel: StatisticElementViewModel) {
+        iconImageView.image = viewModel.iconImage
+        titleLabel.text = viewModel.titleText
+        scoreLabel.text = "\(viewModel.currentScore)/\(viewModel.totalScore)"
+    }
+    
+    private func setupConstraints() {
+        addSubview(iconImageView)
+        addSubview(titleLabel)
+        addSubview(scoreLabel)
         addSubview(separatorView)
         
         NSLayoutConstraint.activate([
-            hStack.topAnchor.constraint(equalTo: topAnchor),
-            hStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            iconImageView.heightAnchor.constraint(equalToConstant: 35),
+            iconImageView.widthAnchor.constraint(equalToConstant: 35),
             
-            separatorView.topAnchor.constraint(equalTo: hStack.bottomAnchor, constant: 8),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 16),
+            titleLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            
+            scoreLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8),
+            scoreLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            scoreLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            
+            separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
         ])
     }
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2022 teorius. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class MainViewController: UIViewController {
@@ -38,6 +37,36 @@ final class MainViewController: UIViewController {
         return imageView
     }()
     
+    private let statisticView: StatisticView = {
+        let view = StatisticView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let introTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .textPrimary
+        return label
+    }()
+    
+    private let introDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.numberOfLines = 0
+        label.textColor = .textSecondary
+        return label
+    }()
+    
+    private let teacherButton: UIButton = {
+        let button = UIButton()
+        button.cornerRadius = 22
+        button.backgroundColor = .tabItemGreen
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        return button
+    }()
+    
     // MARK: - Init
     
     init(viewModel: MainViewModelInterface) {
@@ -53,24 +82,34 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
+        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateStatistics()
     }
     
     // MARK: - Methods
     
-    private func setUp() {
+    private func setup() {
         view.backgroundColor = .mainBackground
-        setUpViews()
-        setUpConstraints()
+        setupViews()
+        setupConstraints()
     }
     
-    private func setUpViews() {
+    private func setupViews() {
         authorLabel.text = viewModel.authorText
         logoLabel.text = viewModel.logoText
         logoImageView.image = viewModel.logoImage
+        introTitleLabel.text = viewModel.introTitleText
+        introDescriptionLabel.text = viewModel.introDesvriptionText
+        teacherButton.setTitle(viewModel.buttonTitleText, for: .normal)
+        teacherButton.addTarget(self, action: #selector(teacherButtonTap), for: .touchUpInside)
+        updateStatistics()
     }
     
-    private func setUpConstraints() {
+    private func setupConstraints() {
         let logoLabelsStack = UIStackView(arrangedSubviews: [authorLabel, logoLabel])
         logoLabelsStack.alignment = .leading
         logoLabelsStack.axis = .vertical
@@ -82,20 +121,48 @@ final class MainViewController: UIViewController {
         logoStack.spacing = 8
         logoStack.translatesAutoresizingMaskIntoConstraints = false
         
+        let introStack = UIStackView(arrangedSubviews: [introTitleLabel, introDescriptionLabel, teacherButton])
+        introStack.alignment = .leading
+        introStack.axis = .vertical
+        introStack.spacing = 8
+        introStack.setCustomSpacing(16, after: introDescriptionLabel)
+        introStack.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(logoStack)
+        view.addSubview(statisticView)
+        view.addSubview(introStack)
         
         let authorLabelHeight = authorLabel.intrinsicContentSize.height
         let logoLabelHeight = logoLabel.intrinsicContentSize.height
         
         NSLayoutConstraint.activate([
-            logoStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            logoStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             logoStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             logoImageView.heightAnchor.constraint(equalToConstant: authorLabelHeight + logoLabelHeight),
             
+            statisticView.topAnchor.constraint(equalTo: logoStack.bottomAnchor, constant: 40),
+            statisticView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            statisticView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
+            introStack.topAnchor.constraint(equalTo: statisticView.bottomAnchor, constant: 40),
+            introStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 67),
+            introStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            teacherButton.heightAnchor.constraint(equalToConstant: 44),
+            teacherButton.widthAnchor.constraint(equalToConstant: 130)
         ])
     }
     
+    private func updateStatistics() {
+        let statisticViewModels = viewModel.getStatisticViewModels()
+        statisticView.setup(by: statisticViewModels)
+    }
+    
     // MARK: - Actions
+    
+    @objc
+    private func teacherButtonTap() {
+        viewModel.teacherButtonTap()
+    }
 }
