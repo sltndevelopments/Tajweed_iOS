@@ -127,7 +127,7 @@ class TestButton: UIButton {
     private func borderColorForCurrentState() -> UIColor {
         switch testButtonState {
         case .normal:
-            return .warmGrey
+            return .warmGray
         case .right:
             return .shamrockGreen
         case .wrong:

@@ -62,7 +62,7 @@ class FontSizeSlider: UISlider {
         let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 3, height: 3))
         progressView.backgroundColor = .blueberry
         setMinimumTrackImage(progressView.makeImage(), for: .normal)
-        progressView.backgroundColor = .warmGrey
+        progressView.backgroundColor = .warmGray
         setMaximumTrackImage(progressView.makeImage(), for: .normal)
         
         let thumbView = UIView(frame: CGRect(x: 0, y: 0, width: 13, height: 13))
@@ -100,7 +100,7 @@ class FontSizeSlider: UISlider {
     
     private func updateDotColors() {
         for dot in dotViews {
-            dot.backgroundColor = Float(dot.tag) > value ? .warmGrey : .blueberry
+            dot.backgroundColor = Float(dot.tag) > value ? .warmGray : .blueberry
         }
     }
     

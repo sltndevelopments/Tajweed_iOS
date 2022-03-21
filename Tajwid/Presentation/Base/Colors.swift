@@ -30,7 +30,7 @@ extension UIColor {
         return color
     }
 
-    static var warmGrey: UIColor {
+    static var warmGray: UIColor {
         let color = UIColor(hexString: "#979797") ?? defaultColor
         return color
     }
@@ -102,6 +102,26 @@ extension UIColor {
     
     static var tabItemGreen: UIColor {
         let color = UIColor(hexString: "#B7DA00") ?? defaultColor
+        return color
+    }
+    
+    static var mainBackground: UIColor {
+        let color = UIColor(named: "mainBackground") ?? defaultColor
+        return color
+    }
+    
+    static var textPrimary: UIColor {
+        let color = UIColor(named: "textPrimary") ?? defaultColor
+        return color
+    }
+    
+    static var textSecondary: UIColor {
+        let color = UIColor(named: "textSecondary") ?? defaultColor
+        return color
+    }
+    
+    static var separator: UIColor {
+        let color = UIColor(named: "separator") ?? defaultColor
         return color
     }
 }

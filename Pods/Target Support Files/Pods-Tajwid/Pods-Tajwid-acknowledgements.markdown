@@ -27,7 +27,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## DTTableViewManager
 
-Copyright (c) 2012 Denys Telezhkin (http://github.com/DenHeadless/)
+Copyright (c) 2012 Denys Telezhkin (http://github.com/DenTelezhkin/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -238,7 +238,7 @@ THE SOFTWARE.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -255,7 +255,7 @@ THE SOFTWARE.
 
 ## FirebaseAnalytics
 
-Copyright 2020 Google
+Copyright 2021 Google
 
 ## FirebaseCore
 
@@ -448,7 +448,7 @@ Copyright 2020 Google
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -654,7 +654,7 @@ Copyright 2020 Google
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1094,7 +1094,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1135,7 +1135,7 @@ SOFTWARE.
 
 ## GoogleAppMeasurement
 
-Copyright 2020 Google
+Copyright 2021 Google
 
 ## GoogleDataTransport
 
@@ -1328,7 +1328,7 @@ Copyright 2020 Google
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

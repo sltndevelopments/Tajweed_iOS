@@ -58,7 +58,7 @@ class ImageTitleVerticalButton: UIButton {
         
         customTitleLabel = UILabel()
         customTitleLabel.font = UIFont(name: FontNames.pnSemibold, size: 10)
-        customTitleLabel.textColor = .warmGrey
+        customTitleLabel.textColor = .warmGray
         addSubview(customTitleLabel)
         customTitleLabel.snp.makeConstraints { maker in
             maker.top.equalTo(customImageView.snp.bottom).offset(10)

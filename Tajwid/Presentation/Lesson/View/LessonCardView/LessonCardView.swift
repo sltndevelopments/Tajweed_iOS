@@ -39,7 +39,7 @@ class LessonCardView: UIView, ModelTransfer {
         static let imageLeadingTrailing = CGFloat(0)
         static let soundBottom = CGFloat(6)
         
-        static let soundImageViewDefaultColor = UIColor.warmGrey
+        static let soundImageViewDefaultColor = UIColor.warmGray
         static let soundImageViewPlayingColor = UIColor.blueberry
     }
     

@@ -1,13 +1,12 @@
-![Build Status](https://travis-ci.org/DenHeadless/DTTableViewManager.svg?branch=master) &nbsp;
-[![codecov.io](http://codecov.io/github/DenHeadless/DTTableViewManager/coverage.svg?branch=master)](http://codecov.io/github/DenHeadless/DTTableViewManager?branch=master)
-![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/DTTableViewManager/badge.png) &nbsp;
-![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/DTTableViewManager/badge.png) &nbsp;
+[![Build Status](https://travis-ci.org/DenTelezhkin/DTTableViewManager.svg?branch=master)](https://travis-ci.org/DenTelezhkin/DTTableViewManager)
+[![codecov.io](http://codecov.io/github/DenTelezhkin/DTTableViewManager/coverage.svg?branch=master)](http://codecov.io/github/DenTelezhkin/DTTableViewManager?branch=master)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/DTTableViewManager.svg)](https://cocoapods.org/pods/DTTableViewManager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
-DTTableViewManager 6
+DTTableViewManager
 ================
-> This is a sister-project for [DTCollectionViewManager](https://github.com/DenHeadless/DTCollectionViewManager) - great tool for UICollectionView management, built on the same principles.
+> This is a sister-project for [DTCollectionViewManager](https://github.com/DenTelezhkin/DTCollectionViewManager) - great tool for UICollectionView management, built on the same principles.
 
 Powerful generic-based UITableView management framework, written in Swift.
 
@@ -25,6 +24,7 @@ Powerful generic-based UITableView management framework, written in Swift.
 	- [Customizing UITableView updates](#customizing-uitableview-updates)
 	- [Display header on empty section](#display-header-on-empty-section)
   - [Conditional mappings](#conditional-mappings)
+  - [Anomaly handler](#anomaly-handler)
   - [Unregistering mappings](#unregistering-mappings)
 - [ObjectiveC support](#objectivec-support)
 - [Thanks](#thanks)
@@ -32,7 +32,7 @@ Powerful generic-based UITableView management framework, written in Swift.
 ## Features
 
 - [x] Powerful mapping system between data models and cells, headers and footers
-- [x] Support for all Swift types - classes, structs, enums, tuples
+- [x] Support for all Swift types - classes, structs, enums, tuples, protocols
 - [x] Powerful events system, that covers all UITableView delegate and datasource methods
 - [x] Views created from code, XIB, or storyboard
 - [x] Flexible Memory/CoreData/Realm.io storage options
@@ -42,22 +42,23 @@ Powerful generic-based UITableView management framework, written in Swift.
 - [x] No need to subclass
 - [x] Support for Drag&Drop in iOS 11
 - [x] Can be used with UITableViewController, or UIViewController with UITableView, or any other class, that contains UITableView
+- [x] [Complete documentation](https://dentelezhkin.github.io/DTTableViewManager)
 
 ## Requirements
 
-* Xcode 8 / Xcode 9
+* Xcode 8 and higher
 * iOS 8.0 and higher / tvOS 9.0 and higher
-* Swift 3 / Swift 4
+* Swift 3 and higher
 
 ## Installation
 
 [CocoaPods](http://www.cocoapods.org):
 
-    pod 'DTTableViewManager', '~> 6.0'
+    pod 'DTTableViewManager', '~> 6.5'
 
 [Carthage](https://github.com/Carthage/Carthage):
 
-    github "DenHeadless/DTTableViewManager" ~> 6.0
+    github "DenTelezhkin/DTTableViewManager" ~> 6.5
 
 After running `carthage update` drop DTTableViewManager.framework and DTModelStorage.framework to Xcode project embedded binaries.
 
@@ -68,14 +69,6 @@ After running `carthage update` drop DTTableViewManager.framework and DTModelSto
 ```swift
 import DTTableViewManager
 import DTModelStorage
-```
-
-The core object of a framework is `DTTableViewManager`. Declare your class as `DTTableViewManageable`, and it will be automatically injected with `manager` property, that will hold an instance of `DTTableViewManager`.
-
-Make sure your UITableView outlet is wired to your class and call in viewDidLoad:
-
-```swift
-	manager.startManaging(withDelegate: self)
 ```
 
 Let's say you have an array of Posts you want to display in UITableView. To quickly show them using DTTableViewManager, here's what you need to do:
@@ -90,7 +83,9 @@ class PostCell : UITableViewCell, ModelTransfer {
 }
 ```
 
-* Call registration methods on your `DTTableViewManageable` instance
+* Declare your class as `DTTableViewManageable`, and it will be automatically injected with `manager` property, that will hold an instance of `DTTableViewManager`.
+
+* Make sure your UITableView outlet is wired to your class and call registration methods (typically in viewDidLoad method):
 
 ```swift
 	manager.register(PostCell.self)
@@ -141,15 +136,13 @@ manager.register(FoodTableViewCell.self)
 manager.memoryStorage.addItems([Apple(),Carrot()])
 ```
 
-Mappings are resolved simply by calling `is` type-check. In our example Apple is Food and Carrot is Food, so mapping will work.
-
 ## Storage classes
 
-[DTModelStorage](https://github.com/DenHeadless/DTModelStorage/) is a framework, that provides storage classes for `DTTableViewManager`. By default, storage property on `DTTableViewManager` holds a `MemoryStorage` instance.
+[DTModelStorage](https://github.com/DenTelezhkin/DTModelStorage/) is a framework, that provides storage classes for `DTTableViewManager`. By default, storage property on `DTTableViewManager` holds a `MemoryStorage` instance.
 
 ### MemoryStorage
 
-`MemoryStorage` is a class, that manages UITableView models in memory. It has methods for adding, removing, replacing, reordering table view models etc. You can read all about them in [DTModelStorage repo](https://github.com/DenHeadless/DTModelStorage#memorystorage). Basically, every section in `MemoryStorage` is an array of `SectionModel` objects, which itself is an object, that contains optional header and footer models, and array of table items.
+`MemoryStorage` is a class, that manages UITableView models in memory. It has methods for adding, removing, replacing, reordering table view models etc. You can read all about them in [DTModelStorage repo](https://github.com/DenTelezhkin/DTModelStorage#memorystorage). Basically, every section in `MemoryStorage` is an array of `SectionModel` objects, which itself is an object, that contains optional header and footer models, and array of table items.
 
 ### CoreDataStorage
 
@@ -184,15 +177,12 @@ Keep in mind, that MemoryStorage is not limited to objects in memory. For exampl
     pod 'DTModelStorage/Realm'
 ```
 
-If you are using Carthage, `RealmStorage` will be automatically built along with `DTModelStorage`.
-
-
 ## Reacting to events
 
 Event system in DTTableViewManager 5 allows you to react to `UITableViewDelegate` and `UITableViewDataSource` events based on view and model types, completely bypassing any switches or ifs when working with UITableView API. For example:
 
 ```swift
-manager.didSelect(PostCell.self) { cell,model,indexPath in
+manager.didSelect(PostCell.self) { cell, model, indexPath in
   print("Selected PostCell with \(model) at \(indexPath)")
 }
 ```
@@ -251,7 +241,7 @@ manager.configureEvents(for: IntCell.self) { cellType, modelType in
 
 ### Drag and Drop in iOS 11
 
-There is a [dedicated repo](https://github.com/DenHeadless/DTDragAndDropExample), containing Apple's sample on Drag&Drop, enhanced with `DTTableViewManager` and `DTCollectionViewManager`. Most of the stuff is just usual drop and drag delegate events, but there is also special support for UITableView and UICollectionView placeholders, that makes sure calls are dispatched to main thread, and if you use `MemoryStorage`, performs datasource updates automatically.
+There is a [dedicated repo](https://github.com/DenTelezhkin/DTDragAndDropExample), containing Apple's sample on Drag&Drop, enhanced with `DTTableViewManager` and `DTCollectionViewManager`. Most of the stuff is just usual drop and drag delegate events, but there is also special support for UITableView and UICollectionView placeholders, that makes sure calls are dispatched to main thread, and if you use `MemoryStorage`, performs datasource updates automatically.
 
 ### Reacting to content updates
 
@@ -351,6 +341,44 @@ controller.manager.registerNibNamed("CustomNibCell", for: NibCell.self) { mappin
 }
 ```
 
+### Anomaly handler
+
+`DTTableViewManager` is built on some conventions. For example, your cell needs to have reuseIdentifier that matches the name of your class, XIB files need to be named also identical to the name of your class(to work with default mapping without customization). However when those conventions are not followed, or something unexpected happens, your app may crash or behave inconsistently. Most of the errors are reported by `UITableView` API, but there's space to improve.
+
+And so, starting with 6.3.0 release, `DTTableViewManager` as well as `DTCollectionViewManager` and `DTModelStorage` now have dedicated anomaly analyzer, that tries to find inconsistencies and programmer errors when using those frameworks. It detects stuff like missing mappings, inconsistencies in xib files, and even unused events. By default, detected anomalies will be printed in console while you are debugging your app. For example, if you try to register an empty xib to use for your cell, here's what you'll see in console:
+
+```
+⚠️[DTTableViewManager] Attempted to register xib EmptyXib for PostCell, but this xib does not contain any views.
+```
+
+Messages are prefixed, so for `DTCollectionViewManager` messages will have `[DTCollectionViewManager]` prefix.
+
+By default, anomaly handler only prints information into console and does not do anything beyond that, but you can change it's behavior by assigning a custom handler for anomalies:
+
+```swift
+manager.anomalyHandler.anomalyAction = { anomaly in
+  // invoke custom action
+}
+```
+
+For example, you may want to send all detected anomalies to analytics you have in your app. For this case anomalies implement shorter description, that is more suitable for analytics, that often have limits for amount of data you can put in. To do that globally for all instances of `DTTableViewManager` that will be created during runtime of your app, set default action:
+
+```swift
+DTTableViewManagerAnomalyHandler.defaultAction = { anomaly in
+  print(anomaly.debugDescription)
+
+  analytics.postEvent("DTTableViewManager", anomaly.description)
+}
+```
+
+If you use `DTTableViewManager` and `DTCollectionViewManager`, you can override 3 default actions for both manager frameworks and `DTModelStorage`, presumably during app initialization, before any views are loaded:
+
+```swift
+DTTableViewManagerAnomalyHandler.defaultAction = { anomaly in }
+DTCollectionViewManagerAnomalyHandler.defaultAction = { anomaly in }
+MemoryStorageAnomalyHandler.defaultAction = { anomaly in }
+```
+
 ### Unregistering mappings
 
 You can unregister cells, headers and footers from `DTTableViewManager` and `UITableView` by calling:
@@ -365,7 +393,7 @@ This is equivalent to calling `tableView(register:nil,forCellWithReuseIdenfier: 
 
 ## ObjectiveC support
 
-`DTTableViewManager` is heavily relying on Swift protocol extensions, generics and associated types. Enabling this stuff to work on Objective-c right now is not possible. Because of this DTTableViewManager 4 and greater only supports building from Swift. If you need to use Objective-C, you can use [latest Objective-C compatible version of `DTTableViewManager`](https://github.com/DenHeadless/DTTableViewManager/releases/tag/3.3.0).
+`DTTableViewManager` is heavily relying on Swift protocol extensions, generics and associated types. Enabling this stuff to work on Objective-c right now is not possible. Because of this DTTableViewManager 4 and greater only supports building from Swift. If you need to use Objective-C, you can use [latest Objective-C compatible version of `DTTableViewManager`](https://github.com/DenTelezhkin/DTTableViewManager/releases/tag/3.3.0).
 
 ## Thanks
 
