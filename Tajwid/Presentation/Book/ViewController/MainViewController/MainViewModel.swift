@@ -64,7 +64,7 @@ final class MainViewModel: MainViewModelInterface {
     }
     
     func teacherButtonTap() {
-        print("teacherButtonTap")
+        print("🟣 teacherButtonTap")
     }
     
     private func obtainBook() -> Book {

@@ -18,10 +18,7 @@ final class MainViewController: UIViewController {
     
     let scrollView: UIScrollView = {
         let view = UIScrollView()
-//        view.showsHorizontalScrollIndicator = false
-//        view.showsVerticalScrollIndicator = false
-//        view.autoresizesSubviews = false
-//        view.isScrollEnabled = true
+        view.showsVerticalScrollIndicator = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -84,6 +81,7 @@ final class MainViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -175,6 +173,7 @@ final class MainViewController: UIViewController {
             introStack.topAnchor.constraint(equalTo: statisticView.bottomAnchor, constant: 40),
             introStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 67),
             introStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            introStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
             teacherButton.heightAnchor.constraint(equalToConstant: 44),
             teacherButton.widthAnchor.constraint(equalToConstant: 130)
