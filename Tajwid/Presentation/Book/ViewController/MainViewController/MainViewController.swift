@@ -16,6 +16,16 @@ final class MainViewController: UIViewController {
     
     // MARK: - Views
     
+    let scrollView: UIScrollView = {
+        let view = UIScrollView()
+//        view.showsHorizontalScrollIndicator = false
+//        view.showsVerticalScrollIndicator = false
+//        view.autoresizesSubviews = false
+//        view.isScrollEnabled = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let authorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .regular)
@@ -103,7 +113,7 @@ final class MainViewController: UIViewController {
         logoLabel.text = viewModel.logoText
         logoImageView.image = viewModel.logoImage
         introTitleLabel.text = viewModel.introTitleText
-        introDescriptionLabel.text = viewModel.introDesvriptionText
+        introDescriptionLabel.text = viewModel.introDescriptionText
         teacherButton.setTitle(viewModel.buttonTitleText, for: .normal)
         teacherButton.addTarget(self, action: #selector(teacherButtonTap), for: .touchUpInside)
         updateStatistics()
@@ -118,6 +128,7 @@ final class MainViewController: UIViewController {
         
         let logoStack = UIStackView(arrangedSubviews: [UIView(), logoImageView, logoLabelsStack, UIView()])
         logoStack.axis = .horizontal
+        logoStack.alignment = .center
         logoStack.spacing = 8
         logoStack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -128,26 +139,42 @@ final class MainViewController: UIViewController {
         introStack.setCustomSpacing(16, after: introDescriptionLabel)
         introStack.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(logoStack)
-        view.addSubview(statisticView)
-        view.addSubview(introStack)
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(logoStack)
+        contentView.addSubview(statisticView)
+        contentView.addSubview(introStack)
         
         let authorLabelHeight = authorLabel.intrinsicContentSize.height
         let logoLabelHeight = logoLabel.intrinsicContentSize.height
         
         NSLayoutConstraint.activate([
-            logoStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            logoStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            logoStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            logoStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             logoImageView.heightAnchor.constraint(equalToConstant: authorLabelHeight + logoLabelHeight),
             
             statisticView.topAnchor.constraint(equalTo: logoStack.bottomAnchor, constant: 40),
-            statisticView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            statisticView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            statisticView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            statisticView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             introStack.topAnchor.constraint(equalTo: statisticView.bottomAnchor, constant: 40),
-            introStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 67),
-            introStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            introStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 67),
+            introStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             teacherButton.heightAnchor.constraint(equalToConstant: 44),
             teacherButton.widthAnchor.constraint(equalToConstant: 130)

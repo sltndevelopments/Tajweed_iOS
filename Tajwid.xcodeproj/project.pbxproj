@@ -3565,7 +3565,7 @@
 		1EE282D6205D571300EBDF57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5F198BB427A6D151004DCD2B /* Main */,
+				5F198BB427A6D151004DCD2B /* MainViewController */,
 				1EE282D4205D515900EBDF57 /* MainScreenViewController.swift */,
 				1E5143CE205E9C78004DD9B2 /* BookModuleViewController.swift */,
 				1EDD77CC20851FFF00A4425B /* SettingsViewController.swift */,
@@ -5081,16 +5081,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5F198BB427A6D151004DCD2B /* Main */ = {
+		5F198BB427A6D151004DCD2B /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5F198BB527A6D166004DCD2B /* MainViewController.swift */,
 				5F198BB727A6D16F004DCD2B /* MainViewModel.swift */,
+				5F5173BC27E86F00000EEF33 /* StatisticView */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		5F5173BC27E86F00000EEF33 /* StatisticView */ = {
+			isa = PBXGroup;
+			children = (
 				5F6CDD3527E25F16009716AB /* StatisticView.swift */,
+				5F5173BD27E86F10000EEF33 /* StatisticElementView */,
+			);
+			path = StatisticView;
+			sourceTree = "<group>";
+		};
+		5F5173BD27E86F10000EEF33 /* StatisticElementView */ = {
+			isa = PBXGroup;
+			children = (
 				5F198BB927A6F3D8004DCD2B /* StatisticElementView.swift */,
 				5F9CCA6027E2582F005A2CC2 /* StatisticElementViewModel.swift */,
 			);
-			path = Main;
+			path = StatisticElementView;
 			sourceTree = "<group>";
 		};
 		74B9CBA527A54C570059BE89 /* TabBarClasses */ = {
@@ -7074,18 +7090,18 @@
 			baseConfigurationReference = 361B5AA44087CF32B4DAC46E /* Pods-Tajwid.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rinat Sultanov (MTVVCGTV43)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 93BS6TU778;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "tajwid-new-dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -7097,10 +7113,10 @@
 			baseConfigurationReference = 28D7748F2670A4F0D117CB13 /* Pods-Tajwid.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rinat Sultanov (93BS6TU778)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rinat Sultanov (93BS6TU778)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 93BS6TU778;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Tajwid/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -7108,7 +7124,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Tajwid;
 				PRODUCT_NAME = "Таджвид";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "tajwid-new-appstore2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

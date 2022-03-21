@@ -13,7 +13,7 @@ protocol MainViewModelInterface {
     var logoText: String { get }
     var logoImage: UIImage? { get }
     var introTitleText: String { get }
-    var introDesvriptionText: String { get }
+    var introDescriptionText: String { get }
     var buttonTitleText: String { get }
     
     func getStatisticViewModels() -> [StatisticElementViewModel]
@@ -25,7 +25,7 @@ final class MainViewModel: MainViewModelInterface {
     var authorText = "Ильдар Аляутдинов"
     var logoText = "TAJWEED"
     var introTitleText = "Дорогой друг!"
-    var introDesvriptionText =
+    var introDescriptionText =
         """
         Приложение предназначено для самостоятельного обучения буквам и \
         правильному произношению арабского текста при чтении Корана, \
@@ -43,7 +43,7 @@ final class MainViewModel: MainViewModelInterface {
     private var book: Book!
     
     init() {
-        obtainBook()
+        book = obtainBook()
     }
     
     func getStatisticViewModels() -> [StatisticElementViewModel] {
@@ -67,11 +67,12 @@ final class MainViewModel: MainViewModelInterface {
         print("teacherButtonTap")
     }
     
-    private func obtainBook() {
+    private func obtainBook() -> Book {
         if let url = Bundle.main.url(forResource: "Book", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
-                book = try JSONDecoder().decode(Book.self, from: data)
+                let book = try JSONDecoder().decode(Book.self, from: data)
+                return book
             }
             catch {
                 print(error)
