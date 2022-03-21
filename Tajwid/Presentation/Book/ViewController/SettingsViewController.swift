@@ -28,7 +28,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Настройки"
+        navigationItem.title = "Настройки"
         notificationSwitch.isOn = SettingsManager.isReminderEnabled
     }
 
