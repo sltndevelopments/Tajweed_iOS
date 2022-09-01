@@ -44,6 +44,7 @@ final class MainViewModel: MainViewModelInterface {
     
     init() {
         book = obtainBook()
+        indexBook()
     }
     
     func getStatisticViewModels() -> [StatisticElementViewModel] {
@@ -61,6 +62,43 @@ final class MainViewModel: MainViewModelInterface {
             statisticViewModels.append(statisticViewModel)
         }
         return statisticViewModels
+    }
+    
+    /**
+     This method indexes the book.
+     As understood from the old code, the paths and indexes of the modules, lessons are set dynamically on each open of the app. The old code does the same.
+     */
+    private func indexBook() {
+        for (index, module) in book.modules.enumerated() {
+            module.index = index
+            module.path = String(index + 1)
+            
+            for (index, lesson) in module.lessons.enumerated() {
+                lesson.index = index
+                lesson.path = "\(module.path!)_\(index + 1)"
+                
+                var cardsCount = 0
+                for section in lesson.sections {
+                    for (index, card) in section.cards.enumerated() {
+                        let index = index + cardsCount
+                        card.index = index
+                        card.path = "\(lesson.path!)_\(index + 1)"
+                    }
+                    
+                    cardsCount += section.cards.count
+                }
+                
+                for (index, exercise) in lesson.exercises.enumerated() {
+                    let index = index + cardsCount
+                    exercise.index = index
+                    exercise.path = "\(lesson.path!)_\(index + 1)"
+                    
+                    if let readingExercise = exercise as? ReadingExercise {
+                        readingExercise.correctWords = readingExercise.correctWords.withoutDuplicates()
+                    }
+                }
+            }
+        }
     }
     
     func teacherButtonTap() {
