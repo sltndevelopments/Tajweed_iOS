@@ -38,7 +38,7 @@ class TabBarControllersBuilder: TabBarControllersBuildable {
         var controllers = [UIViewController]()
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainTabController = MainViewController(viewModel: MainViewModel())
+        let mainTabController = MainViewController(viewModel: MainViewModel(book: book))
         mainTabController.tabBarItem = tabBarItemsBuilder.getTabBarItem(by: .main)
     
         controllers.append(mainTabController)
