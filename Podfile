@@ -11,4 +11,5 @@ target 'Tajwid' do
     pod 'TTTAttributedLabel'
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Analytics'
+    pod 'FirebaseDatabase'
 end

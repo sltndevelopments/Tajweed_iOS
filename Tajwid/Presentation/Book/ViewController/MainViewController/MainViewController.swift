@@ -90,6 +90,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Главная"
         setup()
     }
     
@@ -189,6 +190,7 @@ final class MainViewController: UIViewController {
     
     @objc
     private func teacherButtonTap() {
-        viewModel.teacherButtonTap()
+        let vc = ScheduleViewController(viewModel: ScheduleViewModel())
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

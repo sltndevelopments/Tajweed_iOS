@@ -38,10 +38,12 @@ class TabBarControllersBuilder: TabBarControllersBuildable {
         var controllers = [UIViewController]()
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainTabController = MainViewController(viewModel: MainViewModel())
+        let mainTabController = MainViewController(viewModel: MainViewModel(book: book))
         mainTabController.tabBarItem = tabBarItemsBuilder.getTabBarItem(by: .main)
+        
+        let mainNavigationController = UINavigationController(rootViewController: mainTabController)
     
-        controllers.append(mainTabController)
+        controllers.append(mainNavigationController)
         
         for module in book.modules {
             

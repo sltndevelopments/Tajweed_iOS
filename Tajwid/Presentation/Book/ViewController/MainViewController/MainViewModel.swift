@@ -42,9 +42,8 @@ final class MainViewModel: MainViewModelInterface {
     
     private var book: Book!
     
-    init() {
-        book = obtainBook()
-        indexBook()
+    init(book: Book) {
+        self.book = book
     }
     
     func getStatisticViewModels() -> [StatisticElementViewModel] {
@@ -64,62 +63,7 @@ final class MainViewModel: MainViewModelInterface {
         return statisticViewModels
     }
     
-    /**
-     This method indexes the book.
-     As understood from the old code, the paths and indexes of the modules, lessons are set dynamically on each open of the app. The old code does the same.
-     */
-    private func indexBook() {
-        for (index, module) in book.modules.enumerated() {
-            module.index = index
-            module.path = String(index + 1)
-            
-            for (index, lesson) in module.lessons.enumerated() {
-                lesson.index = index
-                lesson.path = "\(module.path!)_\(index + 1)"
-                
-                var cardsCount = 0
-                for section in lesson.sections {
-                    for (index, card) in section.cards.enumerated() {
-                        let index = index + cardsCount
-                        card.index = index
-                        card.path = "\(lesson.path!)_\(index + 1)"
-                    }
-                    
-                    cardsCount += section.cards.count
-                }
-                
-                for (index, exercise) in lesson.exercises.enumerated() {
-                    let index = index + cardsCount
-                    exercise.index = index
-                    exercise.path = "\(lesson.path!)_\(index + 1)"
-                    
-                    if let readingExercise = exercise as? ReadingExercise {
-                        readingExercise.correctWords = readingExercise.correctWords.withoutDuplicates()
-                    }
-                }
-            }
-        }
-    }
-    
     func teacherButtonTap() {
         print("🟣 teacherButtonTap")
     }
-    
-    private func obtainBook() -> Book {
-        if let url = Bundle.main.url(forResource: "Book", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let book = try JSONDecoder().decode(Book.self, from: data)
-                return book
-            }
-            catch {
-                print(error)
-                fatalError("Couldn't obtain a book model from the book json!")
-            }
-        } else {
-            fatalError("Couldn't obtain a book json!")
-        }
-    }
-    
-    
 }
